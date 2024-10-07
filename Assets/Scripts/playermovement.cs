@@ -1,58 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class playermovement : MonoBehaviour
 {
-
-    public float speed = 5f;            // ÀÌµ¿ ¼Óµµ
+    private Animator animator;
+    public float speed = 5f;            // ì´ë™ ì†ë„
     private Rigidbody rb;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
-        // ÀÌµ¿ º¤ÅÍ ÃÊ±âÈ­
+        // ì´ë™ ë²¡í„° ì´ˆê¸°í™”
         Vector3 movement = Vector3.zero;
-        Quaternion targetRotation = transform.rotation; // ±âº»ÀûÀ¸·Î ÇöÀç È¸Àü À¯Áö
-
-        // W ¶Ç´Â UpArrow Å° ÀÔ·Â ½Ã ºÏÂÊ(+Z)
+        Quaternion targetRotation = transform.rotation; // ê¸°ë³¸ì ìœ¼ë¡œ í˜„ì¬ íšŒì „ ìœ ì§€
+        // W ë˜ëŠ” UpArrow í‚¤ ì…ë ¥ ì‹œ ë¶ìª½(+Z)
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             movement = Vector3.back;
-            targetRotation = Quaternion.LookRotation(Vector3.back); // ºÏÂÊ(+Z) ¹Ù¶óº½
+            targetRotation = Quaternion.LookRotation(Vector3.back); // ë¶ìª½(+Z) ë°”ë¼ë´„
         }
-        // S ¶Ç´Â DownArrow Å° ÀÔ·Â ½Ã ³²ÂÊ(-Z)
+        // S ë˜ëŠ” DownArrow í‚¤ ì…ë ¥ ì‹œ ë‚¨ìª½(-Z)
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             movement = Vector3.forward;
-            targetRotation = Quaternion.LookRotation(Vector3.forward); // ³²ÂÊ(-Z) ¹Ù¶óº½
+            targetRotation = Quaternion.LookRotation(Vector3.forward); // ë‚¨ìª½(-Z) ë°”ë¼ë´„
         }
-        // A ¶Ç´Â LeftArrow Å° ÀÔ·Â ½Ã ¼­ÂÊ(-X)
+        // A ë˜ëŠ” LeftArrow í‚¤ ì…ë ¥ ì‹œ ì„œìª½(-X)
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             movement = Vector3.right;
-            targetRotation = Quaternion.LookRotation(Vector3.right); // ¼­ÂÊ(-X) ¹Ù¶óº½
+            targetRotation = Quaternion.LookRotation(Vector3.right); // ì„œìª½(-X) ë°”ë¼ë´„
         }
-        // D ¶Ç´Â RightArrow Å° ÀÔ·Â ½Ã µ¿ÂÊ(+X)
+        // D ë˜ëŠ” RightArrow í‚¤ ì…ë ¥ ì‹œ ë™ìª½(+X)
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             movement = Vector3.left;
-            targetRotation = Quaternion.LookRotation(Vector3.left); // µ¿ÂÊ(+X) ¹Ù¶óº½
+            targetRotation = Quaternion.LookRotation(Vector3.left); // ë™ìª½(+X) ë°”ë¼ë´„
         }
 
-        // È¸Àü Àû¿ë
+        // running
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            speed = 2 * speed;
+            animator.SetBool("shift", true);
+        } else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            speed = speed/2;
+            animator.SetBool("shift", false);
+        }
+
+            // íšŒì „ ì ìš©
+
+
+            var velocity = movement * speed;
         if (movement != Vector3.zero)
         {
             transform.rotation = targetRotation;
-
-            // ÀÌµ¿
-            Vector3 newPosition = rb.position + movement * speed * Time.deltaTime;
+            // ì´ë™
+            Vector3 newPosition = rb.position + velocity * Time.deltaTime;
             rb.MovePosition(newPosition);
+
         }
+        animator.SetFloat("speed", velocity.magnitude);
     }
 }
