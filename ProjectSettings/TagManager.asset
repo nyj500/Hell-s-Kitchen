@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FIsh
+  - Carrot
+  - Pepper
+  - Cucumber
+  - Nori
+  - Rice
+  - Salami
+  - Fish
+  - Trashcan
   layers:
   - Default
   - TransparentFX
