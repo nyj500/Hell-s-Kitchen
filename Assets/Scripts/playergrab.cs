@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class playergrab : MonoBehaviour
 {
-    private int isgrab =0;
+    private Animator animator;
+    private bool grabbed;
+    private int isgrab = 0;
     GameObject spawnedObject = null;
+    public GameObject grabPoint;
 
     public int isFish = 0;
     public int isCarrot = 0;
@@ -18,133 +21,48 @@ public class playergrab : MonoBehaviour
 
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        grabbed = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        animator.SetBool("holdingItem", grabbed);
     }
 
     void OnTriggerStay(Collider other)
     {
-        if(isgrab == 0)
+        if (isgrab == 0)
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                if (other.CompareTag("Fish"))
+                // Determine which prefab to instantiate based on the tag
+                string prefabName = "";
+                if (other.CompareTag("Fish")) { prefabName = "Fish"; isFish = 1; }
+                else if (other.CompareTag("Carrot")) { prefabName = "Carrot"; isCarrot = 1; }
+                else if (other.CompareTag("Pepper")) { prefabName = "Pepper"; isPepper = 1; }
+                else if (other.CompareTag("Cucumber")) { prefabName = "Cucumber"; isCucumber = 1; }
+                else if (other.CompareTag("Nori")) { prefabName = "Nori_001"; isNori = 1; }
+                else if (other.CompareTag("Rice")) { prefabName = "Rice_001"; isRice = 1; }
+                else if (other.CompareTag("Salami")) { prefabName = "Salami A"; isSalami = 1; }
+
+                if (!string.IsNullOrEmpty(prefabName))
                 {
-                    GameObject prefab = Resources.Load<GameObject>("Fish");
-                    spawnedObject = Instantiate(prefab);
-                    foodmove script = spawnedObject.GetComponent<foodmove>();
-                    if (script != null)
+                    GameObject prefab = Resources.Load<GameObject>(prefabName);
+                    if (prefab != null)
                     {
-                        Transform childTransform = this.transform.Find("grabpoint");
-                        script.target = childTransform.gameObject;
-
+                        spawnedObject = Instantiate(prefab, grabPoint.transform.position, grabPoint.transform.rotation);
+                        spawnedObject.transform.parent = grabPoint.transform; // Set the grabPoint as the parent
+                        isgrab = 1;
+                        grabbed = true;
                     }
-                    isgrab = 1;
-                    isFish = 1;
                 }
-
-                if (other.CompareTag("Carrot"))
-                {
-                    GameObject prefab = Resources.Load<GameObject>("Carrot");
-                    spawnedObject = Instantiate(prefab);
-                    foodmove script = spawnedObject.GetComponent<foodmove>();
-                    if (script != null)
-                    {
-                        Transform childTransform = this.transform.Find("grabpoint");
-                        script.target = childTransform.gameObject;
-
-                    }
-                    isgrab = 1;
-                    isCarrot = 1;
-                }
-
-                if (other.CompareTag("Pepper"))
-                {
-                    GameObject prefab = Resources.Load<GameObject>("Pepper");
-                    spawnedObject = Instantiate(prefab);
-                    foodmove script = spawnedObject.GetComponent<foodmove>();
-                    if (script != null)
-                    {
-                        Transform childTransform = this.transform.Find("grabpoint");
-                        script.target = childTransform.gameObject;
-
-                    }
-                    isgrab = 1;
-                    isPepper = 1;
-                }
-
-                if (other.CompareTag("Cucumber"))
-                {
-                    GameObject prefab = Resources.Load<GameObject>("Cucumber");
-                    spawnedObject = Instantiate(prefab);
-                    foodmove script = spawnedObject.GetComponent<foodmove>();
-                    if (script != null)
-                    {
-                        Transform childTransform = this.transform.Find("grabpoint");
-                        script.target = childTransform.gameObject;
-
-                    }
-                    isgrab = 1;
-                    isCucumber = 1;
-                }
-
-                if (other.CompareTag("Nori"))
-                {
-                    GameObject prefab = Resources.Load<GameObject>("Nori_001");
-                    spawnedObject = Instantiate(prefab);
-                    foodmove script = spawnedObject.GetComponent<foodmove>();
-                    if (script != null)
-                    {
-                        Transform childTransform = this.transform.Find("grabpoint");
-                        script.target = childTransform.gameObject;
-
-                    }
-                    isgrab = 1;
-                    isNori = 1;
-                }
-
-                if (other.CompareTag("Rice"))
-                {
-                    GameObject prefab = Resources.Load<GameObject>("Rice_001");
-                    spawnedObject = Instantiate(prefab);
-                    foodmove script = spawnedObject.GetComponent<foodmove>();
-                    if (script != null)
-                    {
-                        Transform childTransform = this.transform.Find("grabpoint");
-                        script.target = childTransform.gameObject;
-
-                    }
-                    isgrab = 1;
-                    isRice = 1;
-                }
-
-                if (other.CompareTag("Salami"))
-                {
-                    GameObject prefab = Resources.Load<GameObject>("Salami A");
-                    spawnedObject = Instantiate(prefab);
-                    foodmove script = spawnedObject.GetComponent<foodmove>();
-                    if (script != null)
-                    {
-                        Transform childTransform = this.transform.Find("grabpoint");
-                        script.target = childTransform.gameObject;
-
-                    }
-                    isgrab = 1;
-                    isSalami = 1;
-                }
-
             }
         }
         else
         {
             if (Input.GetKey(KeyCode.Space))
             {
-
                 if (other.CompareTag("Trashcan"))
                 {
                     if (spawnedObject != null)
@@ -152,6 +70,8 @@ public class playergrab : MonoBehaviour
                         Destroy(spawnedObject);
                     }
 
+                    // Reset states
+                    grabbed = false;
                     isgrab = 0;
                     isFish = 0;
                     isCarrot = 0;
