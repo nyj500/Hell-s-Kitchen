@@ -82,6 +82,77 @@ public class playergrab : MonoBehaviour
                     isSalami = 0;
                     spawnedObject = null;
                 }
+                else if (other.CompareTag("Pan"))
+                {
+                    isfoodinhere panScript = other.GetComponent<isfoodinhere>();
+
+                    if (panScript.ishere == false && isSalami == 1)
+                    {
+                        GameObject prefab = Resources.Load<GameObject>("Salami A");
+                        Destroy(spawnedObject);
+                        Transform cookpointTransform = other.transform.Find("cookpoint");
+                        spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                        isSalami = 0;
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+                        panScript.ishere = true;
+                    }
+                }
+                else if (other.CompareTag("cutting"))
+                {
+                    isfoodinhere cuttingScript = other.GetComponent<isfoodinhere>();
+
+                    if (cuttingScript.ishere == false && isFish == 1)
+                    {
+                        GameObject prefab = Resources.Load<GameObject>("Fish");
+                        Destroy(spawnedObject);
+                        Transform cookpointTransform = other.transform.Find("cookpoint");
+                        spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                        isFish = 0;
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+                        cuttingScript.ishere = true;
+                    }
+                    else if (cuttingScript.ishere == false && isCarrot == 1)
+                    {
+                        GameObject prefab = Resources.Load<GameObject>("Carrot");
+                        Destroy(spawnedObject);
+                        Transform cookpointTransform = other.transform.Find("cookpoint");
+                        spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                        isCarrot = 0;
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+                        cuttingScript.ishere = true;
+                    }
+                    else if (cuttingScript.ishere == false && isPepper == 1)
+                    {
+                        GameObject prefab = Resources.Load<GameObject>("Pepper");
+                        Destroy(spawnedObject);
+                        Transform cookpointTransform = other.transform.Find("cookpoint");
+                        spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                        spawnedObject.transform.Rotate(90, 180, 0);
+                        isPepper = 0;
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+                        cuttingScript.ishere = true;
+                    }
+                    else if (cuttingScript.ishere == false && isCucumber == 1)
+                    {
+                        GameObject prefab = Resources.Load<GameObject>("Cucumber");
+                        Destroy(spawnedObject);
+                        Transform cookpointTransform = other.transform.Find("cookpoint");
+                        spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                        isCucumber = 0;
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+                        cuttingScript.ishere = true;
+                    }
+                }
             }
         }
     }
