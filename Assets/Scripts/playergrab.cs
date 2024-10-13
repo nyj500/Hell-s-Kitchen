@@ -121,6 +121,7 @@ public class playergrab : MonoBehaviour
                         Destroy(spawnedObject);
                         Transform cookpointTransform = other.transform.Find("cookpoint");
                         spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                        spawnedObject.transform.Rotate(90, 90, 0);
                         isCarrot = 0;
                         isgrab = 0;
                         grabbed = false;
