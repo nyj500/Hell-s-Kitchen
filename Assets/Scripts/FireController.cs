@@ -11,7 +11,7 @@ public class FireController : MonoBehaviour
     public GameObject currentIngredient;
     public float burnTime = 1f;
     public bool hasIngredient = false;
-    private bool isOnFire = false;  
+    public bool isOnFire = false;  
     public float timeRange_1 = 60f;
     public float timeRange_2 = 120f;
 
@@ -36,7 +36,6 @@ public class FireController : MonoBehaviour
 
     void StartFire()
     {
-        playergrab.isOnFire = true;
         isOnFire = true;
         fireEffect.SetActive(true);
         if (hasIngredient)

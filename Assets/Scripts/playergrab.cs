@@ -10,7 +10,6 @@ public class playergrab : MonoBehaviour
     GameObject spawnedObject = null;
     public GameObject grabPoint;
     public LightController lightController;
-    public FireController fireController;
     public int isFish = 0;
     public int isCarrot = 0;
     public int isPepper = 0;
@@ -19,7 +18,6 @@ public class playergrab : MonoBehaviour
     public int isRice = 0;
     public int isSalami = 0;
     public int isExtinhuisher = 0;
-    public bool isOnFire = false;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -94,7 +92,7 @@ public class playergrab : MonoBehaviour
                     isSalami = 0;
                     spawnedObject = null;
                 }
-                else if (other.CompareTag("Pan") && !isOnFire)
+                else if (other.CompareTag("Pan"))
                 {
                     isfoodinhere panScript = other.GetComponent<isfoodinhere>();
 
@@ -109,20 +107,18 @@ public class playergrab : MonoBehaviour
                         grabbed = false;
                         spawnedObject = null;
                         panScript.ishere = true;
-                    }                 
-                }
-                else if (other.CompareTag("Pan") && isOnFire)
-                {
-                    if (isExtinhuisher == 1)
-                    {
+                    }
+
+                    FireController fireController = other.GetComponent<FireController>();
+                    if (isExtinhuisher == 1 && fireController.isOnFire)
+                    {              
                         fireController.ExtinguishFire();
-                        other.enabled = true;
                         Destroy(spawnedObject);
                         isExtinhuisher = 0;
                         isgrab = 0;
                         grabbed = false;
                         spawnedObject = null;
-                        isOnFire = false;
+                        fireController.isOnFire = false;
                     }
                 }
                 else if (other.CompareTag("cutting"))
