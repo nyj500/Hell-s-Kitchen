@@ -38,7 +38,7 @@ public class FireController : MonoBehaviour
     {
         playergrab.isOnFire = true;
         isOnFire = true;
-        //fireEffect.SetActive(true);
+        fireEffect.SetActive(true);
         if (hasIngredient)
         {
             StartCoroutine(BurnIngredient());
@@ -50,7 +50,7 @@ public class FireController : MonoBehaviour
     public void ExtinguishFire()
     {
         isOnFire = false;
-        //fireEffect.SetActive(false);
+        fireEffect.SetActive(false);
         
         Debug.Log("Extinguish");
     }
