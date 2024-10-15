@@ -9,7 +9,7 @@ public class playergrab : MonoBehaviour
     private int isgrab = 0;
     GameObject spawnedObject = null;
     public GameObject grabPoint;
-
+    public LightController lightController;
     public int isFish = 0;
     public int isCarrot = 0;
     public int isPepper = 0;
@@ -56,6 +56,11 @@ public class playergrab : MonoBehaviour
                         isgrab = 1;
                         grabbed = true;
                     }
+                }
+
+                if (other.CompareTag("Lever"))
+                {
+                    lightController.SetSkyboxLighting();
                 }
             }
         }
