@@ -1439,8 +1439,8 @@ MonoBehaviour:
   burnTime: 1
   hasIngredient: 0
   isOnFire: 0
-  timeRange_1: 20
-  timeRange_2: 30
+  timeRange_1: 30
+  timeRange_2: 60
 --- !u!1 &513464991
 GameObject:
   m_ObjectHideFlags: 0
@@ -26419,8 +26419,8 @@ MonoBehaviour:
   burnTime: 1
   hasIngredient: 0
   isOnFire: 0
-  timeRange_1: 20
-  timeRange_2: 30
+  timeRange_1: 30
+  timeRange_2: 60
 --- !u!1001 &8564583501505858496
 PrefabInstance:
   m_ObjectHideFlags: 0
