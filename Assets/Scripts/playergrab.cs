@@ -10,6 +10,7 @@ public class playergrab : MonoBehaviour
     GameObject spawnedObject = null;
     public GameObject grabPoint;
     public LightController lightController;
+    public FireController fireController;
     public int isFish = 0;
     public int isCarrot = 0;
     public int isPepper = 0;
@@ -17,8 +18,8 @@ public class playergrab : MonoBehaviour
     public int isNori = 0;
     public int isRice = 0;
     public int isSalami = 0;
-    public int isFire = 0;
-
+    public int isExtinhuisher = 0;
+    public bool isOnFire = false;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -45,6 +46,7 @@ public class playergrab : MonoBehaviour
                 else if (other.CompareTag("Nori")) { prefabName = "Nori_001"; isNori = 1; }
                 else if (other.CompareTag("Rice")) { prefabName = "Rice_001"; isRice = 1; }
                 else if (other.CompareTag("Salami")) { prefabName = "Salami A"; isSalami = 1; }
+                else if (other.CompareTag("Extinguisher")) { prefabName = "Extinguisher"; isExtinhuisher = 1; }
 
                 if (!string.IsNullOrEmpty(prefabName))
                 {
@@ -53,6 +55,11 @@ public class playergrab : MonoBehaviour
                     {
                         spawnedObject = Instantiate(prefab, grabPoint.transform.position, grabPoint.transform.rotation);
                         spawnedObject.transform.parent = grabPoint.transform; // Set the grabPoint as the parent
+                        if (prefabName == "Extinguisher")
+                        {
+                            spawnedObject.transform.localPosition = new Vector3(0.0f, 0.0f, -1.25f);
+                            spawnedObject.transform.Rotate(90, 0, 0);
+                        }
                         isgrab = 1;
                         grabbed = true;
                     }
@@ -87,7 +94,7 @@ public class playergrab : MonoBehaviour
                     isSalami = 0;
                     spawnedObject = null;
                 }
-                else if (other.CompareTag("Pan"))
+                else if (other.CompareTag("Pan") && !isOnFire)
                 {
                     isfoodinhere panScript = other.GetComponent<isfoodinhere>();
 
@@ -102,6 +109,20 @@ public class playergrab : MonoBehaviour
                         grabbed = false;
                         spawnedObject = null;
                         panScript.ishere = true;
+                    }                 
+                }
+                else if (other.CompareTag("Pan") && isOnFire)
+                {
+                    if (isExtinhuisher == 1)
+                    {
+                        fireController.ExtinguishFire();
+                        other.enabled = true;
+                        Destroy(spawnedObject);
+                        isExtinhuisher = 0;
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+                        isOnFire = false;
                     }
                 }
                 else if (other.CompareTag("cutting"))
