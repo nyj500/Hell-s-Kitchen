@@ -787,6 +787,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330715485}
   m_Mesh: {fileID: 1049464669498777270, guid: 2dc020296b8fe8b42a1b2788e9d395e9, type: 3}
+--- !u!1 &347556285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2723444422625680322, guid: 1ccaecc0d7c334429b161837dada6bbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 2025093376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &347556286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2723444422625680319, guid: 1ccaecc0d7c334429b161837dada6bbe,
@@ -4203,6 +4209,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0525671, y: 0.9248355, z: 2.8698475}
   m_Center: {x: 0, y: 0, z: 0.00000047683716}
+--- !u!1 &1464995368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2723444422625680322, guid: 1ccaecc0d7c334429b161837dada6bbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1134609001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1464995369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2723444422625680319, guid: 1ccaecc0d7c334429b161837dada6bbe,
@@ -6009,7 +6021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playergrab: {fileID: 1970692252}
-  fireEffect: {fileID: 0}
+  fireEffect: {fileID: 347556285}
   fryingPan: {fileID: 487690968}
   extinguisher: {fileID: 2037416570}
   currentIngredient: {fileID: 0}
@@ -11773,7 +11785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playergrab: {fileID: 1970692252}
-  fireEffect: {fileID: 0}
+  fireEffect: {fileID: 1464995368}
   fryingPan: {fileID: 5366650832070918041}
   extinguisher: {fileID: 2037416570}
   currentIngredient: {fileID: 0}
