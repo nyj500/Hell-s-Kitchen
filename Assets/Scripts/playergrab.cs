@@ -18,6 +18,8 @@ public class playergrab : MonoBehaviour
     public int isRice = 0;
     public int isSalami = 0;
     public int isExtinhuisher = 0;
+    public GameObject knifePrefab;
+    GameObject knife = null;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -68,6 +70,35 @@ public class playergrab : MonoBehaviour
                     lightController.SetSkyboxLighting();
                 }
             }
+
+            //if (Input.GetKey(KeyCode.E))
+            //{
+            //    // Instantiate the knife when chopping starts, if it's not already spawned
+            //    if (knifePrefab != null && knife == null)
+            //    {
+            //        knife = Instantiate(knifePrefab, grabPoint.transform.position, grabPoint.transform.rotation);
+            //        knife.transform.parent = grabPoint.transform; // Set grabPoint as parent for the knife
+            //    }
+
+            //    // Start the chopping animation
+            //    animator.SetBool("chopping", true);
+            //    Debug.Log("Chopping started");
+            //} else 
+            //{
+            //    animator.SetBool("chopping", false);
+            //    Debug.Log("Chopping stopped");
+
+            //    // Remove the knife when chopping stops
+            //    if (knife != null)
+            //    {
+            //        Destroy(knife);
+            //        knife = null; // Reset the reference to the knife
+            //    }
+            //}
+
+
+
+
         }
         else
         {
@@ -127,6 +158,7 @@ public class playergrab : MonoBehaviour
 
                     if (cuttingScript.ishere == false && isFish == 1)
                     {
+                        
                         GameObject prefab = Resources.Load<GameObject>("Fish");
                         Destroy(spawnedObject);
                         Transform cookpointTransform = other.transform.Find("cookpoint");
@@ -175,8 +207,14 @@ public class playergrab : MonoBehaviour
                         spawnedObject = null;
                         cuttingScript.ishere = true;
                     }
+
+
+
+                   
                 }
             }
+
+            
         }
     }
 }
