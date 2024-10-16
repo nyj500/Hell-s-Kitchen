@@ -9,21 +9,26 @@ public class LightController : MonoBehaviour
     public Cubemap customReflection;
     public Light directionalLight; // 기본 조명 
     public Light spotLight; // 비상등 
+    private bool isBlackout = false;
 
-    void Update()
+    void Start()
     {
-        // 정전되는 조건
-        if (/* 임의의 조건 */ Input.GetKeyDown(KeyCode.C))
-        {
-            SetCustomLighting();
-        }
-        // 레버를 당겼을 때
-        if (/* 임의의 조건 */ Input.GetKeyDown(KeyCode.V))
-        {
-            SetSkyboxLighting();
-        }
+        StartCoroutine(TriggerBlackout());
     }
 
+    IEnumerator TriggerBlackout()
+    {
+        while (true)
+        {
+            float randomTime = Random.Range(60f, 120f);
+
+            // 설정된 시간만큼 대기
+            yield return new WaitForSeconds(randomTime);
+
+            // 대기 후 실행할 함수 호출
+            SetCustomLighting();
+        }
+    }
     // 정전일 때, Environment Lighting Source를 Color로, Reflection Source를 Custom으로 설정
     void SetCustomLighting()
     {
@@ -37,11 +42,11 @@ public class LightController : MonoBehaviour
         RenderSettings.customReflection = customReflection; // 커스텀 반사 소스 설정
         RenderSettings.defaultReflectionMode = DefaultReflectionMode.Custom; // Custom으로 설정
 
-        Debug.Log("Environment Lighting: Color, Reflection: Custom");
+        isBlackout = true;
     }
 
     // 정전이 아닐 때, Environment Lighting Source와 Reflection Source를 다시 Skybox로 전환
-    void SetSkyboxLighting()
+    public void SetSkyboxLighting()
     {
         directionalLight.enabled = true;
         spotLight.enabled = false;
@@ -50,6 +55,6 @@ public class LightController : MonoBehaviour
 
         RenderSettings.defaultReflectionMode = DefaultReflectionMode.Skybox;
 
-        Debug.Log("Environment Lighting: Skybox, Reflection: Skybox");
+        isBlackout = false;
     }
 }

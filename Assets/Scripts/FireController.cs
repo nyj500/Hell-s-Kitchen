@@ -4,26 +4,33 @@ using UnityEngine;
 
 public class FireController : MonoBehaviour
 {
+    public playergrab playergrab;
     public GameObject fireEffect; 
     public GameObject fryingPan;  
     public GameObject extinguisher;
     public GameObject currentIngredient;
     public float burnTime = 1f;
     public bool hasIngredient = false;
-    private bool isOnFire = false;  
-    private bool isExtinguisherHeld = false;
+    public bool isOnFire = false;  
+    public float timeRange_1 = 60f;
+    public float timeRange_2 = 120f;
 
-    void Update()
+    void Start()
     {
-        // 화재 조건
-        if (/* 임의의 조건 */ !isOnFire && Input.GetKeyDown(KeyCode.B))
+        StartCoroutine(TriggerFire());
+    }
+
+    IEnumerator TriggerFire()
+    {
+        while (true)
         {
-            StartFire(); 
-        }
-        // 소화기를 들고 상호작용
-        if (/* 임의의 조건 */ isOnFire && Input.GetKeyDown(KeyCode.N))
-        {
-            ExtinguishFire();
+            float randomTime = Random.Range(timeRange_1, timeRange_2);
+
+            // 설정된 시간만큼 대기
+            yield return new WaitForSeconds(randomTime);
+
+            // 대기 후 실행할 함수 호출
+            StartFire();
         }
     }
 
@@ -35,15 +42,15 @@ public class FireController : MonoBehaviour
         {
             StartCoroutine(BurnIngredient());
         }
-            // 프라이팬 사용 불가 
+        
         Debug.Log("Fire");
     }
 
-    void ExtinguishFire()
+    public void ExtinguishFire()
     {
         isOnFire = false;
         fireEffect.SetActive(false);
-            // 프라이팬 사용 가능 
+        
         Debug.Log("Extinguish");
     }
 
