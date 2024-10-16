@@ -139,6 +139,10 @@ public class Chopping : MonoBehaviour
         {
             spawnedKnife = Instantiate(knifePrefab, playerGrabPoint.position, playerGrabPoint.rotation);
             spawnedKnife.transform.parent = playerGrabPoint; // Attach the knife to the grab point
+
+            spawnedKnife.transform.localPosition = new Vector3(0.138378367f, 0.0690211654f, -0.0262892991f);
+            spawnedKnife.transform.localRotation = new Quaternion(-0.772405982f, -0.383837044f, -0.341076404f, 0.373797953f);
+
         }
 
         // Start chopping animation

@@ -6655,7 +6655,7 @@ MonoBehaviour:
   playerGrabPoint: {fileID: 1736330870}
   playerAnimator: {fileID: 1970692256}
   timerText: {fileID: 1452632701}
-  choppingTime: 10
+  choppingTime: 5
   fineDustParticlesPrefab: {fileID: 7819507489250268489, guid: f8695d9d09abc41869a80a6709b2e88f,
     type: 3}
   choppingFragmentsParticlesPrefab: {fileID: 7047688199237848805, guid: 18a3644fb04b34986908b1d6ed677e5d,
@@ -27349,7 +27349,7 @@ MonoBehaviour:
   playerGrabPoint: {fileID: 1736330870}
   playerAnimator: {fileID: 1970692256}
   timerText: {fileID: 404462410}
-  choppingTime: 10
+  choppingTime: 5
   fineDustParticlesPrefab: {fileID: 7819507489250268489, guid: f8695d9d09abc41869a80a6709b2e88f,
     type: 3}
   choppingFragmentsParticlesPrefab: {fileID: 7047688199237848805, guid: 18a3644fb04b34986908b1d6ed677e5d,
