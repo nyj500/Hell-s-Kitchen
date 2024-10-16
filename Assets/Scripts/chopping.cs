@@ -16,13 +16,16 @@ public class Chopping : MonoBehaviour
     public GameObject fineDustParticlesPrefab; // Prefab for fine dust particles
     public GameObject choppingFragmentsParticlesPrefab; // Prefab for chopping fragments particles
 
-    // Emission point for particles
-    public Transform particleEmissionPoint; // Point where particles should be emitted
-
     // Prefabs for chopped versions of ingredients
     public GameObject choppedPepperPrefab;
     public GameObject choppedCucumberPrefab;
     public GameObject choppedCarrotPrefab;
+
+    // Emission point for particles
+    public Transform particleEmissionPoint; // Point where particles should be emitted
+
+    // The cookpoint to parent ingredients
+    public Transform cookpoint; // Reference to the cookpoint on the chopping board
 
     private GameObject spawnedKnife; // Reference to the spawned knife in the player's hand
     private GameObject fineDustParticlesInstance; // Instance of the fine dust particle prefab
@@ -67,6 +70,8 @@ public class Chopping : MonoBehaviour
         }
     }
 
+
+    
     // Trigger when player enters the chopping zone
     void OnTriggerEnter(Collider other)
     {
@@ -75,21 +80,34 @@ public class Chopping : MonoBehaviour
             isPlayerNear = true;
         }
 
-        // Detect ingredient on the board
+        // Detect ingredient on the board and parent it to the cookpoint
         if (other.CompareTag("Pepper"))
         {
+            Debug.Log("Pepper");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedPepperPrefab;
+            //PlaceIngredientOnCookpoint(currentIngredient);
         }
         else if (other.CompareTag("Cucumber"))
         {
+            Debug.Log("Cucumber");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedCucumberPrefab;
+            //PlaceIngredientOnCookpoint(currentIngredient);
         }
         else if (other.CompareTag("Carrot"))
         {
+            Debug.Log("Carrot");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedCarrotPrefab;
+            //PlaceIngredientOnCookpoint(currentIngredient);
+        }
+        else if (other.CompareTag("Fish"))
+        {
+            Debug.Log("Fish");
+            currentIngredient = other.gameObject;
+            currentChoppedPrefab = choppedCarrotPrefab;
+            //PlaceIngredientOnCookpoint(currentIngredient);
         }
     }
 
@@ -243,16 +261,25 @@ public class Chopping : MonoBehaviour
         {
             // Get the position and rotation of the current ingredient
             Vector3 ingredientPosition = currentIngredient.transform.position;
-            Quaternion ingredientRotation = currentIngredient.transform.rotation;
+            Quaternion ingredientRotation = currentChoppedPrefab.transform.rotation;
 
             // Destroy the original ingredient
             Destroy(currentIngredient);
 
-            // Instantiate the chopped version at the same position
-            Instantiate(currentChoppedPrefab, ingredientPosition, ingredientRotation);
-
+            // Instantiate the chopped version at the same position and parent it to the cookpoint
+            GameObject choppedObject = Instantiate(currentChoppedPrefab, ingredientPosition, ingredientRotation);
+            choppedObject.transform.SetParent(cookpoint); // Make the chopped object a child of the cookpoint
+            
             Debug.Log("Ingredient replaced with chopped version.");
         }
+    }
+
+    public void PlaceIngredientOnCookpoint(GameObject ingredient)
+    {
+        // Set the ingredient's position to match the cookpoint and parent it to the cookpoint
+        ingredient.transform.position = cookpoint.position;
+        ingredient.transform.rotation = cookpoint.rotation;
+        ingredient.transform.SetParent(cookpoint); // Make it a child of the cookpoint
     }
 
     void UpdateTimerText(float time)

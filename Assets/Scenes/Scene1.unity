@@ -1446,6 +1446,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4242290842823613850, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
         type: 3}
       propertyPath: m_Name
@@ -4183,6 +4198,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316730638}
   m_Mesh: {fileID: 6384228794567263085, guid: 5099dddb40b52074cb04d0a234f5ba48, type: 3}
+--- !u!4 &1355094687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 476559936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1421683615 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2638036873396508431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452055210
 GameObject:
   m_ObjectHideFlags: 0
@@ -6629,12 +6656,18 @@ MonoBehaviour:
   playerAnimator: {fileID: 1970692256}
   timerText: {fileID: 1452632701}
   choppingTime: 10
-  fineDustParticlesPrefab: {fileID: 0}
-  choppingFragmentsParticlesPrefab: {fileID: 0}
+  fineDustParticlesPrefab: {fileID: 7819507489250268489, guid: f8695d9d09abc41869a80a6709b2e88f,
+    type: 3}
+  choppingFragmentsParticlesPrefab: {fileID: 7047688199237848805, guid: 18a3644fb04b34986908b1d6ed677e5d,
+    type: 3}
+  choppedPepperPrefab: {fileID: 4116390821712334563, guid: 605afaf0cf62d465aaec2eea1a053626,
+    type: 3}
+  choppedCucumberPrefab: {fileID: 4116390821712334563, guid: dd5d917e658d44e409f6e7efcc99c784,
+    type: 3}
+  choppedCarrotPrefab: {fileID: 4116390821712334563, guid: 6a23196b4b7d54f4baaa228d8da663d1,
+    type: 3}
   particleEmissionPoint: {fileID: 1796206709}
-  choppedPepperPrefab: {fileID: 0}
-  choppedCucumberPrefab: {fileID: 0}
-  choppedCarrotPrefab: {fileID: 0}
+  cookpoint: {fileID: 1355094687}
 --- !u!1 &2037416570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e74d831e5f17ed542a7bbb5f55845c4d,
@@ -9434,6 +9467,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896135181860097619, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4242290842823613850, guid: 3b3c43c08e19ecf4d85d4dee100009a0,
         type: 3}
       propertyPath: m_Name
@@ -27291,13 +27354,14 @@ MonoBehaviour:
     type: 3}
   choppingFragmentsParticlesPrefab: {fileID: 7047688199237848805, guid: 18a3644fb04b34986908b1d6ed677e5d,
     type: 3}
-  particleEmissionPoint: {fileID: 743824595}
   choppedPepperPrefab: {fileID: 4116390821712334563, guid: 605afaf0cf62d465aaec2eea1a053626,
     type: 3}
   choppedCucumberPrefab: {fileID: 4116390821712334563, guid: dd5d917e658d44e409f6e7efcc99c784,
     type: 3}
   choppedCarrotPrefab: {fileID: 4116390821712334563, guid: 6a23196b4b7d54f4baaa228d8da663d1,
     type: 3}
+  particleEmissionPoint: {fileID: 743824595}
+  cookpoint: {fileID: 1421683615}
 --- !u!64 &8701080056576934598
 MeshCollider:
   m_ObjectHideFlags: 0
