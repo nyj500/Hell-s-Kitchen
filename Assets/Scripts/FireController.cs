@@ -14,9 +14,21 @@ public class FireController : MonoBehaviour
     public bool isOnFire = false;  
     public float timeRange_1 = 60f;
     public float timeRange_2 = 120f;
+    public float randomTime;
 
     void Start()
     {
+        float initialDelay = 20.0f;
+
+        StartCoroutine(DelayedStartFire(initialDelay));
+    }
+
+    IEnumerator DelayedStartFire(float delay)
+    {
+        // 초기 대기 시간만큼 대기
+        yield return new WaitForSeconds(delay);
+
+        // 대기 후 Fire 발생 루틴 시작
         StartCoroutine(TriggerFire());
     }
 
@@ -24,8 +36,8 @@ public class FireController : MonoBehaviour
     {
         while (true)
         {
-            float randomTime = Random.Range(timeRange_1, timeRange_2);
-
+            randomTime = Random.Range(timeRange_1, timeRange_2);
+        
             // 설정된 시간만큼 대기
             yield return new WaitForSeconds(randomTime);
 

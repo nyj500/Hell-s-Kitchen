@@ -8,11 +8,13 @@ public class LightController : MonoBehaviour
     public Color customAmbientColor = Color.black;
     public Cubemap customReflection;
     public Light directionalLight; // 기본 조명 
-    public Light spotLight; // 비상등 
+    public Light ramp; // 비상등 
+    public Light spotLight;
     private bool isBlackout = false;
 
     void Start()
     {
+        SetSkyboxLighting();
         StartCoroutine(TriggerBlackout());
     }
 
@@ -33,8 +35,8 @@ public class LightController : MonoBehaviour
     void SetCustomLighting()
     {
         directionalLight.enabled = false;
+        ramp.enabled = true;
         spotLight.enabled = true;
-
         RenderSettings.ambientMode = AmbientMode.Flat;
         RenderSettings.ambientLight = customAmbientColor; // 커스텀 컬러 설정
 
@@ -49,6 +51,7 @@ public class LightController : MonoBehaviour
     public void SetSkyboxLighting()
     {
         directionalLight.enabled = true;
+        ramp.enabled = false;
         spotLight.enabled = false;
 
         RenderSettings.ambientMode = AmbientMode.Skybox;
