@@ -77,7 +77,7 @@ public class playergrab : MonoBehaviour
         }
         else
         {
-            // Handle interactions with cutting board or fire extinguisher
+            // Handle placing the object on the cutting board or pan
             if (Input.GetKey(KeyCode.Space))
             {
                 if (other.CompareTag("cutting"))
@@ -89,7 +89,18 @@ public class playergrab : MonoBehaviour
                     if (cuttingScript != null && choppingScript != null)
                     {
                         // Proceed only if there is no item already on the chopping board
-                        if (cuttingScript.ishere == false && isCarrot == 1)
+                        if (cuttingScript.ishere == false && isFish == 1)
+                        {
+                            choppingScript.PlaceIngredientOnCookpoint(spawnedObject);
+                            // Optionally rotate or modify the fish placement if needed
+                            isFish = 0;
+                            isgrab = 0;
+                            grabbed = false;
+                            spawnedObject = null;
+                            cuttingScript.ishere = true; // Mark the board as occupied
+                            Debug.Log("Fish placed on the chopping board.");
+                        }
+                        else if (cuttingScript.ishere == false && isCarrot == 1)
                         {
                             choppingScript.PlaceIngredientOnCookpoint(spawnedObject);
                             spawnedObject.transform.Rotate(90, 90, 0);
@@ -133,6 +144,24 @@ public class playergrab : MonoBehaviour
                 }
                 else if (other.CompareTag("Pan"))
                 {
+                    // Handle placing the Salami (Sausage) on the pan
+                    isfoodinhere panScript = other.GetComponent<isfoodinhere>();
+
+                    if (panScript != null && panScript.ishere == false && isSalami == 1)
+                    {
+                        // Spawn the salami prefab on the pan
+                        GameObject prefab = Resources.Load<GameObject>("Salami A");
+                        Destroy(spawnedObject);
+                        Transform cookpointTransform = other.transform.Find("cookpoint");
+                        spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                        isSalami = 0;
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+                        panScript.ishere = true; // Mark the pan as occupied
+                        Debug.Log("Salami placed on the pan.");
+                    }
+
                     FireController fireController = other.GetComponent<FireController>();
                     if (fireController != null && isExtinhuisher == 1 && fireController.isOnFire)
                     {
