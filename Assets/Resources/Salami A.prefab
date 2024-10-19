@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7633587738618785630}
   - component: {fileID: 2547190106660218469}
   - component: {fileID: 2070098403610048465}
+  - component: {fileID: -8241615770754053446}
   m_Layer: 0
   m_Name: Salami A
-  m_TagString: Untagged
+  m_TagString: Salami
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,3 +86,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &-8241615770754053446
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7506142331787793044}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.323203
+  m_Height: 0.16409944
+  m_Direction: 1
+  m_Center: {x: -0.0000019669537, y: 0.082049526, z: 0.00000011920932}

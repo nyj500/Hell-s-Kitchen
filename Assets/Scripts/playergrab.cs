@@ -149,24 +149,52 @@ public class playergrab : MonoBehaviour
 
                     if (panScript != null && panScript.ishere == false && isSalami == 1)
                     {
-                        // Spawn the salami prefab on the pan
+                        // Load the salami prefab
                         GameObject prefab = Resources.Load<GameObject>("Salami A");
-                        Destroy(spawnedObject);
+
+                        // Find the cookpoint transform on the pan
                         Transform cookpointTransform = other.transform.Find("cookpoint");
-                        spawnedObject = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
-                        isSalami = 0;
-                        isgrab = 0;
-                        grabbed = false;
-                        spawnedObject = null;
-                        panScript.ishere = true; // Mark the pan as occupied
-                        Debug.Log("Salami placed on the pan.");
+
+                        if (cookpointTransform != null)
+                        {
+                            // Instantiate the salami at the cookpoint position and set it as a child of the cookpoint
+                            GameObject placedSalami = Instantiate(prefab, cookpointTransform.position, cookpointTransform.rotation);
+                            placedSalami.transform.SetParent(cookpointTransform);  // Make the salami a child of the cookpoint
+
+                            // Reset the grab states
+                            isSalami = 0;
+                            isgrab = 0;
+                            grabbed = false;
+                            panScript.ishere = true; // Mark the pan as occupied
+                            Debug.Log("Salami placed on the pan at cookpoint.");
+
+                            // Start cooking when salami is placed on the pan
+                            FireController fireController = other.GetComponent<FireController>();
+                            if (fireController != null)
+                            {
+                                fireController.currentIngredient = placedSalami;  // Set the salami as the current ingredient in FireController
+                                fireController.hasIngredient = true;  // Set the flag that there's an ingredient
+                                fireController.StartCooking();  // Start the cooking process
+                                Debug.Log("Cooking started for the salami.");
+                            }
+
+                            // Destroy the object held by the player AFTER the salami has been placed on the pan
+                            if (spawnedObject != null)
+                            {
+                                Destroy(spawnedObject);
+                                spawnedObject = null;  // Now set spawnedObject to null
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Cookpoint transform not found on the pan!");
+                        }
                     }
 
-                    FireController fireController = other.GetComponent<FireController>();
-                    if (fireController != null && isExtinhuisher == 1 && fireController.isOnFire)
+                    FireController fireControllerExtinguish = other.GetComponent<FireController>();
+                    if (fireControllerExtinguish != null && isExtinhuisher == 1 && fireControllerExtinguish.isOnFire)
                     {
-                        // Extinguish the fire if the player is holding an extinguisher
-                        fireController.ExtinguishFire();
+                        fireControllerExtinguish.ExtinguishFire();
                         Destroy(spawnedObject); // Remove the extinguisher from hand
                         isExtinhuisher = 0; // Reset extinguisher state
                         isgrab = 0;
@@ -175,6 +203,7 @@ public class playergrab : MonoBehaviour
                         Debug.Log("Fire extinguished!");
                     }
                 }
+
                 else if (other.CompareTag("Trashcan"))
                 {
                     // If the player throws the object into the trash can

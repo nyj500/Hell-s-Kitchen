@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9071542734776178852
+--- !u!1001 &5328186735624779168
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,11 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: ef4ce7ba2bf1f9848ba4e80f6a82acd8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef4ce7ba2bf1f9848ba4e80f6a82acd8,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -86,7 +81,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ef4ce7ba2bf1f9848ba4e80f6a82acd8,
         type: 3}
       propertyPath: m_Name
-      value: Salmon_Filet_003
+      value: FishPrefab 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef4ce7ba2bf1f9848ba4e80f6a82acd8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -95,21 +95,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef4ce7ba2bf1f9848ba4e80f6a82acd8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -508894039580401109}
+      addedObject: {fileID: 1337924479617586747}
   m_SourcePrefab: {fileID: 100100000, guid: ef4ce7ba2bf1f9848ba4e80f6a82acd8, type: 3}
---- !u!1 &8153188628610229749 stripped
+--- !u!1 &4985744593523951857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ef4ce7ba2bf1f9848ba4e80f6a82acd8,
     type: 3}
-  m_PrefabInstance: {fileID: 9071542734776178852}
+  m_PrefabInstance: {fileID: 5328186735624779168}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &-508894039580401109
+--- !u!65 &1337924479617586747
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8153188628610229749}
+  m_GameObject: {fileID: 4985744593523951857}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

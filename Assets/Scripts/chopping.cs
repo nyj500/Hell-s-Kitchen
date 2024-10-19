@@ -20,6 +20,7 @@ public class Chopping : MonoBehaviour
     public GameObject choppedPepperPrefab;
     public GameObject choppedCucumberPrefab;
     public GameObject choppedCarrotPrefab;
+    public GameObject choppedFishPrefab; // Prefab for chopped fish
 
     // Emission point for particles
     public Transform particleEmissionPoint; // Point where particles should be emitted
@@ -70,8 +71,6 @@ public class Chopping : MonoBehaviour
         }
     }
 
-
-    
     // Trigger when player enters the chopping zone
     void OnTriggerEnter(Collider other)
     {
@@ -86,28 +85,25 @@ public class Chopping : MonoBehaviour
             Debug.Log("Pepper");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedPepperPrefab;
-            //PlaceIngredientOnCookpoint(currentIngredient);
         }
         else if (other.CompareTag("Cucumber"))
         {
             Debug.Log("Cucumber");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedCucumberPrefab;
-            //PlaceIngredientOnCookpoint(currentIngredient);
         }
         else if (other.CompareTag("Carrot"))
         {
             Debug.Log("Carrot");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedCarrotPrefab;
-            //PlaceIngredientOnCookpoint(currentIngredient);
         }
         else if (other.CompareTag("Fish"))
         {
-            Debug.Log("Fish");
+            Debug.Log("Fish placed on the chopping board.");
             currentIngredient = other.gameObject;
-            currentChoppedPrefab = choppedCarrotPrefab;
-            //PlaceIngredientOnCookpoint(currentIngredient);
+            currentChoppedPrefab = choppedFishPrefab;
+            Debug.Log("Chopped fish prefab assigned: " + (choppedFishPrefab != null ? choppedFishPrefab.name : "NULL"));
         }
     }
 
@@ -142,7 +138,6 @@ public class Chopping : MonoBehaviour
 
             spawnedKnife.transform.localPosition = new Vector3(0.138378367f, 0.0690211654f, -0.0262892991f);
             spawnedKnife.transform.localRotation = new Quaternion(-0.772405982f, -0.383837044f, -0.341076404f, 0.373797953f);
-
         }
 
         // Start chopping animation
@@ -265,16 +260,25 @@ public class Chopping : MonoBehaviour
         {
             // Get the position and rotation of the current ingredient
             Vector3 ingredientPosition = currentIngredient.transform.position;
-            Quaternion ingredientRotation = currentChoppedPrefab.transform.rotation;
+            Quaternion ingredientRotation = currentIngredient.transform.rotation;
 
             // Destroy the original ingredient
+            Debug.Log("Destroying original ingredient: " + currentIngredient.name);
             Destroy(currentIngredient);
 
             // Instantiate the chopped version at the same position and parent it to the cookpoint
             GameObject choppedObject = Instantiate(currentChoppedPrefab, ingredientPosition, ingredientRotation);
             choppedObject.transform.SetParent(cookpoint); // Make the chopped object a child of the cookpoint
-            
-            Debug.Log("Ingredient replaced with chopped version.");
+
+            Debug.Log("Chopped object instantiated: " + choppedObject.name);
+        }
+        else if(currentChoppedPrefab == null)
+        {
+            Debug.LogError("chopped prefab is null.");
+        }
+        else if (currentIngredient == null)
+        {
+            Debug.LogError("Current ingredient  is null.");
         }
     }
 
