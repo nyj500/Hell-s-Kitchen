@@ -22,7 +22,7 @@ public class LightController : MonoBehaviour
     {
         while (true)
         {
-            float randomTime = Random.Range(60f, 120f);
+            float randomTime = Random.Range(30f, 60f);
 
             // 설정된 시간만큼 대기
             yield return new WaitForSeconds(randomTime);

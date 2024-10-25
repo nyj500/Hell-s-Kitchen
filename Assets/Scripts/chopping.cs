@@ -45,6 +45,36 @@ public class Chopping : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
+        Transform[] allChildren = player.GetComponentsInChildren<Transform>();
+
+        // 자식 오브젝트들 중 이름이 grabpoint인 오브젝트를 찾음
+        foreach (Transform child in allChildren)
+        {
+            if (child.name == "grabpoint")
+            {
+                playerGrabPoint = child;
+                break;
+            }
+        }
+
+        switch (GameManager.instance.currentPlayer)
+        {
+            case GameManager.PlayerType.player1:
+                choppingTime = 7f; // player1의 기본 시간
+                break;
+            case GameManager.PlayerType.player2:
+                choppingTime = 8f; // player2의 기본 시간
+                break;
+            case GameManager.PlayerType.player3:
+                choppingTime = 9f; // player3의 기본 시간
+                break;
+            default:
+                choppingTime = 7f; // 기본값
+                break;
+        }
+
         // Ensure the knife under the table is visible initially
         if (knifeUnderTable != null)
         {

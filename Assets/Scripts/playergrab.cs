@@ -26,6 +26,7 @@ public class playergrab : MonoBehaviour
 
     void Start()
     {
+        lightController = GameObject.FindWithTag("Lever").GetComponent<LightController>();
         animator = GetComponent<Animator>();
         grabbed = false;
     }
