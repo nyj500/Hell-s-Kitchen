@@ -8,12 +8,33 @@ public class LightController : MonoBehaviour
     public Color customAmbientColor = Color.black;
     public Cubemap customReflection;
     public Light directionalLight; // 기본 조명 
-    public Light ramp; // 비상등 
-    public Light spotLight;
+    public Light spotLight; // 비상등 
+    private Light playerSpotLight; // 플레이어 조명
+    
     private bool isBlackout = false;
 
     void Start()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            // 플레이어의 자식 중에서 Spot Light 찾기
+            Transform spotLightTransform = player.transform.Find("Spot Light");
+
+            if (spotLightTransform != null)
+            {
+                playerSpotLight = spotLightTransform.GetComponent<Light>();
+
+                if (playerSpotLight == null)
+                {
+                    Debug.LogWarning("Player Spot Light를 찾을 수 없음");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player 태그를 가진 오브젝트가 없습니다.");
+        }
         SetSkyboxLighting();
         StartCoroutine(TriggerBlackout());
     }
@@ -35,8 +56,8 @@ public class LightController : MonoBehaviour
     void SetCustomLighting()
     {
         directionalLight.enabled = false;
-        ramp.enabled = true;
         spotLight.enabled = true;
+        playerSpotLight.enabled = true;
         RenderSettings.ambientMode = AmbientMode.Flat;
         RenderSettings.ambientLight = customAmbientColor; // 커스텀 컬러 설정
 
@@ -51,8 +72,8 @@ public class LightController : MonoBehaviour
     public void SetSkyboxLighting()
     {
         directionalLight.enabled = true;
-        ramp.enabled = false;
         spotLight.enabled = false;
+        playerSpotLight.enabled = false;
 
         RenderSettings.ambientMode = AmbientMode.Skybox;
 
