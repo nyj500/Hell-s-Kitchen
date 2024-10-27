@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     // 플레이어 타입
     public enum PlayerType { player1, player2, player3 }
     public PlayerType currentPlayer;
+    private int currentmoney;
 
     // 게임 시간
     public float gameDuration = 60f; // 1분 (60초)
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         remainingTime = gameDuration; // 남은 시간을 초기화
         GenerateNewOrder(); // 첫 번째 주문 생성
         StartCoroutine(GameTimer()); // 타이머 시작
+        currentmoney = 0;
     }
 
     // 게임 타이머 관리
@@ -75,6 +77,15 @@ public class GameManager : MonoBehaviour
     public void CompleteOrder()
     {
         Debug.Log("Order Completed: " + currentOrder);
+        currentmoney += 1000;
+        GenerateNewOrder(); // 새로운 주문 생성
+    }
+
+    // 주문이 실패했을 때 호출
+    public void MissOrder()
+    {
+        Debug.Log("Order Missed: " + currentOrder);
+        currentmoney -= 500;
         GenerateNewOrder(); // 새로운 주문 생성
     }
 
