@@ -81,6 +81,42 @@ public class playergrab : MonoBehaviour
             // Handle placing the object on the cutting board or pan
             if (Input.GetKey(KeyCode.Space))
             {
+                if (other.CompareTag("ConveyorBelt"))
+                {
+                    // Place the object on the conveyor belt's placePoint
+                    Transform placePoint = other.transform.Find("placePoint");
+                    if (placePoint != null && spawnedObject != null)
+                    {
+                        // Move the object to the placePoint position and align rotation
+                        spawnedObject.transform.position = placePoint.position;
+                        spawnedObject.transform.rotation = placePoint.rotation;
+                        spawnedObject.transform.parent = other.transform; // Parent to conveyor if needed
+
+                        // Add object to conveyor's onBelt list and freeze rotation
+                        ConveyorBelt conveyorScript = other.GetComponent<ConveyorBelt>();
+                        if (conveyorScript != null)
+                        {
+                            conveyorScript.onBelt.Add(spawnedObject);
+                        }
+
+                        Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
+                        if (rb != null)
+                        {
+                            rb.constraints = RigidbodyConstraints.FreezeRotation;
+                        }
+
+                        // Reset player grab states
+                        isgrab = 0;
+                        grabbed = false;
+                        spawnedObject = null;
+
+                        Debug.Log("Object placed on conveyor belt at placePoint.");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("placePoint not found on the conveyor belt.");
+                    }
+                }
                 if (other.CompareTag("cutting"))
                 {
                     // Dynamically get the `Chopping` script from the specific cutting board you're interacting with
