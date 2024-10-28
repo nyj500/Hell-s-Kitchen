@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         currentOrder = (FoodType)Random.Range(0, System.Enum.GetValues(typeof(FoodType)).Length);
         Debug.Log("New Order: " + currentOrder);
+        UIManager.instance.UpdateOrderDisplay();
     }
 
     // 주문이 완료되었을 때 호출
