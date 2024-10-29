@@ -293,15 +293,18 @@ public class playergrab : MonoBehaviour
     public int isChoppedCarrot = 0;
     public GameObject knifePrefab;
     GameObject knife = null;
+    private bool isChopped = false;
 
     // Reference to the chopping board (for placing ingredients)
     public Chopping choppingScript;
+    private Chopping choppingInstance;
 
     void Start()
     {
         lightController = GameObject.FindWithTag("Lever").GetComponent<LightController>();
         animator = GetComponent<Animator>();
         grabbed = false;
+        choppingInstance = GameObject.FindObjectOfType<Chopping>();
     }
 
     void Update()
@@ -311,7 +314,7 @@ public class playergrab : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (isgrab == 0 && Input.GetKey(KeyCode.Space))
+        if (isgrab == 0 && Input.GetKey(KeyCode.Space) && (choppingInstance == null || !choppingInstance.isChopping))
         {
             TryGrabItem(other);
         }
@@ -382,38 +385,36 @@ public class playergrab : MonoBehaviour
         else if (other.CompareTag("Salami")) { prefabName = "Salami A"; isSalami = 1; }
         else if (other.CompareTag("Extinguisher")) { prefabName = "Extinguisher"; isExtinguisher = 1; }
 
-        // Check for chopped ingredients and mark them for destruction
-        else if (other.CompareTag("ChoppedPepper")) { prefabName = "ChoppedPepper"; isChoppedPepper = 1; isChoppedFromBoard = true; }
-        else if (other.CompareTag("ChoppedCucumber")) { prefabName = "ChoppedCucumber"; isChoppedCucumber = 1; isChoppedFromBoard = true; }
-        else if (other.CompareTag("ChoppedFish")) { prefabName = "ChoppedFish"; isChoppedFish = 1; isChoppedFromBoard = true; }
-        else if (other.CompareTag("ChoppedCarrot")) { prefabName = "ChoppedCarrot"; isChoppedCarrot = 1; isChoppedFromBoard = true; }
+
+        if (other.CompareTag("ChoppedPepper")) { prefabName = "ChoppedPepper"; isChoppedPepper = 1; isChoppedFromBoard = true; isChopped = true; }
+        else if (other.CompareTag("ChoppedCucumber")) { prefabName = "ChoppedCucumber"; isChoppedCucumber = 1; isChoppedFromBoard = true; isChopped = true; }
+        else if (other.CompareTag("ChoppedFish")) { prefabName = "ChoppedFish"; isChoppedFish = 1; isChoppedFromBoard = true; isChopped = true; }
+        else if (other.CompareTag("ChoppedCarrot")) { prefabName = "ChoppedCarrot"; isChoppedCarrot = 1; isChoppedFromBoard = true; isChopped = true; }
 
         if (!string.IsNullOrEmpty(prefabName))
         {
             GameObject prefab = Resources.Load<GameObject>(prefabName);
             if (prefab != null)
             {
-                // Instantiate the prefab at grabPoint position and attach it to the player
-                spawnedObject = Instantiate(prefab, grabPoint.transform.position, grabPoint.transform.rotation);
-                spawnedObject.transform.parent = grabPoint.transform;
-
-                // Special positioning for extinguisher
-                if (prefabName == "Extinguisher")
-                {
-                    spawnedObject.transform.localPosition = new Vector3(0.0f, 0.0f, -1.25f);
-                    spawnedObject.transform.Rotate(90, 0, 0);
-                }
-
-                // Destroy the original object if it's a chopped ingredient from the board
+                // Destroy the original object on the chopping board
                 if (isChoppedFromBoard)
                 {
+                    isfoodinhere cuttingScript = other.GetComponentInParent<isfoodinhere>();
+                    if (cuttingScript != null)
+                    {
+                        cuttingScript.ishere = false; // 도마 상태를 비어있음으로 표시
+                    }
                     Destroy(other.gameObject);
                     Debug.Log("Destroyed chopped ingredient on chopping board: " + prefabName);
                 }
 
+                // Instantiate a new object in the player's hand
+                spawnedObject = Instantiate(prefab, grabPoint.transform.position, grabPoint.transform.rotation);
+                spawnedObject.transform.parent = grabPoint.transform;
+
                 isgrab = 1;
                 grabbed = true;
-                Debug.Log("Grabbed item: " + prefabName);
+                Debug.Log("Grabbed chopped item: " + prefabName);
             }
         }
 
@@ -474,6 +475,12 @@ public class playergrab : MonoBehaviour
 
         if (cuttingScript != null && choppingScript != null)
         {
+
+            if (isChopped)
+            {
+                Debug.Log("Processed ingredients cannot be placed on the cutting board.");
+                return;
+            }
             // Only place if the cutting board is available and the player is holding an ingredient
             if (!cuttingScript.ishere && spawnedObject != null)
             {
@@ -551,6 +558,7 @@ public class playergrab : MonoBehaviour
         isChoppedCucumber = 0;
         isChoppedFish = 0;
         isChoppedCarrot = 0;
+        isChopped = false;
         spawnedObject = null; // Clear the reference to the held object
     }
 
