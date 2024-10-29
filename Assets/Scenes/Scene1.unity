@@ -481,7 +481,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 1413023151}
+      objectReference: {fileID: 0}
     - target: {fileID: 4016730134220405665, guid: 53246a7153610244bacfa0f5884ca811,
         type: 3}
       propertyPath: m_Layer
@@ -535,7 +535,7 @@ PrefabInstance:
     - target: {fileID: 4016730134220405683, guid: 53246a7153610244bacfa0f5884ca811,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4016730134220405697, guid: 53246a7153610244bacfa0f5884ca811,
         type: 3}
@@ -1910,7 +1910,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 1413023151}
+      objectReference: {fileID: 0}
     - target: {fileID: 3202916210537734385, guid: a3eb0671533e8cf4b8a5ca5edf290c96,
         type: 3}
       propertyPath: m_Layer
@@ -5546,80 +5546,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 476559936}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1413023150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1413023152}
-  - component: {fileID: 1413023151}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1413023151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413023150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9c2cd8c9ab97f4694887ae44c5b785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentPlayer: 1
-  gameDuration: 60
-  currentOrder: 0
-  currentDish:
-    ingredients: []
-  recipes:
-  - recipeName: "\uC18C\uC2DC\uC9C0+\uC624\uC774"
-    requiredIngredients:
-    - Salami
-    - Cucumber
-  - recipeName: "\uC18C\uC2DC\uC9C0+\uD398\uD37C"
-    requiredIngredients:
-    - Salami
-    - Pepper
-  - recipeName: "\uC18C\uC2DC\uC9C0+\uB2F9\uADFC"
-    requiredIngredients:
-    - Salami
-    - Carrot
-  - recipeName: "\uC5F0\uC5B4+\uC624\uC774"
-    requiredIngredients:
-    - Salmon
-    - Cucumber
-  - recipeName: "\uC5F0\uC5B4+\uD398\uD37C"
-    requiredIngredients:
-    - Salmon
-    - Pepper
-  - recipeName: "\uC5F0\uC5B4+\uB2F9\uADFC"
-    requiredIngredients:
-    - Salmon
-    - Carrot
---- !u!4 &1413023152
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413023150}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.010525, y: 1.5349575, z: -9.787839}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1452055210
 GameObject:
   m_ObjectHideFlags: 0
@@ -6316,7 +6242,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 1413023151}
+      objectReference: {fileID: 0}
     - target: {fileID: 8796891531023437695, guid: 29f07a7aa774c9a4287bbb9827836953,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6380,7 +6306,7 @@ PrefabInstance:
     - target: {fileID: 8796891531023536897, guid: 29f07a7aa774c9a4287bbb9827836953,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8796891531023536913, guid: 29f07a7aa774c9a4287bbb9827836953,
         type: 3}
@@ -23676,6 +23602,5 @@ SceneRoots:
   - {fileID: 89598082}
   - {fileID: 1625833094}
   - {fileID: 479090938}
-  - {fileID: 1413023152}
   - {fileID: 3763746543840130864}
   - {fileID: 259493494}
