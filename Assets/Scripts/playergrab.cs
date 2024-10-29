@@ -402,20 +402,30 @@ public class playergrab : MonoBehaviour
                 Debug.LogWarning("placePoint not found on the plate or no item to place.");
             }
         }
-        else if (spawnedObject.CompareTag("ChoppedFish") && !plateScript.hasChoppedFish)
+        else if ((spawnedObject.CompareTag("ChoppedFish") || spawnedObject.CompareTag("CookedSalami")) && !plateScript.hasChoppedFish && !plateScript.hasCookedSalami)
         {
             placePoint = plate.transform.Find("PlatePlacePointMain");
             if (placePoint != null && spawnedObject != null)
             {
-                spawnedObject.transform.position = placePoint.position;
-                spawnedObject.transform.rotation = placePoint.rotation;
-                spawnedObject.transform.parent = plate.transform;
 
-                plateScript.hasChoppedFish = true;
+                if (spawnedObject.CompareTag("ChoppedFish"))
+                {
+                    spawnedObject.transform.position = placePoint.position;
+                    spawnedObject.transform.rotation = placePoint.rotation;
+                    spawnedObject.transform.parent = plate.transform;
+                    plateScript.hasChoppedFish = true;
+                }
+                else
+                {
+                    spawnedObject.transform.position = placePoint.position;
+                    spawnedObject.transform.rotation = placePoint.rotation;
+                    spawnedObject.transform.parent = plate.transform;
+                    plateScript.hasCookedSalami = true;
+                }
 
                 ResetGrabState();
 
-                Debug.Log("ChoppedFish placed on the plate.");
+                Debug.Log("CookedMainFood placed on the plate.");
             }
             else
             {
@@ -440,34 +450,6 @@ public class playergrab : MonoBehaviour
                 ResetGrabState();
 
                 Debug.Log(spawnedObject.tag + " placed on the plate.");
-            }
-            else
-            {
-                Debug.LogWarning("placePoint not found on the plate or no item to place.");
-            }
-        }
-        else if (spawnedObject.CompareTag("CookedSalami") && !plateScript.hasCookedSalami)
-        {
-            placePoint = plate.transform.Find("PlatePlacePointCookedSalami");
-            if (placePoint != null && spawnedObject != null)
-            {
-                // Place the object at the placePoint position
-                Debug.Log("Placing CookedSalami on plate: " + plate.name);
-
-                spawnedObject.transform.position = placePoint.position;
-                spawnedObject.transform.rotation = placePoint.rotation;
-                spawnedObject.transform.parent = plate.transform;
-
-                // Mark the presence of Cooked Salami on the plate
-                //Debug.Log("CookedSalami placed on plate successfully. Updated plate status: hasCookedSalami = " + plateScript.hasCookedSalami);
-
-                // Destroy the cooked salami from player's hand
-                //Destroy(spawnedObject);
-                //spawnedObject = null;  // Clear reference to the placed object
-
-                plateScript.hasCookedSalami = true;
-                // Reset player grab state
-                ResetGrabState();
             }
             else
             {

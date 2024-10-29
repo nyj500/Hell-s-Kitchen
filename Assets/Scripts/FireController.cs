@@ -253,11 +253,16 @@ public class FireController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        // If an ingredient like salami is placed on the frying pan
-        if (other.CompareTag("Salami"))
+        if (other.CompareTag("Salami") && currentIngredient == null)
         {
             currentIngredient = other.gameObject;
-            Debug.Log(currentIngredient);
+            hasIngredient = true;
+            StartCooking();
+            Debug.Log("Salami added to the frying pan and started cooking.");
+        }
+        else if (other.CompareTag("Salami") && currentIngredient != null)
+        {
+            Debug.Log("Frying pan is already in use. Cannot add another Salami.");
         }
     }
 
