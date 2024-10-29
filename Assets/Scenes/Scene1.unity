@@ -23526,7 +23526,8 @@ MonoBehaviour:
   fryingPan: {fileID: 5366650832070918041}
   extinguisher: {fileID: 2037416570}
   currentIngredient: {fileID: 0}
-  cookedIngredientPrefab: {fileID: 0}
+  cookedIngredientPrefab: {fileID: 7506142331787793044, guid: df319a1c15810492abad7fd95c7a16f4,
+    type: 3}
   panTimerText: {fileID: 712307111}
   burnTime: 1
   cookingTime: 10
