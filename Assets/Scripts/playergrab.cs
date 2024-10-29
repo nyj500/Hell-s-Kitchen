@@ -351,24 +351,92 @@ public class playergrab : MonoBehaviour
 
     private void PlaceOnPlate(Collider plate)
     {
-        // Find the `placePoint` on the plate object
-        Transform placePoint = plate.transform.Find("PlatePlacePoint");
-        if (placePoint != null && spawnedObject != null)
-        {
-            // Place the object at the placePoint position
-            spawnedObject.transform.position = placePoint.position;
-            spawnedObject.transform.rotation = placePoint.rotation;
-            spawnedObject.transform.parent = plate.transform; // Parent to the plate if needed
+        Transform placePoint = null;
+        Transform placePointRice = null;
+        Transform placePointMain = null;
+        Transform placePointVeg = null;
 
-            // Reset player grab states since the object is now on the plate
-            ResetGrabState();
-
-            Debug.Log("Ingredient placed on the plate.");
-        }
-        else
+        if (spawnedObject.CompareTag("Nori"))
         {
-            Debug.LogWarning("placePoint not found on the plate or no item to place.");
+            placePoint = plate.transform.Find("PlatePlacePoint");
+            if (placePoint != null && spawnedObject != null)
+            {
+                // Place the object at the placePoint position
+                spawnedObject.transform.position = placePoint.position;
+                spawnedObject.transform.rotation = placePoint.rotation;
+                spawnedObject.transform.parent = plate.transform; // Parent to the plate if needed
+
+                // Reset player grab states since the object is now on the plate
+                ResetGrabState();
+
+                Debug.Log("Ingredient placed on the plate.");
+            }
+            else
+            {
+                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+            }
         }
+        else if (spawnedObject.CompareTag("Rice"))
+        {
+            placePointRice = plate.transform.Find("PlatePlacePointRice");
+            if (placePointRice != null && spawnedObject != null)
+            {
+                // Place the object at the placePoint position
+                spawnedObject.transform.position = placePointRice.position;
+                spawnedObject.transform.rotation = placePointRice.rotation;
+                spawnedObject.transform.parent = plate.transform; // Parent to the plate if needed
+
+                // Reset player grab states since the object is now on the plate
+                ResetGrabState();
+
+                Debug.Log("Ingredient placed on the plate.");
+            }
+            else
+            {
+                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+            }
+        }
+        else if (spawnedObject.CompareTag("ChoppedFish"))
+        {
+            placePointMain = plate.transform.Find("PlatePlacePointMain");
+            if (placePointMain != null && spawnedObject != null)
+            {
+                // Place the object at the placePoint position
+                spawnedObject.transform.position = placePointMain.position;
+                spawnedObject.transform.rotation = placePointMain.rotation;
+                spawnedObject.transform.parent = plate.transform; // Parent to the plate if needed
+
+                // Reset player grab states since the object is now on the plate
+                ResetGrabState();
+
+                Debug.Log("Ingredient placed on the plate.");
+            }
+            else
+            {
+                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+            }
+        }
+        else if (spawnedObject.CompareTag("ChoppedPepper") || spawnedObject.CompareTag("ChoppedCucumber") || spawnedObject.CompareTag("ChoppedCarrot"))
+        {
+            placePointVeg = plate.transform.Find("PlatePlacePointVeg");
+            if (placePointVeg != null && spawnedObject != null)
+            {
+                // Place the object at the placePoint position
+                spawnedObject.transform.position = placePointVeg.position;
+                spawnedObject.transform.rotation = placePointVeg.rotation;
+                spawnedObject.transform.parent = plate.transform; // Parent to the plate if needed
+
+                // Reset player grab states since the object is now on the plate
+                ResetGrabState();
+
+                Debug.Log("Ingredient placed on the plate.");
+            }
+            else
+            {
+                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+            }
+        }
+        
     }
     private void TryGrabItem(Collider other)
     {
