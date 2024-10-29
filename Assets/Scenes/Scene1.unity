@@ -6138,6 +6138,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 550050367}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1484061446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5826856965007438342, guid: 9bedc97a18133ae4a828aff2a2117745,
+    type: 3}
+  m_PrefabInstance: {fileID: 1839953821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1484061450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484061446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f277d62092e184daca20d717e87b0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasNori: 0
+  hasRice: 0
+  hasChoppedFish: 0
+  hasCookedSalami: 0
+  hasChoppedPepper: 0
+  hasChoppedCucumber: 0
+  hasChoppedCarrot: 0
+  kimbapPrefab: {fileID: 7218525971425583426, guid: f751a7d114a8f87499ec098499779c69,
+    type: 3}
+  placePointNori: {fileID: 571511154}
 --- !u!1 &1584281534
 GameObject:
   m_ObjectHideFlags: 0
@@ -7474,7 +7502,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 308903633}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5826856965007438342, guid: 9bedc97a18133ae4a828aff2a2117745,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1484061450}
   m_SourcePrefab: {fileID: 100100000, guid: 9bedc97a18133ae4a828aff2a2117745, type: 3}
 --- !u!1 &1868493189
 GameObject:

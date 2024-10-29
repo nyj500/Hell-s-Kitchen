@@ -23,6 +23,12 @@ TagManager:
   - ChoppedCucumber
   - ChoppedCarrot
   - ChoppedFish
+  - Kimbap1
+  - Kimbap2
+  - Kimbap3
+  - Kimbap4
+  - Kimbap5
+  - Kimbap6
   layers:
   - Default
   - TransparentFX
