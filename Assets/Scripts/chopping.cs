@@ -62,16 +62,16 @@ public class Chopping : MonoBehaviour
         switch (GameManager.instance.currentPlayer)
         {
             case GameManager.PlayerType.player1:
-                choppingTime = 7f; // player1�� �⺻ �ð�
+                choppingTime = 5f; // player1�� �⺻ �ð�
                 break;
             case GameManager.PlayerType.player2:
-                choppingTime = 8f; // player2�� �⺻ �ð�
+                choppingTime = 6f; // player2�� �⺻ �ð�
                 break;
             case GameManager.PlayerType.player3:
-                choppingTime = 9f; // player3�� �⺻ �ð�
+                choppingTime = 7f; // player3�� �⺻ �ð�
                 break;
             default:
-                choppingTime = 7f; // �⺻��
+                choppingTime = 5f; // �⺻��
                 break;
         }
 

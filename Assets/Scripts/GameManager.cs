@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
     private int currentmoney;
 
     // Game Timer
-    public float gameDuration = 60f; // 1 minute (60 seconds)
+    public float gameDuration = 90f; // 1 minute (60 seconds)
     private float remainingTime;
 
     // Order Tracking
