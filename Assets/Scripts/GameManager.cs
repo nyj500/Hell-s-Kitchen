@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
     public enum PlayerType { player1, player2, player3 }
     public PlayerType currentPlayer;
     private int currentmoney;
+    public int CurrentMoney { get { return currentmoney; }}
 
     // Game Timer
     public float gameDuration = 90f; // 1 minute (60 seconds)
