@@ -1,31 +1,130 @@
+//using System.Collections;
+//using UnityEngine;
+
+//public class GameManager : MonoBehaviour
+//{
+//    // ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½
+//    public static GameManager instance;
+
+//    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Å¸ï¿½ï¿½
+//    public enum PlayerType { player1, player2, player3 }
+//    public PlayerType currentPlayer;
+//    private int currentmoney;
+
+//    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+//    public float gameDuration = 60f; // 1ï¿½ï¿½ (60ï¿½ï¿½)
+//    private float remainingTime;
+
+//    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//    public enum FoodType { Food1, Food2, Food3, Food4, Food5, Food6 }
+//    public FoodType currentOrder;
+
+//    private void Awake()
+//    {
+//        // ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//        if (instance == null)
+//        {
+//            instance = this;
+//            DontDestroyOnLoad(gameObject); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½îµµ ï¿½ï¿½ï¿½ï¿½
+//        }
+//        else
+//        {
+//            Destroy(gameObject);
+//        }
+//    }
+
+//    private void Start()
+//    {
+//        StartGame();
+//    }
+
+//    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
+//    public void StartGame()
+//    {
+//        remainingTime = gameDuration; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+//        GenerateNewOrder(); // Ã¹ ï¿½ï¿½Â° ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+//        StartCoroutine(GameTimer()); // Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+//        currentmoney = 0;
+//    }
+
+//    // ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+//    private IEnumerator GameTimer()
+//    {
+//        while (remainingTime > 0)
+//        {
+//            remainingTime -= Time.deltaTime; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
+//            yield return null; // ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+//        }
+
+//        EndGame(); // ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//    }
+
+//    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
+//    private void EndGame()
+//    {
+//        Debug.Log("Game Over");
+//        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+//    }
+
+//    // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
+//    public void GenerateNewOrder()
+//    {
+//        currentOrder = (FoodType)Random.Range(0, System.Enum.GetValues(typeof(FoodType)).Length);
+//        Debug.Log("New Order: " + currentOrder);
+//        UIManager.instance.UpdateOrderDisplay();
+//    }
+
+//    // ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
+//    public void CompleteOrder()
+//    {
+//        Debug.Log("Order Completed: " + currentOrder);
+//        currentmoney += 1000;
+//        GenerateNewOrder(); // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+//    }
+
+//    // ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
+//    public void MissOrder()
+//    {
+//        Debug.Log("Order Missed: " + currentOrder);
+//        currentmoney -= 500;
+//        GenerateNewOrder(); // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+//    }
+
+//    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
+//    public float GetRemainingTime()
+//    {
+//        return remainingTime;
+//    }
+//}
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // ½Ì±ÛÅæ ÀÎ½ºÅÏ½º
+    // Singleton instance
     public static GameManager instance;
 
-    // ÇÃ·¹ÀÌ¾î Å¸ÀÔ
+    // Player Type Enum
     public enum PlayerType { player1, player2, player3 }
     public PlayerType currentPlayer;
     private int currentmoney;
 
-    // °ÔÀÓ ½Ã°£
-    public float gameDuration = 60f; // 1ºÐ (60ÃÊ)
+    // Game Timer
+    public float gameDuration = 60f; // 1 minute (60 seconds)
     private float remainingTime;
 
-    // À½½Ä Á¾·ù
+    // Order Tracking
     public enum FoodType { Food1, Food2, Food3, Food4, Food5, Food6 }
     public FoodType currentOrder;
 
     private void Awake()
     {
-        // ½Ì±ÛÅæ ÀÎ½ºÅÏ½º »ý¼º
+        // Singleton instance setup
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // ¾ÀÀÌ ¹Ù²î¾îµµ À¯Áö
+            DontDestroyOnLoad(gameObject); // Keep GameManager across scenes
         }
         else
         {
@@ -38,35 +137,83 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
-    // °ÔÀÓ ½ÃÀÛ ÇÔ¼ö
-    public void StartGame()
+    // Recipe Class
+    [System.Serializable]
+    public class Recipe
     {
-        remainingTime = gameDuration; // ³²Àº ½Ã°£À» ÃÊ±âÈ­
-        GenerateNewOrder(); // Ã¹ ¹øÂ° ÁÖ¹® »ý¼º
-        StartCoroutine(GameTimer()); // Å¸ÀÌ¸Ó ½ÃÀÛ
-        currentmoney = 0;
+        public string recipeName;
+        public List<string> requiredIngredients;
+
+        public Recipe(string name, List<string> ingredients)
+        {
+            recipeName = name;
+            requiredIngredients = ingredients;
+        }
+
+        // Checks if a dish matches this recipe
+        public bool IsMatch(Dish dish)
+        {
+            if (dish.ingredients.Count != requiredIngredients.Count) return false;
+            for (int i = 0; i < requiredIngredients.Count; i++)
+            {
+                if (dish.ingredients[i] != requiredIngredients[i]) return false;
+            }
+            return true;
+        }
     }
 
-    // °ÔÀÓ Å¸ÀÌ¸Ó °ü¸®
+    // Dish Class to Track Ingredients
+    [System.Serializable]
+    public class Dish
+    {
+        public List<string> ingredients = new List<string>();
+
+        public void AddIngredient(string ingredient)
+        {
+            ingredients.Add(ingredient);
+        }
+
+        public void ClearDish()
+        {
+            ingredients.Clear();
+        }
+    }
+
+    public Dish currentDish = new Dish();
+    public List<Recipe> recipes = new List<Recipe>();
+
+    // Game Start
+    public void StartGame()
+    {
+        remainingTime = gameDuration; // Reset timer
+        GenerateNewOrder(); // Generate first order
+        StartCoroutine(GameTimer()); // Start timer coroutine
+        currentmoney = 0;
+
+        // Define example recipes
+        recipes.Add(new Recipe("Salad", new List<string> { "Lettuce", "Tomato", "Cucumber" }));
+        recipes.Add(new Recipe("Sushi", new List<string> { "Rice", "Fish", "Seaweed" }));
+    }
+
+    // Game Timer Coroutine
     private IEnumerator GameTimer()
     {
         while (remainingTime > 0)
         {
-            remainingTime -= Time.deltaTime; // ³²Àº ½Ã°£ °¨¼Ò
-            yield return null; // ÇÁ·¹ÀÓ¸¶´Ù ¾÷µ¥ÀÌÆ®
+            remainingTime -= Time.deltaTime;
+            yield return null;
         }
 
-        EndGame(); // ½Ã°£ÀÌ ´Ù Áö³ª¸é °ÔÀÓ Á¾·á
+        EndGame(); // End game when time runs out
     }
 
-    // °ÔÀÓ Á¾·á ÇÔ¼ö
     private void EndGame()
     {
         Debug.Log("Game Over");
-        // °ÔÀÓ Á¾·á ·ÎÁ÷ Ãß°¡
+        // Additional end-game handling
     }
 
-    // »õ·Î¿î ÁÖ¹® »ý¼º ÇÔ¼ö
+    // Generate New Order
     public void GenerateNewOrder()
     {
         currentOrder = (FoodType)Random.Range(0, System.Enum.GetValues(typeof(FoodType)).Length);
@@ -74,25 +221,44 @@ public class GameManager : MonoBehaviour
         UIManager.instance.UpdateOrderDisplay();
     }
 
-    // ÁÖ¹®ÀÌ ¿Ï·áµÇ¾úÀ» ¶§ È£Ãâ
+    // Complete the Order (check if dish matches the order)
     public void CompleteOrder()
     {
-        Debug.Log("Order Completed: " + currentOrder);
-        currentmoney += 1000;
-        GenerateNewOrder(); // »õ·Î¿î ÁÖ¹® »ý¼º
+        // Find the recipe that matches the current order
+        Recipe orderRecipe = recipes[(int)currentOrder];
+        if (orderRecipe.IsMatch(currentDish))
+        {
+            Debug.Log("Order Completed: " + currentOrder);
+            currentmoney += 1000; // Reward for correct dish
+        }
+        else
+        {
+            Debug.Log("Incorrect Order Submitted.");
+            currentmoney -= 500; // Penalty for incorrect dish
+        }
+
+        // Clear the current dish and generate a new order
+        currentDish.ClearDish();
+        GenerateNewOrder();
     }
 
-    // ÁÖ¹®ÀÌ ½ÇÆÐÇßÀ» ¶§ È£Ãâ
+    // Called if the order is missed
     public void MissOrder()
     {
         Debug.Log("Order Missed: " + currentOrder);
         currentmoney -= 500;
-        GenerateNewOrder(); // »õ·Î¿î ÁÖ¹® »ý¼º
+        GenerateNewOrder();
     }
 
-    // ÇöÀç ³²Àº ½Ã°£À» ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö
+    // Returns remaining game time
     public float GetRemainingTime()
     {
         return remainingTime;
+    }
+
+    // Adds an ingredient to the current dish
+    public void AddIngredientToDish(string ingredient)
+    {
+        currentDish.AddIngredient(ingredient);
     }
 }

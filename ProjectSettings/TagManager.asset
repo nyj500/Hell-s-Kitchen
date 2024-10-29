@@ -18,6 +18,11 @@ TagManager:
   - Lever
   - Extinguisher
   - ConveyorBelt
+  - Plate
+  - ChoppedPepper
+  - ChoppedCucumber
+  - ChoppedCarrot
+  - ChoppedFish
   layers:
   - Default
   - TransparentFX

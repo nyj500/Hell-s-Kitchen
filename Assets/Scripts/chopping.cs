@@ -49,7 +49,7 @@ public class Chopping : MonoBehaviour
         playerAnimator = player.GetComponent<Animator>();
         Transform[] allChildren = player.GetComponentsInChildren<Transform>();
 
-        // ÀÚ½Ä ¿ÀºêÁ§Æ®µé Áß ÀÌ¸§ÀÌ grabpointÀÎ ¿ÀºêÁ§Æ®¸¦ Ã£À½
+        // ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ grabpointï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½ï¿½
         foreach (Transform child in allChildren)
         {
             if (child.name == "grabpoint")
@@ -62,46 +62,42 @@ public class Chopping : MonoBehaviour
         switch (GameManager.instance.currentPlayer)
         {
             case GameManager.PlayerType.player1:
-                choppingTime = 7f; // player1ÀÇ ±âº» ½Ã°£
+                choppingTime = 7f; // player1ï¿½ï¿½ ï¿½âº» ï¿½Ã°ï¿½
                 break;
             case GameManager.PlayerType.player2:
-                choppingTime = 8f; // player2ÀÇ ±âº» ½Ã°£
+                choppingTime = 8f; // player2ï¿½ï¿½ ï¿½âº» ï¿½Ã°ï¿½
                 break;
             case GameManager.PlayerType.player3:
-                choppingTime = 9f; // player3ÀÇ ±âº» ½Ã°£
+                choppingTime = 9f; // player3ï¿½ï¿½ ï¿½âº» ï¿½Ã°ï¿½
                 break;
             default:
-                choppingTime = 7f; // ±âº»°ª
+                choppingTime = 7f; // ï¿½âº»ï¿½ï¿½
                 break;
         }
 
-        // Ensure the knife under the table is visible initially
         if (knifeUnderTable != null)
         {
             knifeUnderTable.SetActive(true);
         }
 
-        // Initialize the timer as hidden
         HideTimer();
     }
 
     void Update()
     {
-        // Check if the player is near and holding E
         if (isPlayerNear)
         {
-            if (Input.GetKeyDown(KeyCode.E) && !isChopping) // Start chopping when E is pressed
+            if (Input.GetKeyDown(KeyCode.E) && !isChopping)
             {
                 StartChopping();
             }
-            else if (Input.GetKeyUp(KeyCode.E) && isChopping) // Stop chopping when E is released
+            else if (Input.GetKeyUp(KeyCode.E) && isChopping)
             {
                 StopChopping();
             }
         }
     }
 
-    // Trigger when player enters the chopping zone
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
@@ -109,35 +105,28 @@ public class Chopping : MonoBehaviour
             isPlayerNear = true;
         }
 
-        // Detect ingredient on the board and parent it to the cookpoint
         if (other.CompareTag("Pepper"))
         {
-            Debug.Log("Pepper");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedPepperPrefab;
         }
         else if (other.CompareTag("Cucumber"))
         {
-            Debug.Log("Cucumber");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedCucumberPrefab;
         }
         else if (other.CompareTag("Carrot"))
         {
-            Debug.Log("Carrot");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedCarrotPrefab;
         }
         else if (other.CompareTag("Fish"))
         {
-            Debug.Log("Fish placed on the chopping board.");
             currentIngredient = other.gameObject;
             currentChoppedPrefab = choppedFishPrefab;
-            Debug.Log("Chopped fish prefab assigned: " + (choppedFishPrefab != null ? choppedFishPrefab.name : "NULL"));
         }
     }
 
-    // Trigger when player exits the chopping zone
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject == player)
@@ -145,7 +134,7 @@ public class Chopping : MonoBehaviour
             isPlayerNear = false;
             if (isChopping)
             {
-                StopChopping(); // Stop chopping if the player moves away
+                StopChopping();
             }
         }
     }
@@ -154,29 +143,25 @@ public class Chopping : MonoBehaviour
     {
         isChopping = true;
 
-        // Hide the knife under the table
         if (knifeUnderTable != null)
         {
             knifeUnderTable.SetActive(false);
         }
 
-        // Spawn the knife in the player's hand (grab point) if it's not already spawned
         if (knifePrefab != null && spawnedKnife == null)
         {
             spawnedKnife = Instantiate(knifePrefab, playerGrabPoint.position, playerGrabPoint.rotation);
-            spawnedKnife.transform.parent = playerGrabPoint; // Attach the knife to the grab point
+            spawnedKnife.transform.parent = playerGrabPoint; 
 
             spawnedKnife.transform.localPosition = new Vector3(0.138378367f, 0.0690211654f, -0.0262892991f);
             spawnedKnife.transform.localRotation = new Quaternion(-0.772405982f, -0.383837044f, -0.341076404f, 0.373797953f);
         }
 
-        // Start chopping animation
         if (playerAnimator != null)
         {
             playerAnimator.SetBool("chopping", true);
         }
 
-        // Instantiate particle systems at the emission point (if they haven't been already)
         if (fineDustParticlesInstance == null && fineDustParticlesPrefab != null)
         {
             fineDustParticlesInstance = Instantiate(fineDustParticlesPrefab, particleEmissionPoint.position, particleEmissionPoint.rotation);
@@ -189,7 +174,6 @@ public class Chopping : MonoBehaviour
             choppingFragmentsParticleSystem = choppingFragmentsParticlesInstance.GetComponent<ParticleSystem>();
         }
 
-        // Play particle systems
         if (fineDustParticleSystem != null && !fineDustParticleSystem.isPlaying)
         {
             fineDustParticleSystem.Play();
@@ -200,7 +184,6 @@ public class Chopping : MonoBehaviour
             choppingFragmentsParticleSystem.Play();
         }
 
-        // Start the countdown timer
         if (choppingCoroutine == null)
         {
             choppingCoroutine = StartCoroutine(ChoppingCoroutine());
@@ -213,26 +196,22 @@ public class Chopping : MonoBehaviour
     {
         isChopping = false;
 
-        // Show the knife under the table again
         if (knifeUnderTable != null)
         {
             knifeUnderTable.SetActive(true);
         }
 
-        // Remove the knife from the player's hand
         if (spawnedKnife != null)
         {
             Destroy(spawnedKnife);
-            spawnedKnife = null; // Reset the reference to the knife
+            spawnedKnife = null;
         }
 
-        // Stop chopping animation
         if (playerAnimator != null)
         {
             playerAnimator.SetBool("chopping", false);
         }
 
-        // Stop particle systems
         if (fineDustParticleSystem != null && fineDustParticleSystem.isPlaying)
         {
             fineDustParticleSystem.Stop();
@@ -243,62 +222,53 @@ public class Chopping : MonoBehaviour
             choppingFragmentsParticleSystem.Stop();
         }
 
-        // Stop and reset the timer
         if (choppingCoroutine != null)
         {
             StopCoroutine(choppingCoroutine);
             choppingCoroutine = null;
         }
 
-        HideTimer(); // Hide the timer when chopping stops
+        HideTimer();
         Debug.Log("Chopping stopped.");
     }
 
     IEnumerator ChoppingCoroutine()
     {
-        currentTimer = choppingTime; // Initialize timer
-        ShowTimer(); // Show the timer UI
+        currentTimer = choppingTime;
+        ShowTimer();
 
         while (currentTimer > 0f)
         {
-            currentTimer -= Time.deltaTime; // Decrease the timer
+            currentTimer -= Time.deltaTime;
             UpdateTimerText(currentTimer);
 
-            // Stop if the player releases the "E" key
             if (!Input.GetKey(KeyCode.E))
             {
                 StopChopping();
                 yield break;
             }
 
-            yield return null; // Wait for the next frame
+            yield return null; 
         }
 
-        // Timer reached 0, chopping completed
         Debug.Log("Chopping completed!");
 
-        // Replace the original ingredient with the chopped version
         ReplaceIngredientWithChoppedVersion();
 
-        StopChopping(); // Stop everything when timer reaches 0
+        StopChopping(); 
     }
 
     void ReplaceIngredientWithChoppedVersion()
     {
-        // If there is a current ingredient and a corresponding chopped prefab
         if (currentIngredient != null && currentChoppedPrefab != null)
         {
-            // Get the position and rotation of the current ingredient
             Vector3 ingredientPosition = currentIngredient.transform.position;
             Quaternion ingredientRotation = currentIngredient.transform.rotation;
 
-            // Destroy the original ingredient
             Debug.Log("Destroying original ingredient: " + currentIngredient.name);
             Destroy(currentIngredient);
 
-            // Instantiate the chopped version at the same position and parent it to the cookpoint
             GameObject choppedObject = Instantiate(currentChoppedPrefab, ingredientPosition, ingredientRotation);
-            choppedObject.transform.SetParent(cookpoint); // Make the chopped object a child of the cookpoint
 
             Debug.Log("Chopped object instantiated: " + choppedObject.name);
         }
@@ -314,27 +284,23 @@ public class Chopping : MonoBehaviour
 
     public void PlaceIngredientOnCookpoint(GameObject ingredient)
     {
-        // Set the ingredient's position to match the cookpoint and parent it to the cookpoint
         ingredient.transform.position = cookpoint.position;
         ingredient.transform.rotation = cookpoint.rotation;
-        ingredient.transform.SetParent(cookpoint); // Make it a child of the cookpoint
+        ingredient.transform.SetParent(cookpoint);
     }
 
     void UpdateTimerText(float time)
     {
-        // Show the remaining time with 2 decimal places, ensure it doesn't go below 0
         timerText.text = Mathf.Max(time, 0f).ToString("F2") + "s";
     }
 
     void HideTimer()
     {
-        // Hide the timer text by setting it to empty
         timerText.text = "";
     }
 
     void ShowTimer()
     {
-        // Show the timer by initializing it with the chopping time
         timerText.text = choppingTime.ToString("F2") + "s";
     }
 }
