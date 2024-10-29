@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 7633587738618785630}
   - component: {fileID: 2547190106660218469}
   - component: {fileID: 2070098403610048465}
-  - component: {fileID: -8241615770754053446}
+  - component: {fileID: 2306373368423721610}
+  - component: {fileID: 6222809669120250008}
   m_Layer: 0
-  m_Name: Salami A
-  m_TagString: Salami
+  m_Name: CookedSalami
+  m_TagString: CookedSalami
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7506142331787793044}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.0050000353, y: -0.0060000024, z: -0.0009997686}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30c5e465dc21c534bada8d020bae91f4, type: 2}
+  - {fileID: 2100000, guid: 3049bf74f7a72474e975149a693368be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &-8241615770754053446
-CapsuleCollider:
+--- !u!65 &2306373368423721610
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,8 +105,33 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.323203
-  m_Height: 0.16409944
-  m_Direction: 1
-  m_Center: {x: -0.0000019669537, y: 0.082049526, z: 0.00000011920932}
+  serializedVersion: 3
+  m_Size: {x: 0.646406, y: 0.16409944, z: 2.8686311}
+  m_Center: {x: -0.0000019669533, y: 0.082049526, z: -0.043715477}
+--- !u!54 &6222809669120250008
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7506142331787793044}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

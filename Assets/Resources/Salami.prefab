@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7633587738618785630}
   - component: {fileID: 2547190106660218469}
   - component: {fileID: 2070098403610048465}
-  - component: {fileID: 6833559287434716102}
+  - component: {fileID: -8241615770754053446}
   m_Layer: 0
-  m_Name: Salami A 1
+  m_Name: Salami
   m_TagString: Salami
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.0050000353, y: -0.0060000024, z: -0.0009997686}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3049bf74f7a72474e975149a693368be, type: 2}
+  - {fileID: 2100000, guid: 75a557d7f347c44d0b1ea0e574ffff34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6833559287434716102
+--- !u!136 &-8241615770754053446
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,9 +101,9 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.323203
   m_Height: 0.16409944
