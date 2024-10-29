@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     public int CurrentMoney { get { return currentmoney; }}
 
     // Game Timer
-    public float gameDuration = 60f; // 1 minute (60 seconds)
+    public float gameDuration = 90f; // 1 minute (60 seconds)
     private float remainingTime;
 
     // Order Tracking
@@ -291,6 +291,11 @@ public class GameManager : MonoBehaviour
             StartGame();
             Debug.Log("onSceneLoad");
         }
+    }
+
+    public int GetCurrentMoney()
+    {
+        return currentmoney;
     }
 }
 

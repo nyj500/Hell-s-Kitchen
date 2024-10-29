@@ -110,16 +110,16 @@ public class FireController : MonoBehaviour
         switch (GameManager.instance.currentPlayer)
         {
             case GameManager.PlayerType.player1:
-                cookingTime = 10f; // player1의 기본 시간
+                cookingTime = 8f; // player1의 기본 시간
                 break;
             case GameManager.PlayerType.player2:
-                cookingTime = 11f; // player2의 기본 시간
+                cookingTime = 9f; // player2의 기본 시간
                 break;
             case GameManager.PlayerType.player3:
-                cookingTime = 12f; // player3의 기본 시간
+                cookingTime = 10f; // player3의 기본 시간
                 break;
             default:
-                cookingTime = 10f; // 기본값
+                cookingTime = 8f; // 기본값
                 break;
         }
         HideTimer(); // Hide the timer UI initially
