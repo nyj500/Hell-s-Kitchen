@@ -382,30 +382,6 @@ public class playergrab : MonoBehaviour
                 Debug.LogWarning("placePoint not found on the plate or no item to place.");
             }
         }
-        else if (spawnedObject.CompareTag("CookedSalami") && !plateScript.hasCookedSalami)
-        {
-            placePoint = plate.transform.Find("PlatePlacePointCookedSalami");
-            if (placePoint != null && spawnedObject != null)
-            {
-                // Place the object at the placePoint position
-                spawnedObject.transform.position = placePoint.position;
-                spawnedObject.transform.rotation = placePoint.rotation;
-                spawnedObject.transform.parent = plate.transform;
-
-                // Mark the presence of Cooked Salami on the plate
-                plateScript.hasCookedSalami = true;
-
-                // Reset player grab states since the object is now on the plate
-                spawnedObject = null; // Clear reference to the placed object
-                ResetGrabState(); // Reset grab state after placing the object
-
-                Debug.Log("Cooked Salami placed on the plate.");
-            }
-            else
-            {
-                Debug.LogWarning("placePoint not found on the plate or no item to place.");
-            }
-        }
         else if (spawnedObject.CompareTag("Rice") && !plateScript.hasRice)
         {
             placePoint = plate.transform.Find("PlatePlacePointRice");
@@ -470,6 +446,34 @@ public class playergrab : MonoBehaviour
                 Debug.LogWarning("placePoint not found on the plate or no item to place.");
             }
         }
+        else if (spawnedObject.CompareTag("CookedSalami") && !plateScript.hasCookedSalami)
+        {
+            placePoint = plate.transform.Find("PlatePlacePointCookedSalami");
+            if (placePoint != null && spawnedObject != null)
+            {
+                // Place the object at the placePoint position
+                Debug.Log("Placing CookedSalami on plate: " + plate.name);
+
+                spawnedObject.transform.position = placePoint.position;
+                spawnedObject.transform.rotation = placePoint.rotation;
+                spawnedObject.transform.parent = plate.transform;
+
+                // Mark the presence of Cooked Salami on the plate
+                //Debug.Log("CookedSalami placed on plate successfully. Updated plate status: hasCookedSalami = " + plateScript.hasCookedSalami);
+
+                // Destroy the cooked salami from player's hand
+                //Destroy(spawnedObject);
+                //spawnedObject = null;  // Clear reference to the placed object
+
+                plateScript.hasCookedSalami = true;
+                // Reset player grab state
+                ResetGrabState();
+            }
+            else
+            {
+                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+            }
+        }
         else
         {
             Debug.LogWarning("Ingredient is already on the plate, cannot place again.");
@@ -490,7 +494,7 @@ public class playergrab : MonoBehaviour
         else if (other.CompareTag("Rice")) { prefabName = "Rice_001"; isRice = 1; }
         else if (other.CompareTag("Salami")) { prefabName = "Salami"; isSalami = 1; }
         else if (other.CompareTag("Extinguisher")) { prefabName = "Extinguisher"; isExtinguisher = 1; }
-        else if (other.CompareTag("CookedSalami")) { prefabName = "CookedSalami"; isSalami = 1; isFromPan = true; }
+        else if (other.CompareTag("CookedSalami")) { prefabName = "CookedSalami"; isCookedSalami = 1; isFromPan = true; }
 
 
         if (other.CompareTag("ChoppedPepper")) { prefabName = "ChoppedPepper"; isChoppedPepper = 1; isChoppedFromBoard = true; isChopped = true; }
@@ -515,7 +519,8 @@ public class playergrab : MonoBehaviour
                     }
                     Destroy(other.gameObject);
                     Debug.Log("Destroyed chopped ingredient on chopping board: " + prefabName);
-                } else if (isFromPan)
+                }
+                if (isFromPan)
                 {
                     FireController fireController = other.GetComponentInParent<FireController>();
                     if (fireController != null)
