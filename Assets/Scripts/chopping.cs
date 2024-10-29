@@ -36,7 +36,7 @@ public class Chopping : MonoBehaviour
     private ParticleSystem choppingFragmentsParticleSystem; // Particle system for chopping fragments
 
     private bool isPlayerNear = false;
-    private bool isChopping = false;
+    public bool isChopping = false;
     private Coroutine choppingCoroutine;
     private float currentTimer;
 
@@ -270,9 +270,15 @@ public class Chopping : MonoBehaviour
 
             GameObject choppedObject = Instantiate(currentChoppedPrefab, ingredientPosition, ingredientRotation);
 
+            isfoodinhere cuttingScript = GetComponent<isfoodinhere>();
+            if (cuttingScript != null)
+            {
+                cuttingScript.ishere = false;
+            }
+
             Debug.Log("Chopped object instantiated: " + choppedObject.name);
         }
-        else if(currentChoppedPrefab == null)
+        else if (currentChoppedPrefab == null)
         {
             Debug.LogError("chopped prefab is null.");
         }
