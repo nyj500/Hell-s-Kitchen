@@ -337,7 +337,7 @@ public class playergrab : MonoBehaviour
             {
                 DiscardItem();
             }
-            else if (other.CompareTag("Fire")) // Check for fire to extinguish
+            else if (other.CompareTag("Pan")) // Check for fire to extinguish
             {
                 ExtinguishFire(other);
             }
@@ -556,7 +556,7 @@ public class playergrab : MonoBehaviour
         if (cuttingScript != null && choppingScript != null)
         {
 
-            if (isChopped)
+            if (isChopped || isSalami == 1)
             {
                 Debug.Log("Processed ingredients cannot be placed on the cutting board.");
                 return;
