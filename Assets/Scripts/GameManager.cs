@@ -99,6 +99,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -130,6 +131,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        // GameManager가 파괴될 때 이벤트 등록 해제
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Start()
@@ -213,6 +222,17 @@ public class GameManager : MonoBehaviour
         // Additional end-game handling
     }
 
+    private void ActivatePlayer()
+    {
+        GameObject player1 = GameObject.Find("Player1");
+        GameObject player2 = GameObject.Find("Player2");
+        GameObject player3 = GameObject.Find("Player3");
+
+        player1?.SetActive(currentPlayer == PlayerType.player1);
+        player2?.SetActive(currentPlayer == PlayerType.player2);
+        player3?.SetActive(currentPlayer == PlayerType.player3);
+    }
+
     // Generate New Order
     public void GenerateNewOrder()
     {
@@ -261,4 +281,14 @@ public class GameManager : MonoBehaviour
     {
         currentDish.AddIngredient(ingredient);
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Scene1")
+        {
+            ActivatePlayer();
+            Debug.Log("onSceneLoad");
+        }
+    }
 }
+
