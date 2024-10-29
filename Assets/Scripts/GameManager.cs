@@ -287,6 +287,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Scene1")
         {
             ActivatePlayer();
+            StartGame();
             Debug.Log("onSceneLoad");
         }
     }
