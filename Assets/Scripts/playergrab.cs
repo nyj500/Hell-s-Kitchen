@@ -355,7 +355,11 @@ public class playergrab : MonoBehaviour
     {
         Plate plateScript = plate.GetComponent<Plate>();
 
-        if (plateScript == null) return;
+        if (plateScript == null || plateScript.hasKimbap)
+        {
+            Debug.LogWarning("Kimbap already on plate. Cannot place more items.");
+            return; // 김밥이 이미 있으면 추가 재료를 놓지 않음
+        }
 
         Transform placePoint = null;
 

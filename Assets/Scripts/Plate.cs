@@ -16,17 +16,18 @@ public class Plate : MonoBehaviour
 
     // ������ ��� ������
     public GameObject kimbapPrefab;
+    public bool hasKimbap = false;
 
     // ��� ��ġ ����Ʈ
     public Transform placePointNori;
 
     void Update()
     {
-        // ��ᰡ �غ�Ǹ� �ڵ����� ��� ����
-        if (CheckIngredientsReady())
+        if (!hasKimbap && CheckIngredientsReady())
         {
             CreateKimbap();
         }
+
     }
 
     // Plate ���� �ʱ�ȭ �Լ�
@@ -39,6 +40,7 @@ public class Plate : MonoBehaviour
         hasChoppedCucumber = false;
         hasChoppedCarrot = false;
         hasCookedSalami = false;
+        hasKimbap = false;
     }
 
     // ��� ��ᰡ �غ�Ǿ����� Ȯ���ϴ� �Լ�
@@ -81,9 +83,9 @@ public class Plate : MonoBehaviour
 
         // Plate�� ���̵��� ����
         kimbap.transform.parent = transform;
+        hasKimbap = true;
 
-        // Plate ���� �ʱ�ȭ
-        ResetPlate();
+        
     }
 
     // ��� �±� ���� �Լ�
