@@ -88,7 +88,7 @@ public class FireController : MonoBehaviour
     public GameObject fryingPan;
     public GameObject extinguisher;
     public GameObject currentIngredient;
-    public GameObject burntIngredientPrefab; // Prefab for the burnt version
+    public GameObject cookedIngredientPrefab; // Prefab for the burnt version
     public TextMeshProUGUI panTimerText; // UI text to display the timer above the pan
     public float burnTime = 1f;
     public float cookingTime = 10f; // Time it takes to cook before burning
@@ -189,35 +189,32 @@ public class FireController : MonoBehaviour
 
         // Cooking completed, now the ingredient burns
         Debug.Log("Cooking completed! Ingredient is now burning.");
-        ReplaceIngredientWithBurntVersion();
+        ReplaceIngredientWithCookedVersion();
 
         // Start fire if the burnt ingredient stays too long on the pan
         burnCoroutine = StartCoroutine(BurnAfterTime());
     }
 
-    void ReplaceIngredientWithBurntVersion()
+    void ReplaceIngredientWithCookedVersion()
     {
-        // Ensure both the current ingredient and burnt prefab are set
-        if (currentIngredient != null && burntIngredientPrefab != null)
+        if (currentIngredient != null && cookedIngredientPrefab != null)
         {
-            // Get the position and rotation of the current ingredient
             Vector3 ingredientPosition = currentIngredient.transform.position;
             Quaternion ingredientRotation = currentIngredient.transform.rotation;
 
-            // Destroy the original (cooked or burning) ingredient
             Destroy(currentIngredient);
 
-            // Instantiate the burnt version at the same position
-            GameObject burntVersion = Instantiate(burntIngredientPrefab, ingredientPosition, ingredientRotation);
-            burntVersion.transform.SetParent(this.transform); // Parent to the frying pan or appropriate object
+            // Instantiate the cooked version at the same position
+            GameObject cookedVersion = Instantiate(cookedIngredientPrefab, ingredientPosition, ingredientRotation);
+            cookedVersion.transform.SetParent(this.transform);
+            cookedVersion.tag = "CookedSalami"; // Set tag to allow it to be grabbed
+            currentIngredient = cookedVersion;
 
-            currentIngredient = burntVersion; // Update the currentIngredient reference to the burnt version
-
-            Debug.Log("Ingredient replaced with burnt version.");
+            Debug.Log("Ingredient replaced with cooked version.");
         }
         else
         {
-            Debug.LogError("Current ingredient or burnt prefab is null.");
+            Debug.LogError("Current ingredient or cooked prefab is null.");
         }
     }
 
@@ -259,10 +256,8 @@ public class FireController : MonoBehaviour
         // If an ingredient like salami is placed on the frying pan
         if (other.CompareTag("Salami"))
         {
-            Debug.Log("AAAAA");
             currentIngredient = other.gameObject;
             Debug.Log(currentIngredient);
-            Debug.Log("BBBB");
         }
     }
 
@@ -275,11 +270,12 @@ public class FireController : MonoBehaviour
         }
     }
 
-    void StopCooking()
+    public void StopCooking()
     {
         if (isCooking)
         {
             isCooking = false;
+
             if (cookingCoroutine != null)
             {
                 StopCoroutine(cookingCoroutine);
@@ -295,6 +291,13 @@ public class FireController : MonoBehaviour
             HideTimer(); // Hide the timer when cooking stops
             Debug.Log("Cooking stopped.");
         }
+    }
+
+    public void GrabbedIngredient()
+    {
+        StopCooking(); // Stop the cooking or burning process
+        isOnFire = false; // Ensure fire is turned off
+        fireEffect.SetActive(false); // Hide the fire effect if it was visible
     }
 
     // UI Timer Functions

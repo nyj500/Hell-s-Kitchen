@@ -286,6 +286,7 @@ public class playergrab : MonoBehaviour
     public int isNori = 0;
     public int isRice = 0;
     public int isSalami = 0;
+    public int isCookedSalami = 0;
     public int isExtinguisher = 0;
     public int isChoppedPepper = 0;
     public int isChoppedCucumber = 0;
@@ -381,6 +382,30 @@ public class playergrab : MonoBehaviour
                 Debug.LogWarning("placePoint not found on the plate or no item to place.");
             }
         }
+        else if (spawnedObject.CompareTag("CookedSalami") && !plateScript.hasCookedSalami)
+        {
+            placePoint = plate.transform.Find("PlatePlacePointCookedSalami");
+            if (placePoint != null && spawnedObject != null)
+            {
+                // Place the object at the placePoint position
+                spawnedObject.transform.position = placePoint.position;
+                spawnedObject.transform.rotation = placePoint.rotation;
+                spawnedObject.transform.parent = plate.transform;
+
+                // Mark the presence of Cooked Salami on the plate
+                plateScript.hasCookedSalami = true;
+
+                // Reset player grab states since the object is now on the plate
+                spawnedObject = null; // Clear reference to the placed object
+                ResetGrabState(); // Reset grab state after placing the object
+
+                Debug.Log("Cooked Salami placed on the plate.");
+            }
+            else
+            {
+                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+            }
+        }
         else if (spawnedObject.CompareTag("Rice") && !plateScript.hasRice)
         {
             placePoint = plate.transform.Find("PlatePlacePointRice");
@@ -456,15 +481,16 @@ public class playergrab : MonoBehaviour
         string prefabName = "";
 
         bool isChoppedFromBoard = false; // Flag to check if item is a chopped ingredient from chopping board
-
+        bool isFromPan = false;
         if (other.CompareTag("Fish")) { prefabName = "Fish"; isFish = 1; }
         else if (other.CompareTag("Carrot")) { prefabName = "Carrot"; isCarrot = 1; }
         else if (other.CompareTag("Pepper")) { prefabName = "Pepper"; isPepper = 1; }
         else if (other.CompareTag("Cucumber")) { prefabName = "Cucumber"; isCucumber = 1; }
         else if (other.CompareTag("Nori")) { prefabName = "Nori_001"; isNori = 1; }
         else if (other.CompareTag("Rice")) { prefabName = "Rice_001"; isRice = 1; }
-        else if (other.CompareTag("Salami")) { prefabName = "Salami A"; isSalami = 1; }
+        else if (other.CompareTag("Salami")) { prefabName = "Salami"; isSalami = 1; }
         else if (other.CompareTag("Extinguisher")) { prefabName = "Extinguisher"; isExtinguisher = 1; }
+        else if (other.CompareTag("CookedSalami")) { prefabName = "CookedSalami"; isSalami = 1; isFromPan = true; }
 
 
         if (other.CompareTag("ChoppedPepper")) { prefabName = "ChoppedPepper"; isChoppedPepper = 1; isChoppedFromBoard = true; isChopped = true; }
@@ -474,6 +500,8 @@ public class playergrab : MonoBehaviour
 
         if (!string.IsNullOrEmpty(prefabName))
         {
+           
+
             GameObject prefab = Resources.Load<GameObject>(prefabName);
             if (prefab != null)
             {
@@ -487,6 +515,21 @@ public class playergrab : MonoBehaviour
                     }
                     Destroy(other.gameObject);
                     Debug.Log("Destroyed chopped ingredient on chopping board: " + prefabName);
+                } else if (isFromPan)
+                {
+                    FireController fireController = other.GetComponentInParent<FireController>();
+                    if (fireController != null)
+                    {
+                        fireController.GrabbedIngredient();
+                    }
+
+                    isfoodinhere panScript = other.GetComponentInParent<isfoodinhere>();
+                    if (panScript != null)
+                    {
+                        panScript.ishere = false;
+                    }
+                    Destroy(other.gameObject);
+                    Debug.Log("Destroyed cooked ingredient on pan: " + prefabName);
                 }
 
                 // Instantiate a new object in the player's hand
@@ -507,6 +550,8 @@ public class playergrab : MonoBehaviour
         {
             lightController.SetSkyboxLighting();
         }
+
+        
     }
 
     private void ExtinguishFire(Collider other)
@@ -544,6 +589,7 @@ public class playergrab : MonoBehaviour
             Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
             if (rb != null)
             {
+                rb.isKinematic = false; // Enable physics for conveyor movement
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
 
@@ -551,6 +597,7 @@ public class playergrab : MonoBehaviour
             Debug.Log("Object placed on conveyor belt at placePoint.");
         }
     }
+
 
     private void PlaceOnCuttingBoard(Collider other)
     {
@@ -643,6 +690,7 @@ public class playergrab : MonoBehaviour
         isChoppedCucumber = 0;
         isChoppedFish = 0;
         isChoppedCarrot = 0;
+        isCookedSalami = 0;
         isChopped = false;
         spawnedObject = null; // Clear the reference to the held object
     }

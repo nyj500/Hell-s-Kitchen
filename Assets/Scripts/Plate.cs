@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plate : MonoBehaviour
 {
-    // Àç·á Á¸Àç ¿©ºÎ È®ÀÎ º¯¼ö (publicÀ¸·Î ¼³Á¤ÇÏ¿© ¿ÜºÎ¿¡¼­ Á¢±Ù °¡´É)
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (publicï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
     public bool hasNori = false;
     public bool hasRice = false;
 
@@ -14,22 +14,22 @@ public class Plate : MonoBehaviour
     public bool hasChoppedCucumber = false;
     public bool hasChoppedCarrot = false;
 
-    // »ý¼ºÇÒ ±è¹ä ÇÁ¸®ÆÕ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public GameObject kimbapPrefab;
 
-    // Àç·á À§Ä¡ Æ÷ÀÎÆ®
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½Æ®
     public Transform placePointNori;
 
     void Update()
     {
-        // Àç·á°¡ ÁØºñµÇ¸é ÀÚµ¿À¸·Î ±è¹ä »ý¼º
+        // ï¿½ï¿½á°¡ ï¿½Øºï¿½Ç¸ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (CheckIngredientsReady())
         {
             CreateKimbap();
         }
     }
 
-    // Plate »óÅÂ ÃÊ±âÈ­ ÇÔ¼ö
+    // Plate ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½Ô¼ï¿½
     public void ResetPlate()
     {
         hasNori = false;
@@ -38,19 +38,20 @@ public class Plate : MonoBehaviour
         hasChoppedPepper = false;
         hasChoppedCucumber = false;
         hasChoppedCarrot = false;
+        hasCookedSalami = false;
     }
 
-    // ¸ðµç Àç·á°¡ ÁØºñµÇ¾ú´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½á°¡ ï¿½Øºï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     public bool CheckIngredientsReady()
     {
-        // ±âº» Á¶°Ç: ±è°ú ¹äÀÌ ÀÖ°í, ÃÖ¼Ò ÇÏ³ªÀÇ ¸ÞÀÎ Àç·á¿Í ÃÖ¼Ò ÇÏ³ªÀÇ ¾ßÃ¤°¡ ÀÖ¾î¾ß ±è¹äÀ» ¸¸µé ¼ö ÀÖÀ½
+        // ï¿½âº» ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½, ï¿½Ö¼ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¤ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         bool hasMainIngredient = hasChoppedFish || hasCookedSalami;
         bool hasVegetable = hasChoppedPepper || hasChoppedCucumber || hasChoppedCarrot;
 
         return hasNori && hasRice && hasMainIngredient && hasVegetable;
     }
 
-    // ±è¹ä »ý¼º ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     public void CreateKimbap()
     {
         if (!CheckIngredientsReady())
@@ -59,35 +60,36 @@ public class Plate : MonoBehaviour
             return;
         }
 
-        // Plate À§ÀÇ Àç·á¸¸ »èÁ¦ÇÏ°í, À§Ä¡ Æ÷ÀÎÆ®´Â ³²°ÜµÒ
+        // Plate ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½á¸¸ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½, ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Üµï¿½
         foreach (Transform child in transform)
         {
             if (child.name != "PlatePlacePoint" &&
                 child.name != "PlatePlacePointRice" &&
                 child.name != "PlatePlacePointMain" &&
-                child.name != "PlatePlacePointVeg")
+                child.name != "PlatePlacePointVeg" &&
+                child.name != "PlatePlacePointCookedSalami")
             {
                 Destroy(child.gameObject);
             }
         }
 
-        // ±è¹ä ¿ÀºêÁ§Æ® »ý¼º
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         GameObject kimbap = Instantiate(kimbapPrefab, placePointNori.position, placePointNori.rotation);
 
-        // ±è¹ä ÅÂ±× ¼³Á¤ (Àç·á Á¶ÇÕ¿¡ µû¶ó ±è¹ä1 ~ ±è¹ä6)
+        // ï¿½ï¿½ï¿½ ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½1 ~ ï¿½ï¿½ï¿½6)
         kimbap.tag = DetermineKimbapTag();
 
-        // Plate¿¡ ³õÀÌµµ·Ï ¼³Á¤
+        // Plateï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         kimbap.transform.parent = transform;
 
-        // Plate »óÅÂ ÃÊ±âÈ­
+        // Plate ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         ResetPlate();
     }
 
-    // ±è¹ä ÅÂ±× °áÁ¤ ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     private string DetermineKimbapTag()
     {
-        // ¿¹½Ã·Î ÅÂ±×¸¦ °áÁ¤ÇÏ´Â ·ÎÁ÷ ÀÛ¼º (Àç·á Á¶ÇÕ¿¡ µû¶ó ÅÂ±× ¼³Á¤)
+        // ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½)
         if (hasCookedSalami && hasChoppedCucumber)
         {
             Debug.Log("iskimbap1");
@@ -119,6 +121,6 @@ public class Plate : MonoBehaviour
             return "Kimbap6";
         }
         else
-            return "Kimbap1"; // ±âº»°ª
+            return "Kimbap1"; // ï¿½âº»ï¿½ï¿½
     }
 }

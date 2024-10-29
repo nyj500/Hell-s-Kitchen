@@ -29,6 +29,7 @@ TagManager:
   - Kimbap4
   - Kimbap5
   - Kimbap6
+  - CookedSalami
   layers:
   - Default
   - TransparentFX
