@@ -10,7 +10,7 @@ public class UI_EndScene : MonoBehaviour
     void Start()
     {
         int money = GameManager.instance.CurrentMoney;
-        string moneyText = $"Money: {money}";
+        string moneyText = $"Total: {money}$";
         totalMoneyText.text = moneyText;
     }
 }
