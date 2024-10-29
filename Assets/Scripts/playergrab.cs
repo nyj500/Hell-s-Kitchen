@@ -332,6 +332,7 @@ public class playergrab : MonoBehaviour
             else if (other.CompareTag("Pan"))
             {
                 PlaceOnPan(other);
+                ExtinguishFire(other);
             }
             else if (other.CompareTag("Trashcan"))
             {
@@ -339,7 +340,7 @@ public class playergrab : MonoBehaviour
             }
             else if (other.CompareTag("Fire")) // Check for fire to extinguish
             {
-                ExtinguishFire(other);
+                //ExtinguishFire(other);
             }
             else if (other.CompareTag("Plate"))
             {
@@ -430,7 +431,7 @@ public class playergrab : MonoBehaviour
                 spawnedObject.transform.rotation = placePoint.rotation;
                 spawnedObject.transform.parent = plate.transform;
 
-                // °¢ ¾ßÃ¤ Á¾·ù¿¡ µû¶ó »óÅÂ ¼³Á¤
+                // ï¿½ï¿½ ï¿½ï¿½Ã¤ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 if (spawnedObject.CompareTag("ChoppedPepper")) plateScript.hasChoppedPepper = true;
                 else if (spawnedObject.CompareTag("ChoppedCucumber")) plateScript.hasChoppedCucumber = true;
                 else if (spawnedObject.CompareTag("ChoppedCarrot")) plateScript.hasChoppedCarrot = true;
@@ -482,7 +483,7 @@ public class playergrab : MonoBehaviour
                     isfoodinhere cuttingScript = other.GetComponentInParent<isfoodinhere>();
                     if (cuttingScript != null)
                     {
-                        cuttingScript.ishere = false; // µµ¸¶ »óÅÂ¸¦ ºñ¾îÀÖÀ½À¸·Î Ç¥½Ã
+                        cuttingScript.ishere = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
                     }
                     Destroy(other.gameObject);
                     Debug.Log("Destroyed chopped ingredient on chopping board: " + prefabName);
@@ -491,7 +492,11 @@ public class playergrab : MonoBehaviour
                 // Instantiate a new object in the player's hand
                 spawnedObject = Instantiate(prefab, grabPoint.transform.position, grabPoint.transform.rotation);
                 spawnedObject.transform.parent = grabPoint.transform;
-
+                if (prefabName == "Extinguisher")
+                {
+                    spawnedObject.transform.localPosition = new Vector3(0.0f, 0.0f, -1.25f);
+                    spawnedObject.transform.Rotate(90, 0, 0);
+                }
                 isgrab = 1;
                 grabbed = true;
                 Debug.Log("Grabbed chopped item: " + prefabName);
