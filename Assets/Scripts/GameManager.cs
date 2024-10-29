@@ -291,5 +291,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("onSceneLoad");
         }
     }
+
+    public int GetCurrentMoney()
+    {
+        return currentmoney;
+    }
 }
 
