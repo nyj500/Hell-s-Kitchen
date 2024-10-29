@@ -722,7 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayer: 0
-  gameDuration: 60
+  gameDuration: 90
   currentOrder: 0
   currentDish:
     ingredients: []
@@ -1019,7 +1019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41000003, y: 0.28}
   m_AnchorMax: {x: 0.58866405, y: 0.40500003}
-  m_AnchoredPosition: {x: 1, y: -0.5}
+  m_AnchoredPosition: {x: 1, y: -0.4999962}
   m_SizeDelta: {x: 32, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052044943
