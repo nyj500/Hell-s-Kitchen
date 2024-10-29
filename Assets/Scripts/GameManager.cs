@@ -220,7 +220,8 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         Debug.Log("Game Over");
-        // Additional end-game handling
+        
+        SceneManager.LoadScene("EndScene");
     }
 
     private void ActivatePlayer()
