@@ -301,6 +301,7 @@ public class playergrab : MonoBehaviour
     // Reference to the chopping board (for placing ingredients)
     public Chopping choppingScript;
     private Chopping choppingInstance;
+    private playermovement playerMovement;
 
     void Start()
     {
@@ -308,11 +309,22 @@ public class playergrab : MonoBehaviour
         animator = GetComponent<Animator>();
         grabbed = false;
         choppingInstance = GameObject.FindObjectOfType<Chopping>();
+        playerMovement = GetComponent<playermovement>();
     }
 
     void Update()
     {
         animator.SetBool("holdingItem", grabbed);
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (playerMovement != null)
+                playerMovement.canMove = false;
+        }
+        else
+        {
+            if (playerMovement != null)
+                playerMovement.canMove = true;
+        }
     }
 
     void OnTriggerStay(Collider other)

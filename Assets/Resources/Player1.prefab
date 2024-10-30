@@ -346,10 +346,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4016730134220892109}
   - component: {fileID: 4016730134211004419}
-  - component: {fileID: 5135748606431251384}
   - component: {fileID: 4928858485768668178}
   - component: {fileID: 5837834768362467673}
   - component: {fileID: 2141585591711663855}
+  - component: {fileID: -5687198149367582844}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -397,19 +397,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5135748606431251384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4016730134220405683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7404d81da0b52d4a9668a473a0f7612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!136 &4928858485768668178
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -481,10 +468,29 @@ MonoBehaviour:
   isNori: 0
   isRice: 0
   isSalami: 0
-  isExtinhuisher: 0
+  isCookedSalami: 0
+  isExtinguisher: 0
+  isChoppedPepper: 0
+  isChoppedCucumber: 0
+  isChoppedFish: 0
+  isChoppedCarrot: 0
+  isKimbap: 0
   knifePrefab: {fileID: 6788124172151849755, guid: fa92a82b0dfbc409382beda239a213c1,
     type: 3}
   choppingScript: {fileID: 0}
+--- !u!114 &-5687198149367582844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016730134220405683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7404d81da0b52d4a9668a473a0f7612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!1 &4016730134220405697
 GameObject:
   m_ObjectHideFlags: 0
