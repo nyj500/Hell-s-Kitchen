@@ -550,6 +550,9 @@ public class playergrab : MonoBehaviour
                         Plate plateScript = other.GetComponentInParent<Plate>();
                         if (plateScript != null)
                         {
+
+                            plateScript.hasNori = false;
+                            plateScript.hasRice = false;
                             plateScript.hasChoppedFish = false;
                             plateScript.hasCookedSalami = false;
                             plateScript.hasChoppedPepper = false;
@@ -684,7 +687,7 @@ public class playergrab : MonoBehaviour
         if (cuttingScript != null && choppingScript != null)
         {
 
-            if (isChopped || isSalami == 1)
+            if (isChopped || isSalami == 1 || isNori == 1 || isRice==1 || isCookedSalami==1 || isExtinguisher ==1)
             {
                 Debug.Log("Processed ingredients cannot be placed on the cutting board.");
                 return;
