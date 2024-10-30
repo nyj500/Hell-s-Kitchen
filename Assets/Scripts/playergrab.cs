@@ -557,6 +557,12 @@ public class playergrab : MonoBehaviour
             isgrab = 0;
             grabbed = false;
             spawnedObject = null;
+            isfoodinhere panScript = other.GetComponentInParent<isfoodinhere>();
+            if (panScript != null)
+            {
+                panScript.ishere = false;
+            }
+            //Destroy(other.gameObject);
             Debug.Log("Fire extinguished!");
         }
     }

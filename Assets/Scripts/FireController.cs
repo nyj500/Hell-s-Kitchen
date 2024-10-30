@@ -142,24 +142,56 @@ public class FireController : MonoBehaviour
         }
     }
 
+    //void StartFire()
+    //{
+    //    isOnFire = true;
+    //    fireEffect.SetActive(true);
+    //    if (hasIngredient && isCooking) // Check if there is an ingredient and it's cooking
+    //    {
+    //        StartCoroutine(BurnIngredient());
+    //    }
+
+    //    Debug.Log("Fire started!");
+    //}
     void StartFire()
     {
         isOnFire = true;
         fireEffect.SetActive(true);
-        if (hasIngredient && isCooking) // Check if there is an ingredient and it's cooking
+
+        if (currentIngredient && isCooking)
         {
+            // Destroy the ingredient immediately when the fire starts
+            Destroy(currentIngredient);
+            currentIngredient = null; // Clear the reference
+            hasIngredient = false; // Update flag since there is no more ingredient
+            HideTimer(); // Hide the timer since there's no ingredient left
             StartCoroutine(BurnIngredient());
         }
 
         Debug.Log("Fire started!");
     }
 
+    //public void ExtinguishFire()
+    //{
+    //    isOnFire = false;
+    //    fireEffect.SetActive(false);
+    //    hasIngredient = false;
+    //    isCooking = false;
+    //    HideTimer(); // Hide the timer once fire is extinguished
+    //    StopCooking();
+    //    Debug.Log("Fire extinguished!");
+    //}
     public void ExtinguishFire()
     {
         isOnFire = false;
         fireEffect.SetActive(false);
+        hasIngredient = false;
+        isCooking = false;
+        currentIngredient = null; // Clear any existing ingredient reference
         HideTimer(); // Hide the timer once fire is extinguished
-        Debug.Log("Fire extinguished!");
+        StopCooking(); // Stop any cooking or burning coroutine
+
+        Debug.Log("Fire extinguished! Ready for new ingredient.");
     }
 
     public void StartCooking()
@@ -255,9 +287,9 @@ public class FireController : MonoBehaviour
 
         if (other.CompareTag("Salami") && currentIngredient == null)
         {
-            currentIngredient = other.gameObject;
-            hasIngredient = true;
-            StartCooking();
+            //currentIngredient = other.gameObject;
+            //hasIngredient = true;
+            //StartCooking();
             Debug.Log("Salami added to the frying pan and started cooking.");
         }
         else if (other.CompareTag("Salami") && currentIngredient != null)
