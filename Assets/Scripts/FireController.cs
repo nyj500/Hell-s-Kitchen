@@ -277,19 +277,12 @@ public class FireController : MonoBehaviour
             HideTimer(); // Hide the timer when the ingredient is destroyed
         }
     }
-    //private void OnCollisionEnter(Collision other)
-    //{
-        
-    //}
 
     void OnTriggerEnter(Collider other)
     {
 
         if (other.CompareTag("Salami") && currentIngredient == null)
         {
-            //currentIngredient = other.gameObject;
-            //hasIngredient = true;
-            //StartCooking();
             Debug.Log("Salami added to the frying pan and started cooking.");
         }
         else if (other.CompareTag("Salami") && currentIngredient != null)

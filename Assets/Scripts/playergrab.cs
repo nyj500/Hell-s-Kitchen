@@ -292,6 +292,8 @@ public class playergrab : MonoBehaviour
     public int isChoppedCucumber = 0;
     public int isChoppedFish = 0;
     public int isChoppedCarrot = 0;
+
+    public int isKimbap = 0;
     public GameObject knifePrefab;
     GameObject knife = null;
     private bool isChopped = false;
@@ -488,6 +490,12 @@ public class playergrab : MonoBehaviour
         else if (other.CompareTag("ChoppedFish")) { prefabName = "ChoppedFish"; isChoppedFish = 1; isChoppedFromBoard = true; isChopped = true; }
         else if (other.CompareTag("ChoppedCarrot")) { prefabName = "ChoppedCarrot"; isChoppedCarrot = 1; isChoppedFromBoard = true; isChopped = true; }
 
+
+        if (other.CompareTag("Kimbap1")||other.CompareTag("Kimbap2")||other.CompareTag("Kimbap3")||other.CompareTag("Kimbap4")||other.CompareTag("Kimbap5") || other.CompareTag("Kimbap6"))
+        {
+            prefabName = "KimbapPlate"; isKimbap = 1;
+        }
+
         if (!string.IsNullOrEmpty(prefabName))
         {
            
@@ -522,6 +530,26 @@ public class playergrab : MonoBehaviour
                     Destroy(other.gameObject);
                     Debug.Log("Destroyed cooked ingredient on pan: " + prefabName);
                 }
+                if (isKimbap==1)
+                {
+                    if (other.CompareTag("Kimbap1") || other.CompareTag("Kimbap2") || other.CompareTag("Kimbap3") || other.CompareTag("Kimbap4") || other.CompareTag("Kimbap5") || other.CompareTag("Kimbap6"))
+                    {
+                        //Destroy(other.gameObject);
+                        Plate plateScript = other.GetComponentInParent<Plate>();
+                        if (plateScript != null)
+                        {
+                            plateScript.hasChoppedFish = false;
+                            plateScript.hasCookedSalami = false;
+                            plateScript.hasChoppedPepper = false;
+                            plateScript.hasChoppedCucumber = false;
+                            plateScript.hasChoppedCarrot = false;
+                            plateScript.hasKimbap = false;
+                        }
+                        prefab.tag = other.gameObject.tag;
+                        Destroy(other.gameObject);
+                    }
+                
+                }
 
                 // Instantiate a new object in the player's hand
                 spawnedObject = Instantiate(prefab, grabPoint.transform.position, grabPoint.transform.rotation);
@@ -531,6 +559,11 @@ public class playergrab : MonoBehaviour
                     spawnedObject.transform.localPosition = new Vector3(0.0f, 0.0f, -1.25f);
                     spawnedObject.transform.Rotate(90, 0, 0);
                 }
+                else if (prefabName == "KimbapPlate")
+                {
+                    spawnedObject.transform.Rotate(90, 0, 0);
+                }
+            
                 isgrab = 1;
                 grabbed = true;
                 Debug.Log("Grabbed chopped item: " + prefabName);
@@ -567,12 +600,42 @@ public class playergrab : MonoBehaviour
         }
     }
 
+
     // Methods for handling placements on various stations
+    //private void PlaceOnConveyorBelt(Collider other)
+    //{
+    //    Transform placePoint = other.transform.Find("placePoint");
+    //    if (placePoint != null && spawnedObject != null)
+    //    {
+    //        spawnedObject.transform.position = placePoint.position;
+    //        spawnedObject.transform.rotation = placePoint.rotation;
+    //        spawnedObject.transform.parent = other.transform;
+
+    //        ConveyorBelt conveyorScript = other.GetComponent<ConveyorBelt>();
+    //        if (conveyorScript != null)
+    //        {
+    //            conveyorScript.onBelt.Add(spawnedObject);
+    //        }
+
+    //        Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
+    //        if (rb != null)
+    //        {
+    //            //rb.useGravity = true;
+    //            rb.isKinematic = false; // Enable physics for conveyor movement
+    //            rb.constraints = RigidbodyConstraints.FreezeRotation;
+    //        }
+    //        GameManager.instance.CompleteOrder();
+    //        ResetGrabState();
+    //        Debug.Log("Object placed on conveyor belt at placePoint.");
+    //    }
+    //}
+
     private void PlaceOnConveyorBelt(Collider other)
     {
         Transform placePoint = other.transform.Find("placePoint");
         if (placePoint != null && spawnedObject != null)
         {
+            // Place the dish at the conveyor belt's place point
             spawnedObject.transform.position = placePoint.position;
             spawnedObject.transform.rotation = placePoint.rotation;
             spawnedObject.transform.parent = other.transform;
@@ -590,6 +653,10 @@ public class playergrab : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
 
+            // Call GameManager to verify the correctness of the dish
+            GameManager.instance.VerifyDish(spawnedObject);
+
+            // Reset grab state
             ResetGrabState();
             Debug.Log("Object placed on conveyor belt at placePoint.");
         }
@@ -688,6 +755,7 @@ public class playergrab : MonoBehaviour
         isChoppedFish = 0;
         isChoppedCarrot = 0;
         isCookedSalami = 0;
+        isKimbap = 0;
         isChopped = false;
         spawnedObject = null; // Clear the reference to the held object
     }

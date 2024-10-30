@@ -89,11 +89,12 @@ public class ConveyorBelt : MonoBehaviour
     public List<GameObject> onBelt = new List<GameObject>();
     private Renderer rend;
     private float beltBoundary = 10f; // Distance threshold for removing objects
-
+    
     void Start()
     {
         rend = GetComponent<Renderer>();
         direction = direction.normalized; // Ensure direction is normalized
+        
     }
 
     void Update()
@@ -153,9 +154,17 @@ public class ConveyorBelt : MonoBehaviour
             }
 
             // Freeze rotation on all axes to stabilize objects on the conveyor
+
             rb.constraints = RigidbodyConstraints.FreezeRotation;
 
-            // Start coroutine to destroy the last object after 5 seconds
+            //GameManager.instance.CompleteOrder();
+            // If the object is a dish, call CompleteOrder()
+            //if (collision.gameObject.CompareTag("Dish"))
+            //{
+               
+            //}
+
+            // Start coroutine to destroy the last object after 3 seconds
             StartCoroutine(DestroyLastObjectAfterDelay(3f));
         }
     }
