@@ -154,10 +154,10 @@ RectTransform:
   - {fileID: 336420911}
   m_Father: {fileID: 1727597996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3945748, y: 0.2386631}
-  m_AnchorMax: {x: 0.6033411, y: 0.40500003}
-  m_AnchoredPosition: {x: -0.06359863, y: -132}
-  m_SizeDelta: {x: 0.12699986, y: -16.021}
+  m_AnchorMin: {x: 0.3945748, y: 0.05758824}
+  m_AnchorMax: {x: 0.6033411, y: 0.20188235}
+  m_AnchoredPosition: {x: -0.06359863, y: -1.5}
+  m_SizeDelta: {x: 0.12699986, y: -1.0209961}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69151632
 MonoBehaviour:
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 108.35
+  m_fontSize: 97.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -891,7 +891,6 @@ MonoBehaviour:
   currentOrder: 0
   currentDish:
     ingredients: []
-  recipes: []
 --- !u!4 &1352779027
 Transform:
   m_ObjectHideFlags: 0
@@ -992,7 +991,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 182.85
+  m_fontSize: 200.05
   m_fontSizeBase: 156
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1505,7 +1504,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 108.35
+  m_fontSize: 97.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
