@@ -319,7 +319,7 @@ public class GameManager : MonoBehaviour
     public int CurrentMoney { get { return currentmoney; } }
 
     // Game Timer
-    public float gameDuration = 90f; // 1 minute (90 seconds)
+    public float gameDuration = 60f; //for ppt
     private float remainingTime;
 
     // Order Tracking

@@ -43,7 +43,7 @@ public class LightController : MonoBehaviour
     {
         while (true)
         {
-            float randomTime = Random.Range(30f, 60f);
+            float randomTime = Random.Range(20f, 40f); // for ppt
 
             // 설정된 시간만큼 대기
             yield return new WaitForSeconds(randomTime);
