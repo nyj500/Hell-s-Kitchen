@@ -148,16 +148,16 @@ RectTransform:
   m_GameObject: {fileID: 69151630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 336420911}
   m_Father: {fileID: 1727597996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.36800003, y: 0.120663114}
-  m_AnchorMax: {x: 0.6033411, y: 0.2386631}
-  m_AnchoredPosition: {x: 22.000061, y: -13.0044}
-  m_SizeDelta: {x: -0, y: 11.441101}
+  m_AnchorMin: {x: 0.3945748, y: 0.2386631}
+  m_AnchorMax: {x: 0.6033411, y: 0.40500003}
+  m_AnchoredPosition: {x: -0.06359863, y: -132}
+  m_SizeDelta: {x: 0.12699986, y: -16.021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69151632
 MonoBehaviour:
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a24331652574b3e479d00a8c0c41d820, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de104d32a95556349875721f3a1b1e55, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -324,8 +324,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0b5a6122770384fc89f98e5f78a18598, type: 2}
+  m_sharedMaterial: {fileID: 8096623019365722584, guid: 0b5a6122770384fc89f98e5f78a18598,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -349,13 +350,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 108.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontSizeMax: 120
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -941,7 +942,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.26327515}
-  m_SizeDelta: {x: 0, y: -0.52652}
+  m_SizeDelta: {x: 0, y: -0.52649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509632963
 MonoBehaviour:
@@ -965,8 +966,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hell's Kitchen
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0b5a6122770384fc89f98e5f78a18598, type: 2}
+  m_sharedMaterial: {fileID: 8096623019365722584, guid: 0b5a6122770384fc89f98e5f78a18598,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -990,13 +992,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 115.25
+  m_fontSize: 182.85
   m_fontSizeBase: 156
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 128
-  m_fontStyle: 1
+  m_fontSizeMax: 256
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1028,7 +1030,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 2.5026245}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1319,10 +1321,10 @@ RectTransform:
   - {fileID: 2106152653}
   m_Father: {fileID: 1727597996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.36800003, y: 0.2386631}
+  m_AnchorMin: {x: 0.3945748, y: 0.2386631}
   m_AnchorMax: {x: 0.6033411, y: 0.40500003}
-  m_AnchoredPosition: {x: 22, y: -2}
-  m_SizeDelta: {x: -0.000030517578, y: 4}
+  m_AnchoredPosition: {x: -0.06359863, y: 8.010666}
+  m_SizeDelta: {x: 0.12699986, y: -16.021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052044943
 MonoBehaviour:
@@ -1477,8 +1479,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0b5a6122770384fc89f98e5f78a18598, type: 2}
+  m_sharedMaterial: {fileID: 8096623019365722584, guid: 0b5a6122770384fc89f98e5f78a18598,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1502,13 +1505,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 108.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontSizeMax: 120
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
