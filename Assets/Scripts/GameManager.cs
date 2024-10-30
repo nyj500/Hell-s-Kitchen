@@ -325,6 +325,7 @@ public class GameManager : MonoBehaviour
     // Order Tracking
     public enum FoodType { Kimbap1, Kimbap2, Kimbap3, Kimbap4, Kimbap5, Kimbap6 }
     public FoodType currentOrder;
+    private FoodType beforefood;
 
     // Dish Class to Track Ingredients
     [System.Serializable]
@@ -379,6 +380,7 @@ public class GameManager : MonoBehaviour
         GenerateNewOrder(); // Generate first order
         StartCoroutine(GameTimer()); // Start timer coroutine
         currentmoney = 0;
+        beforefood = FoodType.Kimbap6;
     }
 
     // Game Timer Coroutine
@@ -413,7 +415,14 @@ public class GameManager : MonoBehaviour
     // Generate New Order
     public void GenerateNewOrder()
     {
-        currentOrder = (FoodType)Random.Range(0, System.Enum.GetValues(typeof(FoodType)).Length);
+        FoodType newOrder;
+        do
+        {
+            newOrder = (FoodType)Random.Range(0, System.Enum.GetValues(typeof(FoodType)).Length);
+        } while (newOrder == beforefood); // 이전 음식과 동일한 값이면 다시 생성
+
+        currentOrder = newOrder;
+        beforefood = currentOrder;
         Debug.Log("New Order: " + currentOrder);
         UIManager.instance.UpdateOrderDisplay(); // Assuming you have a UI to update the order display
     }

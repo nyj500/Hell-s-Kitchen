@@ -4,8 +4,9 @@ using UnityEngine;
 public class playermovement : MonoBehaviour
 {
     private Animator animator;
-    public float speed = 5f;            // 이동 속도
+    public float speed = 3f;            // 이동 속도
     private Rigidbody rb;
+    public bool canMove = true;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -14,6 +15,11 @@ public class playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!canMove)
+        {
+            return; // canMove가 false면 이동 로직을 실행하지 않음
+        }
         // 이동 벡터 초기화
         Vector3 movement = Vector3.zero;
         Quaternion targetRotation = transform.rotation; // 기본적으로 현재 회전 유지

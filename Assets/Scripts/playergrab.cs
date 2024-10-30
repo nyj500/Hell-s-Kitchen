@@ -301,6 +301,7 @@ public class playergrab : MonoBehaviour
     // Reference to the chopping board (for placing ingredients)
     public Chopping choppingScript;
     private Chopping choppingInstance;
+    private playermovement playerMovement;
 
     void Start()
     {
@@ -308,11 +309,22 @@ public class playergrab : MonoBehaviour
         animator = GetComponent<Animator>();
         grabbed = false;
         choppingInstance = GameObject.FindObjectOfType<Chopping>();
+        playerMovement = GetComponent<playermovement>();
     }
 
     void Update()
     {
         animator.SetBool("holdingItem", grabbed);
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (playerMovement != null)
+                playerMovement.canMove = false;
+        }
+        else
+        {
+            if (playerMovement != null)
+                playerMovement.canMove = true;
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -538,6 +550,9 @@ public class playergrab : MonoBehaviour
                         Plate plateScript = other.GetComponentInParent<Plate>();
                         if (plateScript != null)
                         {
+
+                            plateScript.hasNori = false;
+                            plateScript.hasRice = false;
                             plateScript.hasChoppedFish = false;
                             plateScript.hasCookedSalami = false;
                             plateScript.hasChoppedPepper = false;
@@ -672,7 +687,7 @@ public class playergrab : MonoBehaviour
         if (cuttingScript != null && choppingScript != null)
         {
 
-            if (isChopped || isSalami == 1)
+            if (isChopped || isSalami == 1 || isNori == 1 || isRice==1 || isCookedSalami==1 || isExtinguisher ==1)
             {
                 Debug.Log("Processed ingredients cannot be placed on the cutting board.");
                 return;
