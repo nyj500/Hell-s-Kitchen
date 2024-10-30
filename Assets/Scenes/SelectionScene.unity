@@ -176,7 +176,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 2
+  m_text: 'Move Speed: Middle
+
+    Cook Speed: Middle'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25d115f1b76394546a0493eb4bc8892f, type: 2}
   m_sharedMaterial: {fileID: 6675716007700977877, guid: 25d115f1b76394546a0493eb4bc8892f,
@@ -204,7 +206,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.05
+  m_fontSize: 19.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -580,7 +582,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 3
+  m_text: 'Move Speed: High
+
+    Cook Speed: Low'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25d115f1b76394546a0493eb4bc8892f, type: 2}
   m_sharedMaterial: {fileID: 6675716007700977877, guid: 25d115f1b76394546a0493eb4bc8892f,
@@ -608,7 +612,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.7
+  m_fontSize: 19.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -925,7 +929,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 1
+  m_text: 'Move Speed: Low
+
+    Cook Speed: High'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25d115f1b76394546a0493eb4bc8892f, type: 2}
   m_sharedMaterial: {fileID: 6675716007700977877, guid: 25d115f1b76394546a0493eb4bc8892f,
@@ -953,7 +959,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.65
+  m_fontSize: 20
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1666,7 +1672,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 88.5
+  m_fontSize: 47.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1958,7 +1964,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 113.4
+  m_fontSize: 77.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
