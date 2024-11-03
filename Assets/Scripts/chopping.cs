@@ -42,6 +42,8 @@ public class Chopping : MonoBehaviour
 
     private GameObject currentIngredient; // Current ingredient being chopped
     private GameObject currentChoppedPrefab; // Chopped version of the current ingredient
+    public bool alreadyup = false;
+    private float originalChoppingTime;
 
     void Start()
     {
@@ -63,15 +65,19 @@ public class Chopping : MonoBehaviour
         {
             case GameManager.PlayerType.player1:
                 choppingTime = 5f; // player1�� �⺻ �ð�
+                originalChoppingTime = choppingTime;
                 break;
             case GameManager.PlayerType.player2:
                 choppingTime = 6f; // player2�� �⺻ �ð�
+                originalChoppingTime = choppingTime;
                 break;
             case GameManager.PlayerType.player3:
                 choppingTime = 7f; // player3�� �⺻ �ð�
+                originalChoppingTime = choppingTime;
                 break;
             default:
                 choppingTime = 5f; // �⺻��
+                originalChoppingTime = choppingTime;
                 break;
         }
 
@@ -142,6 +148,11 @@ public class Chopping : MonoBehaviour
     void StartChopping()
     {
         isChopping = true;
+
+        if (GameManager.instance.iscookup)
+        {
+            choppingTime *= 0.7f; // Reduce chopping time by 30% if iscookup is true
+        }
 
         if (knifeUnderTable != null)
         {
@@ -226,6 +237,11 @@ public class Chopping : MonoBehaviour
         {
             StopCoroutine(choppingCoroutine);
             choppingCoroutine = null;
+        }
+
+        if (GameManager.instance.iscookup)
+        {
+            choppingTime = originalChoppingTime;
         }
 
         HideTimer();

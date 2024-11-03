@@ -103,6 +103,7 @@ public class FireController : MonoBehaviour
     private Coroutine cookingCoroutine; // To handle cooking time
     private Coroutine burnCoroutine; // To handle fire after burnt
     private float currentTimer;
+    private float originalCookingTime;
 
     void Start()
     {
@@ -111,15 +112,19 @@ public class FireController : MonoBehaviour
         {
             case GameManager.PlayerType.player1:
                 cookingTime = 8f; // player1의 기본 시간
+                originalCookingTime = cookingTime;
                 break;
             case GameManager.PlayerType.player2:
                 cookingTime = 9f; // player2의 기본 시간
+                originalCookingTime = cookingTime;
                 break;
             case GameManager.PlayerType.player3:
                 cookingTime = 10f; // player3의 기본 시간
+                originalCookingTime = cookingTime;
                 break;
             default:
                 cookingTime = 8f; // 기본값
+                originalCookingTime = cookingTime;
                 break;
         }
         HideTimer(); // Hide the timer UI initially
@@ -199,6 +204,11 @@ public class FireController : MonoBehaviour
         if (!isCooking && hasIngredient)
         {
             isCooking = true;
+
+            if (GameManager.instance.iscookup)
+            {
+                cookingTime *= 0.7f; // Reduce chopping time by 30% if iscookup is true
+            }
 
             if (cookingCoroutine != null)
                 StopCoroutine(cookingCoroutine);
@@ -316,6 +326,11 @@ public class FireController : MonoBehaviour
             {
                 StopCoroutine(burnCoroutine);
                 burnCoroutine = null;
+            }
+
+            if (GameManager.instance.iscookup)
+            {
+                cookingTime = originalCookingTime;
             }
 
             HideTimer(); // Hide the timer when cooking stops
