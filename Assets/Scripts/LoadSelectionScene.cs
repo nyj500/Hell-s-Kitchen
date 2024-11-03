@@ -12,7 +12,7 @@ public class LoadSelectionScene : MonoBehaviour
     public void OnStartButtonClicked()
     {
         SceneManager.LoadScene("SelectionScene");
-        startButton.image.sprite = clickedImage;
+        // startButton.image.sprite = clickedImage;
     }
 
 }
