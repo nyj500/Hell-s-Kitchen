@@ -228,14 +228,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.514151, b: 0.514151, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de104d32a95556349875721f3a1b1e55, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c451a92bf2ef6c418771224768fd42a, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.25
+  m_fontSize: 93.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -514,6 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4600bd96e77ee4d1a98a38a0197b239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 2052044943}
+  clickedImage: {fileID: 21300000, guid: d22f8acbaa109064f9367669c5824b53, type: 3}
 --- !u!1 &872231867
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +993,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 131.65
+  m_fontSize: 186.65
   m_fontSizeBase: 156
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1504,7 +1506,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.15
+  m_fontSize: 92.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
