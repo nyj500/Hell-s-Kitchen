@@ -4,9 +4,10 @@ using UnityEngine;
 public class playermovement : MonoBehaviour
 {
     private Animator animator;
-    public float speed = 3f;            // 이동 속도
+    public float speed;            // 이동 속도
     private Rigidbody rb;
     public bool canMove = true;
+    private bool alreadyup = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,6 +20,16 @@ public class playermovement : MonoBehaviour
         if (!canMove)
         {
             return; // canMove가 false면 이동 로직을 실행하지 않음
+        }
+        if (GameManager.instance.isspeedup && !alreadyup)
+        {
+            speed *= 1.5f;
+            alreadyup = true;
+        }
+        else if (!GameManager.instance.isspeedup && alreadyup)
+        {
+            speed /= 1.5f;
+            alreadyup = false;
         }
         // 이동 벡터 초기화
         Vector3 movement = Vector3.zero;
@@ -59,10 +70,8 @@ public class playermovement : MonoBehaviour
             animator.SetBool("shift", false);
         }
 
-            // 회전 적용
-
-
-            var velocity = movement * speed;
+        // 회전 적용
+        var velocity = movement * speed;
         if (movement != Vector3.zero)
         {
             transform.rotation = targetRotation;

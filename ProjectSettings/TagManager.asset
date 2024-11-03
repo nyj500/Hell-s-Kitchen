@@ -30,6 +30,9 @@ TagManager:
   - Kimbap5
   - Kimbap6
   - CookedSalami
+  - speedup
+  - cookup
+  - addmoney
   layers:
   - Default
   - TransparentFX
