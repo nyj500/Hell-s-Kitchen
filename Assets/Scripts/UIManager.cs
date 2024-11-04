@@ -4,29 +4,29 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI timeText; // TextMeshPro ÅØ½ºÆ® ÂüÁ¶
+    public TextMeshProUGUI timeText; // TextMeshPro ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
     public TextMeshProUGUI moneyText;
-    public Image orderDisplay; // ÁÖ¹®À» Ç¥½ÃÇÒ Image ÂüÁ¶
-    public Sprite[] orderSprites; // 6°³ÀÇ ÁÖ¹® ÀÌ¹ÌÁö ¹è¿­
+    public Image orderDisplay; // ï¿½Ö¹ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ Image ï¿½ï¿½ï¿½ï¿½
+    public Sprite[] orderSprites; // 6ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½è¿­
 
     public static UIManager instance;
 
     private void Awake()
     {
-        // ½Ì±ÛÅæ ÀÎ½ºÅÏ½º »ý¼º
+        // ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (instance == null)
         {
             instance = this;
         }
         else
         {
-            Destroy(gameObject); // ÀÌ¹Ì ÀÎ½ºÅÏ½º°¡ Á¸ÀçÇÑ´Ù¸é ÇöÀç ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
+            Destroy(gameObject); // ï¿½Ì¹ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ä±ï¿½
         }
     }
 
     private void Start()
     {
-        UpdateOrderDisplay(); // ÃÊ±â ÁÖ¹® Ç¥½Ã ¾÷µ¥ÀÌÆ®
+        UpdateOrderDisplay(); // ï¿½Ê±ï¿½ ï¿½Ö¹ï¿½ Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         UpdateMoneyDisplay();
     }
 
@@ -34,9 +34,9 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            // GameManagerÀÇ ³²Àº ½Ã°£À» °¡Á®¿Í ÅØ½ºÆ®¿¡ Ç¥½Ã
+            // GameManagerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ Ç¥ï¿½ï¿½
             float remainingTime = GameManager.instance.GetRemainingTime();
-            timeText.text = timeText.text = $"{remainingTime:00.00}";
+            timeText.text = timeText.text = $"{remainingTime:00}";
             UpdateMoneyDisplay();
         }
     }
@@ -45,10 +45,10 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            // GameManager¿¡¼­ ÇöÀç ÁÖ¹®À» °¡Á®¿É´Ï´Ù.
+            // GameManagerï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É´Ï´ï¿½.
             int orderIndex = (int)GameManager.instance.currentOrder;
 
-            // ÁÖ¹®¿¡ ¸Â´Â ÀÌ¹ÌÁö¸¦ orderDisplay¿¡ ¼³Á¤
+            // ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½Â´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ orderDisplayï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (orderIndex >= 0 && orderIndex < orderSprites.Length)
             {
                 orderDisplay.sprite = orderSprites[orderIndex];
@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            // GameManager¿¡¼­ currentmoney °ªÀ» °¡Á®¿Í ÅØ½ºÆ®¿¡ ¼³Á¤
+            // GameManagerï¿½ï¿½ï¿½ï¿½ currentmoney ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             moneyText.text = $"Money: {GameManager.instance.GetCurrentMoney()}";
         }
     }
