@@ -1,12 +1,82 @@
+//using UnityEngine;
+//using System.Collections;
+
+//public class RandomObjectSpawner : MonoBehaviour
+//{
+//    public Collider spawnArea; // ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+//    public GameObject[] objectsToSpawn; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ (3ï¿½ï¿½)
+//    public float minSpawnInterval = 5f; // ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (3ï¿½ï¿½)
+//    public float maxSpawnInterval = 15f; // ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (10ï¿½ï¿½)
+//    private GameObject lastSpawnedObject;
+
+//    void Start()
+//    {
+//        if (spawnArea == null || objectsToSpawn == null || objectsToSpawn.Length < 3)
+//        {
+//            Debug.LogError("Spawn area or objects to spawn are not properly assigned or there are fewer than 3 objects.");
+//            return;
+//        }
+
+//        StartCoroutine(SpawnObjectAtRandomInterval());
+//    }
+
+//    IEnumerator SpawnObjectAtRandomInterval()
+//    {
+//        while (true)
+//        {
+//            float randomInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
+//            yield return new WaitForSeconds(randomInterval);
+//            SpawnRandomObject();
+//        }
+//    }
+
+//    void SpawnRandomObject()
+//    {
+//        GameObject objectToSpawn;
+//        do
+//        {
+//            objectToSpawn = objectsToSpawn[Random.Range(0, objectsToSpawn.Length)];
+//        } while (objectToSpawn == lastSpawnedObject);
+
+//        lastSpawnedObject = objectToSpawn;
+//        Vector3 randomPosition = GetRandomPointInCollider(spawnArea);
+//        Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+//    }
+
+//    Vector3 GetRandomPointInCollider(Collider col)
+//    {
+//        Vector3 boundsMin = col.bounds.min;
+//        Vector3 boundsMax = col.bounds.max;
+
+//        float x = Random.Range(boundsMin.x, boundsMax.x);
+//        float y = Random.Range(boundsMin.y, boundsMax.y);
+//        float z = Random.Range(boundsMin.z, boundsMax.z);
+
+//        Vector3 randomPoint = new Vector3(x, y, z);
+
+//        // ï¿½ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
+//        if (col.bounds.Contains(randomPoint))
+//        {
+//            return randomPoint;
+//        }
+//        else
+//        {
+//            return GetRandomPointInCollider(col); // ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½ï¿½
+//        }
+//    }
+//}
+
+
+
 using UnityEngine;
 using System.Collections;
 
 public class RandomObjectSpawner : MonoBehaviour
 {
-    public Collider spawnArea; // ÄÝ¶óÀÌ´õ¸¦ ¹üÀ§·Î »ç¿ë
-    public GameObject[] objectsToSpawn; // »ý¼ºÇÒ ¿ÀºêÁ§Æ® Á¾·ù (3°³)
-    public float minSpawnInterval = 5f; // ÃÖ¼Ò »ý¼º °£°Ý (3ÃÊ)
-    public float maxSpawnInterval = 15f; // ÃÖ´ë »ý¼º °£°Ý (10ÃÊ)
+    public Collider spawnArea; // Collider that defines the spawn area
+    public GameObject[] objectsToSpawn; // Array of objects to spawn (at least 3)
+    public float minSpawnInterval = 5f; // Minimum spawn interval (seconds)
+    public float maxSpawnInterval = 15f; // Maximum spawn interval (seconds)
     private GameObject lastSpawnedObject;
 
     void Start()
@@ -40,7 +110,12 @@ public class RandomObjectSpawner : MonoBehaviour
 
         lastSpawnedObject = objectToSpawn;
         Vector3 randomPosition = GetRandomPointInCollider(spawnArea);
-        Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+
+        // Instantiate the object and make it rotate
+        GameObject spawnedObject = Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+
+        // Add a spin component to the spawned object
+        spawnedObject.AddComponent<SpinObject>();
     }
 
     Vector3 GetRandomPointInCollider(Collider col)
@@ -54,15 +129,24 @@ public class RandomObjectSpawner : MonoBehaviour
 
         Vector3 randomPoint = new Vector3(x, y, z);
 
-        // ¹üÀ§ ¾È¿¡ ÀÖ´ÂÁö È®ÀÎÇÏ±â À§ÇØ Æ÷ÀÎÆ®°¡ ÄÝ¶óÀÌ´õ ³»ºÎÀÎÁö °Ë»ç
+        // Ensure the point is within the bounds of the collider
         if (col.bounds.Contains(randomPoint))
         {
             return randomPoint;
         }
         else
         {
-            return GetRandomPointInCollider(col); // Àç±Í È£Ãâ·Î ³»ºÎ Æ÷ÀÎÆ®¸¦ Ã£À½
+            return GetRandomPointInCollider(col); // Recursively find a valid point
         }
     }
 }
 
+public class SpinObject : MonoBehaviour
+{
+    public float rotationSpeed = 100f;
+
+    void Update()
+    {
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+    }
+}
