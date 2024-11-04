@@ -7,10 +7,11 @@ public class Tutorial : MonoBehaviour
 {
     public GameObject tutorialPopup1;
     public GameObject tutorialPopup2;
+    public GameObject tutorialPopup3;
 
     public void OnClickedNextButton()
     {
-        if (tutorialPopup2.activeSelf)
+        if (tutorialPopup3.activeSelf)
         {
             SceneManager.LoadScene("Scene1");
         }
@@ -21,8 +22,11 @@ public class Tutorial : MonoBehaviour
         }
         else if (!tutorialPopup2.activeSelf)
         {
-            tutorialPopup1.SetActive(false);
             tutorialPopup2.SetActive(true);
+        }
+        else if (!tutorialPopup3.activeSelf)
+        {
+            tutorialPopup3.SetActive(true);
         }
     }
 }
