@@ -378,6 +378,7 @@ public class FireController : MonoBehaviour
     public GameObject extinguisher;
     public GameObject currentIngredient;
     public GameObject cookedIngredientPrefab; // Prefab for the burnt version
+    public GameObject steamEffect; // Steam particles to play after cooking is done
     public Image bgImage; // Background image of the timer bar
     public Image fgImage; // Foreground image of the timer bar
     public float burnTime = 1f;
@@ -418,6 +419,10 @@ public class FireController : MonoBehaviour
                 break;
         }
         HideTimer(); // Hide the timer UI initially
+        if (steamEffect != null)
+        {
+            steamEffect.SetActive(false); // Ensure steam is off at the start
+        }
         StartCoroutine(DelayedStartFire(initialDelay));
     }
 
@@ -465,6 +470,11 @@ public class FireController : MonoBehaviour
         HideTimer(); // Hide the timer once fire is extinguished
         StopCooking(); // Stop any cooking or burning coroutine
 
+        if (steamEffect != null)
+        {
+            steamEffect.SetActive(false); // Stop steam effect when fire is extinguished
+        }
+
         Debug.Log("Fire extinguished! Ready for new ingredient.");
     }
 
@@ -497,11 +507,17 @@ public class FireController : MonoBehaviour
             yield return null; // Wait for the next frame
         }
 
-        // Cooking completed, now the ingredient burns
-        Debug.Log("Cooking completed! Ingredient is now burning.");
+        // Cooking completed, now the ingredient is cooked
+        Debug.Log("Cooking completed! Ingredient is now cooked.");
         ReplaceIngredientWithCookedVersion();
 
-        // Start fire if the burnt ingredient stays too long on the pan
+        // Play steam effect after cooking is done
+        if (steamEffect != null)
+        {
+            steamEffect.SetActive(true);
+        }
+
+        // Start fire if the cooked ingredient stays too long on the pan
         burnCoroutine = StartCoroutine(BurnAfterTime());
     }
 
@@ -601,6 +617,10 @@ public class FireController : MonoBehaviour
             }
 
             HideTimer(); // Hide the timer when cooking stops
+            if (steamEffect != null)
+            {
+                steamEffect.SetActive(false); // Stop steam effect when cooking stops
+            }
             Debug.Log("Cooking stopped.");
         }
     }
