@@ -13,6 +13,9 @@ public class LightController : MonoBehaviour
     
     private bool isBlackout = false;
 
+    public AudioClip turnOnSound;
+    private AudioSource audioSource;
+
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -35,6 +38,12 @@ public class LightController : MonoBehaviour
         {
             Debug.LogWarning("Player 태그를 가진 오브젝트가 없습니다.");
         }
+        GameObject audioObject = GameObject.Find("AudioSourceObject");
+        if (audioObject != null)
+        {
+            audioSource = audioObject.GetComponent<AudioSource>();
+        }
+        
         SetSkyboxLighting();
         StartCoroutine(TriggerBlackout());
     }
@@ -71,6 +80,7 @@ public class LightController : MonoBehaviour
     // 정전이 아닐 때, Environment Lighting Source와 Reflection Source를 다시 Skybox로 전환
     public void SetSkyboxLighting()
     {
+        audioSource.PlayOneShot(turnOnSound);
         directionalLight.enabled = true;
         spotLight.enabled = false;
         playerSpotLight.enabled = false;

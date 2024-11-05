@@ -3954,6 +3954,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 8672066864315351679, guid: a0164d9c476080e449c72cf58e7709ab,
+        type: 3}
+      propertyPath: spotLight
+      value: 
+      objectReference: {fileID: 1868493192}
+    - target: {fileID: 8672066864315351679, guid: a0164d9c476080e449c72cf58e7709ab,
+        type: 3}
+      propertyPath: directionalLight
+      value: 
+      objectReference: {fileID: 1668768277}
     - target: {fileID: 9078037237241554317, guid: a0164d9c476080e449c72cf58e7709ab,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -3999,12 +4009,8 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2575938327731363396, guid: a0164d9c476080e449c72cf58e7709ab,
         type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 720833583}
-    - targetCorrespondingSourceObject: {fileID: 2575938327731363396, guid: a0164d9c476080e449c72cf58e7709ab,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 720833585}
   m_SourcePrefab: {fileID: 100100000, guid: a0164d9c476080e449c72cf58e7709ab, type: 3}
 --- !u!1 &720833582 stripped
 GameObject:
@@ -4039,22 +4045,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 720833581}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &720833585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720833582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4127265e55c45b1a972d9309dd7f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customAmbientColor: {r: 0, g: 0, b: 0, a: 1}
-  customReflection: {fileID: 0}
-  directionalLight: {fileID: 1668768277}
-  spotLight: {fileID: 1868493192}
 --- !u!1 &752126326
 GameObject:
   m_ObjectHideFlags: 0
