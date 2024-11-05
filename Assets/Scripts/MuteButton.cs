@@ -1,19 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MuteButton : MonoBehaviour
 {
-    private bool isMuted = false;
+    private bool isMuted;
     public GameObject muteIcon;
 
-    public void ToggleMute()
+    void Update()
     {
-        isMuted = !isMuted;
-        AudioListener.pause = isMuted;
-
-        muteIcon.SetActive(isMuted);
-        
-        Debug.Log("Mute status: " + isMuted);
+        isMuted = SoundManager.instance.isMuted;
+        if (isMuted)  
+        {
+            muteIcon.SetActive(true);
+        }
+        else
+        {
+            muteIcon.SetActive(false);
+        }
     }
+    
+    public void Mute()
+    {
+        SoundManager.instance.ToggleMute();
+    }
+
 }

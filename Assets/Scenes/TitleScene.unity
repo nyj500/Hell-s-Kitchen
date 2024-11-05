@@ -664,12 +664,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &817743434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1186218539155203821, guid: f32d866816d264329aed697c54f0a31a,
-    type: 3}
-  m_PrefabInstance: {fileID: 3602082087171200347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &872231867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,6 +1428,8 @@ MonoBehaviour:
   scene1Clip: {fileID: 8300000, guid: 89a5cbf69b3c55a418335bf588088b1d, type: 3}
   endSceneClip: {fileID: 8300000, guid: f361803a4b1b9455498d6c4237bba9b4, type: 3}
   buttonClickSound: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  muteIcon: {fileID: 0}
+  muteToggle: {fileID: 0}
 --- !u!1 &1727597992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,37 +1543,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1743321919 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1961277859139518764, guid: f32d866816d264329aed697c54f0a31a,
-    type: 3}
-  m_PrefabInstance: {fileID: 3602082087171200347}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1743321923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743321919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b57b3a2c2351141d093e56530f48193b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1743321927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743321919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc9c9d3a0c704912ad63942cec19942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muteIcon: {fileID: 817743434}
 --- !u!1 &1825280119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2242,7 @@ PrefabInstance:
     - target: {fileID: 1961277859139518764, guid: f32d866816d264329aed697c54f0a31a,
         type: 3}
       propertyPath: m_Name
-      value: VolumeButton
+      value: MuteButton
       objectReference: {fileID: 0}
     - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
         type: 3}
@@ -2293,7 +2258,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1743321927}
+      objectReference: {fileID: 1582452171}
     - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -2307,7 +2272,7 @@ PrefabInstance:
     - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MuteButton, Assembly-CSharp
+      value: SoundManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
         type: 3}
@@ -2319,18 +2284,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8328868655113156971, guid: f32d866816d264329aed697c54f0a31a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1961277859139518764, guid: f32d866816d264329aed697c54f0a31a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1743321923}
-    - targetCorrespondingSourceObject: {fileID: 1961277859139518764, guid: f32d866816d264329aed697c54f0a31a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1743321927}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32d866816d264329aed697c54f0a31a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

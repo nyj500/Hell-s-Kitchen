@@ -87,9 +87,10 @@ GameObject:
   - component: {fileID: 8047059839452699249}
   - component: {fileID: 4559841238265850283}
   - component: {fileID: 6072780677089487923}
-  - component: {fileID: 8328868655113156971}
+  - component: {fileID: 5599316069071678293}
+  - component: {fileID: 4225742729364053881}
   m_Layer: 5
-  m_Name: VolumeButton
+  m_Name: MuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,9 +201,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8328868655113156971}
+      - m_Target: {fileID: 4225742729364053881}
         m_TargetAssemblyTypeName: MuteButton, Assembly-CSharp
-        m_MethodName: ToggleMute
+        m_MethodName: Mute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -213,7 +214,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
---- !u!114 &8328868655113156971
+--- !u!114 &5599316069071678293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961277859139518764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57b3a2c2351141d093e56530f48193b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4225742729364053881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

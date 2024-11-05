@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip scene1Clip;
     public AudioClip endSceneClip;
     public AudioClip buttonClickSound;
+    public bool isMuted = false;
+
+
 
     private void Awake() 
     {
@@ -47,8 +51,7 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 씬 이름 또는 인덱스에 따라 Audio Clip 변경
-        if (scene.name == "Scene1")
+       if (scene.name == "Scene1")
         {
             ChangeAudioClip(scene1Clip);
         }
@@ -80,5 +83,12 @@ public class SoundManager : MonoBehaviour
         {
             audioSource.PlayOneShot(buttonClickSound);
         }
+    }
+
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+        AudioListener.pause = isMuted;
+        Debug.Log("Mute status: " + isMuted);
     }
 }
