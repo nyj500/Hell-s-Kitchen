@@ -397,7 +397,9 @@ public class FireController : MonoBehaviour
     private float originalCookingTime;
 
     public AudioSource audioSource;
+    public AudioSource fireAudioSource;
     public AudioClip fryingClip;
+    public AudioClip fireClip;
 
     void Start()
     {
@@ -463,7 +465,8 @@ public class FireController : MonoBehaviour
     {
         isOnFire = true;
         fireEffect.SetActive(true);
-
+        fireAudioSource.clip = fireClip;
+        fireAudioSource.Play();
         if (currentIngredient && isCooking)
         {
             // Destroy the ingredient immediately when the fire starts
@@ -479,6 +482,7 @@ public class FireController : MonoBehaviour
 
     public void ExtinguishFire()
     {
+        fireAudioSource.Stop();
         isOnFire = false;
         fireEffect.SetActive(false);
         hasIngredient = false;
