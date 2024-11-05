@@ -298,6 +298,12 @@ public class playergrab : MonoBehaviour
     GameObject knife = null;
     private bool isChopped = false;
 
+    public AudioClip choppingSound; 
+    public AudioClip fryingSound;
+    public AudioClip grabSound;
+    public AudioClip discardSound;
+    private AudioSource audioSource;
+
     // Reference to the chopping board (for placing ingredients)
     public Chopping choppingScript;
     private Chopping choppingInstance;
@@ -310,6 +316,7 @@ public class playergrab : MonoBehaviour
         grabbed = false;
         choppingInstance = GameObject.FindObjectOfType<Chopping>();
         playerMovement = GetComponent<playermovement>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -390,6 +397,7 @@ public class playergrab : MonoBehaviour
                 // Mark the presence of Nori on the plate
                 plateScript.hasNori = true;
 
+                audioSource.PlayOneShot(grabSound);
                 // Reset player grab states since the object is now on the plate
                 ResetGrabState();
 
@@ -410,7 +418,7 @@ public class playergrab : MonoBehaviour
                 spawnedObject.transform.parent = plate.transform;
 
                 plateScript.hasRice = true;
-
+                audioSource.PlayOneShot(grabSound);
                 ResetGrabState();
 
                 Debug.Log("Rice placed on the plate.");
@@ -440,7 +448,7 @@ public class playergrab : MonoBehaviour
                     spawnedObject.transform.parent = plate.transform;
                     plateScript.hasCookedSalami = true;
                 }
-
+                audioSource.PlayOneShot(grabSound);
                 ResetGrabState();
 
                 Debug.Log("CookedMainFood placed on the plate.");
@@ -464,7 +472,8 @@ public class playergrab : MonoBehaviour
                 if (spawnedObject.CompareTag("ChoppedPepper")) plateScript.hasChoppedPepper = true;
                 else if (spawnedObject.CompareTag("ChoppedCucumber")) plateScript.hasChoppedCucumber = true;
                 else if (spawnedObject.CompareTag("ChoppedCarrot")) plateScript.hasChoppedCarrot = true;
-
+                
+                audioSource.PlayOneShot(grabSound);
                 ResetGrabState();
 
                 Debug.Log(spawnedObject.tag + " placed on the plate.");
@@ -581,6 +590,7 @@ public class playergrab : MonoBehaviour
             
                 isgrab = 1;
                 grabbed = true;
+                audioSource.PlayOneShot(grabSound);
                 Debug.Log("Grabbed chopped item: " + prefabName);
             }
         }
@@ -642,6 +652,7 @@ public class playergrab : MonoBehaviour
             // Call GameManager to verify the correctness of the dish
             GameManager.instance.VerifyDish(spawnedObject);
 
+            audioSource.PlayOneShot(grabSound);
             // Reset grab state
             ResetGrabState();
             Debug.Log("Object placed on conveyor belt at placePoint.");
@@ -678,6 +689,7 @@ public class playergrab : MonoBehaviour
 
                 // Release the reference to the held object and reset states
                 spawnedObject = null;
+                audioSource.PlayOneShot(grabSound);
                 ResetGrabState();
 
                 Debug.Log("Ingredient placed on cutting board and detached from player.");
@@ -708,6 +720,7 @@ public class playergrab : MonoBehaviour
                 }
 
                 panScript.ishere = true;
+                audioSource.PlayOneShot(grabSound);
                 ResetGrabState();
                 Debug.Log("Salami placed on the pan at cookpoint.");
             }
@@ -719,6 +732,7 @@ public class playergrab : MonoBehaviour
         if (spawnedObject != null)
         {
             Destroy(spawnedObject);
+            audioSource.PlayOneShot(discardSound);
             ResetGrabState();
             Debug.Log("Item discarded.");
         }

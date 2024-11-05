@@ -56,6 +56,10 @@ public class SoundManager : MonoBehaviour
         {
             ChangeAudioClip(endSceneClip);
         }
+        else if (scene.name == "Scene2")
+        {
+            ChangeAudioClip(scene1Clip);
+        }
         else
         {
             ChangeAudioClip(defaultClip);
