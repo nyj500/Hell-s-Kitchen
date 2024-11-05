@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Scene1")
+        if (scene.name == "Scene2")
         {
             ActivatePlayer();
             StartGame();

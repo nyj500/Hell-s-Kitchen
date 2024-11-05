@@ -13,7 +13,7 @@ public class Tutorial : MonoBehaviour
     {
         if (tutorialPopup3.activeSelf)
         {
-            SceneManager.LoadScene("Scene1");
+            SceneManager.LoadScene("Scene2");
         }
         
         if (!tutorialPopup1.activeSelf)
