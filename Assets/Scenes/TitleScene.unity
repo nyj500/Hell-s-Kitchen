@@ -664,6 +664,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &817743434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1186218539155203821, guid: f32d866816d264329aed697c54f0a31a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3602082087171200347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &872231867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,6 +1565,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57b3a2c2351141d093e56530f48193b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1743321927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743321919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc9c9d3a0c704912ad63942cec19942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muteIcon: {fileID: 817743434}
 --- !u!1 &1825280119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,10 +2269,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1186218539155203821, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1961277859139518764, guid: f32d866816d264329aed697c54f0a31a,
         type: 3}
       propertyPath: m_Name
       value: VolumeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1743321927}
+    - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMute
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MuteButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072780677089487923, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9094638594817937764, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2263,6 +2327,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1743321923}
+    - targetCorrespondingSourceObject: {fileID: 1961277859139518764, guid: f32d866816d264329aed697c54f0a31a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1743321927}
   m_SourcePrefab: {fileID: 100100000, guid: f32d866816d264329aed697c54f0a31a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
