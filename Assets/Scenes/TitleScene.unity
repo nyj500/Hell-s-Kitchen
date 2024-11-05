@@ -1428,8 +1428,7 @@ MonoBehaviour:
   scene1Clip: {fileID: 8300000, guid: 89a5cbf69b3c55a418335bf588088b1d, type: 3}
   endSceneClip: {fileID: 8300000, guid: f361803a4b1b9455498d6c4237bba9b4, type: 3}
   buttonClickSound: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
-  muteIcon: {fileID: 0}
-  muteToggle: {fileID: 0}
+  isMuted: 0
 --- !u!1 &1727597992
 GameObject:
   m_ObjectHideFlags: 0
