@@ -4140,6 +4140,7 @@ MonoBehaviour:
   customReflection: {fileID: 0}
   directionalLight: {fileID: 1668768277}
   spotLight: {fileID: 1868493192}
+  turnOnSound: {fileID: 0}
 --- !u!1 &752126326
 GameObject:
   m_ObjectHideFlags: 0

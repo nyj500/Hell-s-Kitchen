@@ -947,12 +947,12 @@ MonoBehaviour:
   moneyText: {fileID: 752126327}
   orderDisplay: {fileID: 832846188}
   orderSprites:
-  - {fileID: 21300000, guid: 94cbb337ca97b8b44ae6b1eb83799435, type: 3}
-  - {fileID: 21300000, guid: 89cfe7fe2cb239641b8868778a5b5c14, type: 3}
-  - {fileID: 21300000, guid: f85d5b15fe873304b95c51a2d9a1708d, type: 3}
-  - {fileID: 21300000, guid: 8ac8be683fdb4d146b99402477dfdb35, type: 3}
-  - {fileID: 21300000, guid: 257fd113463171443a792a9e7c77d83b, type: 3}
-  - {fileID: 21300000, guid: 24bd0f8817e446f439aae18fe5e38093, type: 3}
+  - {fileID: 21300000, guid: da9ace41a16f947138e7b1d423ab63e3, type: 3}
+  - {fileID: 21300000, guid: 44dce5d3fa48e4dc48f1d51798ba6a02, type: 3}
+  - {fileID: 21300000, guid: 8de0b52e659c24b89b049a0f9efdbf99, type: 3}
+  - {fileID: 21300000, guid: cad17cd86211340fab6ed8c32fb1848d, type: 3}
+  - {fileID: 21300000, guid: 9edc8f52cb69540e395bc044b038602c, type: 3}
+  - {fileID: 21300000, guid: f557f1642d9cd4926bcb6f64c6f84ff8, type: 3}
 --- !u!114 &259493491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4918,14 +4918,14 @@ RectTransform:
   m_GameObject: {fileID: 832846187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.41527, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 259493494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 198, y: -226}
+  m_AnchoredPosition: {x: 198, y: -116}
   m_SizeDelta: {x: 320, y: 395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &865108894 stripped
