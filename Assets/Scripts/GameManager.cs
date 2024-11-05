@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     public FoodType currentOrder;
     private FoodType beforefood;
 
+    // Audio
+    public AudioClip correctSound;
+    public AudioClip errorSound;
+    private AudioSource audioSource;
+
     // Dish Class to Track Ingredients
     [System.Serializable]
     public class Dish
@@ -132,16 +137,22 @@ public class GameManager : MonoBehaviour
     {
         // Check if the tag of the dish matches the current order
         string expectedTag = currentOrder.ToString(); // Expected tag like "Kimbap1", "Kimbap2", etc.
-
+        GameObject audioObject = GameObject.Find("AudioSourceObject");
+        if (audioObject != null)
+        {
+            audioSource = audioObject.GetComponent<AudioSource>();
+        }
         if (dish.CompareTag(expectedTag))
         {
             Debug.Log("Order Completed: " + currentOrder);
             currentmoney += 4000; // Reward for correct dish
+            audioSource.PlayOneShot(correctSound);
         }
         else
         {
             Debug.Log("Incorrect Order Submitted.");
             currentmoney -= 1000; // Penalty for incorrect dish
+            audioSource.PlayOneShot(errorSound);
         }
 
         // Clear the current dish (if applicable)
