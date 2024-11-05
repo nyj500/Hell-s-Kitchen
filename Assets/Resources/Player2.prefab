@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   canMove: 1
+  footstepClip: {fileID: 8300000, guid: 76e0cda70cde74a77ac0bc4c06d7d2be, type: 3}
 --- !u!136 &-2533236675214327431
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -230,4 +231,5 @@ MonoBehaviour:
   fryingSound: {fileID: 8300000, guid: b6a243ef1da6d4be595655a6405b9fb2, type: 3}
   grabSound: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
   discardSound: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+  extinguishSound: {fileID: 8300000, guid: 1c29ab08836ab4e95820c933d68abb75, type: 3}
   choppingScript: {fileID: 0}

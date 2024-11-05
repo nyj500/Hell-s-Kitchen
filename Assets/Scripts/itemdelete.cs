@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class itemdelete : MonoBehaviour
 {
-    public float lifetime = 5f; // ¿ÀºêÁ§Æ®°¡ »ç¶óÁö±â±îÁöÀÇ ½Ã°£ (±âº»°ª 5ÃÊ)
+    public float lifetime = 5f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ (ï¿½âº»ï¿½ï¿½ 5ï¿½ï¿½)
+    private AudioSource audioSource;
+    public AudioClip coinSound;
+    public AudioClip itemSound;
 
     void Start()
     {
-        // ÁöÁ¤µÈ ½Ã°£ ÈÄ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ä±ï¿½
+        GameObject audioObject = GameObject.Find("AudioSourceObject");
+        if (audioObject != null)
+        {
+            audioSource = audioObject.GetComponent<AudioSource>();
+        }
         Destroy(gameObject, lifetime);
     }
 
@@ -18,14 +26,17 @@ public class itemdelete : MonoBehaviour
         {
             if (gameObject.CompareTag("speedup"))
             {
+                audioSource.PlayOneShot(itemSound);
                 GameManager.instance.ActivateSpeedUp();
             }
             else if (gameObject.CompareTag("cookup"))
             {
+                audioSource.PlayOneShot(itemSound);
                 GameManager.instance.ActivateCookUp();
             }
             else if (gameObject.CompareTag("addmoney"))
             {
+                audioSource.PlayOneShot(coinSound);
                 GameManager.instance.ActivateAddMoney();
             }
             Destroy(gameObject);

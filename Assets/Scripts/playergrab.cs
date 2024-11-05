@@ -302,6 +302,7 @@ public class playergrab : MonoBehaviour
     public AudioClip fryingSound;
     public AudioClip grabSound;
     public AudioClip discardSound;
+    public AudioClip extinguishSound;
     private AudioSource audioSource;
 
     // Reference to the chopping board (for placing ingredients)
@@ -644,6 +645,7 @@ public class playergrab : MonoBehaviour
                 panScript.ishere = false;
             }
             //Destroy(other.gameObject);
+            audioSource.PlayOneShot(extinguishSound);
             Debug.Log("Fire extinguished!");
         }
     }

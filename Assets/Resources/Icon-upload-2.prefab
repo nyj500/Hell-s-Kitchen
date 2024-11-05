@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+  coinSound: {fileID: 8300000, guid: 8737d8dc8f3934d918cea44533314906, type: 3}
+  itemSound: {fileID: 8300000, guid: bde8193c98cb744b8b3de78e9ace1a6b, type: 3}
 --- !u!65 &-6095170924904048874
 BoxCollider:
   m_ObjectHideFlags: 0

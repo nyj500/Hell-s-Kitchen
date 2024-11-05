@@ -1313,13 +1313,13 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f361803a4b1b9455498d6c4237bba9b4, type: 3}
   m_Resource: {fileID: 8300000, guid: f361803a4b1b9455498d6c4237bba9b4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 129
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
