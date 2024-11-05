@@ -384,6 +384,132 @@ public class playergrab : MonoBehaviour
     }
 
 
+    //    private void PlaceOnPlate(Collider plate)
+    //    {
+    //        Plate plateScript = plate.GetComponent<Plate>();
+
+    //        if (plateScript == null || plateScript.hasKimbap)
+    //        {
+    //            Debug.LogWarning("Kimbap already on plate. Cannot place more items.");
+    //            return; // 김밥이 이미 있으면 추가 재료를 놓지 않음
+    //        }
+
+    //        Transform placePoint = null;
+    //        Transform salamiPlacePoint = null;
+
+    //        if (spawnedObject.CompareTag("Nori") && !plateScript.hasNori)
+    //        {
+    //            placePoint = plate.transform.Find("PlatePlacePoint");
+    //            if (placePoint != null && spawnedObject != null)
+    //            {
+    //                // Place the object at the placePoint position
+    //                spawnedObject.transform.position = placePoint.position;
+    //                spawnedObject.transform.rotation = placePoint.rotation;
+    //                spawnedObject.transform.parent = plate.transform;
+
+    //                // Mark the presence of Nori on the plate
+    //                plateScript.hasNori = true;
+
+    //                audioSource.PlayOneShot(grabSound);
+    //                // Reset player grab states since the object is now on the plate
+    //                ResetGrabState();
+
+    //                Debug.Log("Nori placed on the plate.");
+    //            }
+    //            else
+    //            {
+    //                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+    //            }
+    //        }
+    //        else if (spawnedObject.CompareTag("Rice") && !plateScript.hasRice)
+    //        {
+    //            placePoint = plate.transform.Find("PlatePlacePointRice");
+    //            if (placePoint != null && spawnedObject != null)
+    //            {
+    //                spawnedObject.transform.position = placePoint.position;
+    //                spawnedObject.transform.rotation = placePoint.rotation;
+    //                spawnedObject.transform.parent = plate.transform;
+
+    //                plateScript.hasRice = true;
+
+    //                audioSource.PlayOneShot(grabSound);
+    //                ResetGrabState();
+
+    //                Debug.Log("Rice placed on the plate.");
+    //            }
+    //            else
+    //            {
+    //                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+    //            }
+    //        }
+    //        else if ((spawnedObject.CompareTag("ChoppedFish") || spawnedObject.CompareTag("CookedSalami")) && !plateScript.hasChoppedFish && !plateScript.hasCookedSalami)
+    //        {
+    //            placePoint = plate.transform.Find("PlatePlacePointMain");
+    //            salamiPlacePoint = plate.transform.Find("PlatePlacePointCookedSalami");
+    //            if (placePoint != null && spawnedObject != null)
+    //            {
+
+    //                if (spawnedObject.CompareTag("ChoppedFish"))
+    //                {
+    //                    spawnedObject.transform.position = placePoint.position;
+    //                    spawnedObject.transform.rotation = placePoint.rotation;
+    //                    spawnedObject.transform.parent = plate.transform;
+    //                    plateScript.hasChoppedFish = true;
+    //                }
+    //                else
+    //                {
+    //                    spawnedObject.transform.position = placePoint.position;
+    //                    spawnedObject.transform.rotation = salamiPlacePoint.rotation;
+    //                    spawnedObject.transform.parent = plate.transform;
+    //                    plateScript.hasCookedSalami = true;
+    //                }
+    ////<<<<<<< Updated upstream
+
+    //                audioSource.PlayOneShot(grabSound);
+    ////=======
+    ////>>>>>>> Stashed changes
+    //                ResetGrabState();
+
+    //                Debug.Log("CookedMainFood placed on the plate.");
+    //            }
+    //            else
+    //            {
+    //                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+    //            }
+    //        }
+    //        else if ((spawnedObject.CompareTag("ChoppedPepper") || spawnedObject.CompareTag("ChoppedCucumber") || spawnedObject.CompareTag("ChoppedCarrot"))
+    //                 && !plateScript.hasChoppedPepper && !plateScript.hasChoppedCucumber && !plateScript.hasChoppedCarrot)
+    //        {
+    //            placePoint = plate.transform.Find("PlatePlacePointVeg");
+    //            if (placePoint != null && spawnedObject != null)
+    //            {
+    //                spawnedObject.transform.position = placePoint.position;
+    //                spawnedObject.transform.rotation = placePoint.rotation;
+    //                spawnedObject.transform.parent = plate.transform;
+
+    //                // �� ��ä ������ ���� ���� ����
+    //                if (spawnedObject.CompareTag("ChoppedPepper")) plateScript.hasChoppedPepper = true;
+    //                else if (spawnedObject.CompareTag("ChoppedCucumber")) plateScript.hasChoppedCucumber = true;
+    //                else if (spawnedObject.CompareTag("ChoppedCarrot")) plateScript.hasChoppedCarrot = true;
+
+    //                audioSource.PlayOneShot(grabSound);
+    //                ResetGrabState();
+
+    //                Debug.Log(spawnedObject.tag + " placed on the plate.");
+    //            }
+    //            else
+    //            {
+    //                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+    //            }
+    //        }
+    //        else
+    //        {
+    //            Debug.LogWarning("Ingredient is already on the plate, cannot place again.");
+    //        }
+
+    //    }
+
+
     private void PlaceOnPlate(Collider plate)
     {
         Plate plateScript = plate.GetComponent<Plate>();
@@ -391,118 +517,105 @@ public class playergrab : MonoBehaviour
         if (plateScript == null || plateScript.hasKimbap)
         {
             Debug.LogWarning("Kimbap already on plate. Cannot place more items.");
-            return; // 김밥이 이미 있으면 추가 재료를 놓지 않음
+            return;
         }
 
         Transform placePoint = null;
+        Transform salamiPlacePoint = plate.transform.Find("PlatePlacePointCookedSalami");
 
         if (spawnedObject.CompareTag("Nori") && !plateScript.hasNori)
         {
             placePoint = plate.transform.Find("PlatePlacePoint");
-            if (placePoint != null && spawnedObject != null)
-            {
-                // Place the object at the placePoint position
-                spawnedObject.transform.position = placePoint.position;
-                spawnedObject.transform.rotation = placePoint.rotation;
-                spawnedObject.transform.parent = plate.transform;
-
-                // Mark the presence of Nori on the plate
-                plateScript.hasNori = true;
-
-                audioSource.PlayOneShot(grabSound);
-                // Reset player grab states since the object is now on the plate
-                ResetGrabState();
-
-                Debug.Log("Nori placed on the plate.");
-            }
-            else
-            {
-                Debug.LogWarning("placePoint not found on the plate or no item to place.");
-            }
+            PlaceItemOnPlate(placePoint, plateScript, "hasNori", "Nori placed on the plate.");
         }
         else if (spawnedObject.CompareTag("Rice") && !plateScript.hasRice)
         {
             placePoint = plate.transform.Find("PlatePlacePointRice");
-            if (placePoint != null && spawnedObject != null)
-            {
-                spawnedObject.transform.position = placePoint.position;
-                spawnedObject.transform.rotation = placePoint.rotation;
-                spawnedObject.transform.parent = plate.transform;
-
-                plateScript.hasRice = true;
-
-                audioSource.PlayOneShot(grabSound);
-                ResetGrabState();
-
-                Debug.Log("Rice placed on the plate.");
-            }
-            else
-            {
-                Debug.LogWarning("placePoint not found on the plate or no item to place.");
-            }
+            PlaceItemOnPlate(placePoint, plateScript, "hasRice", "Rice placed on the plate.");
         }
-        else if ((spawnedObject.CompareTag("ChoppedFish") || spawnedObject.CompareTag("CookedSalami")) && !plateScript.hasChoppedFish && !plateScript.hasCookedSalami)
+        else if (spawnedObject.CompareTag("ChoppedFish") && !plateScript.hasChoppedFish)
         {
             placePoint = plate.transform.Find("PlatePlacePointMain");
-            if (placePoint != null && spawnedObject != null)
-            {
-
-                if (spawnedObject.CompareTag("ChoppedFish"))
-                {
-                    spawnedObject.transform.position = placePoint.position;
-                    spawnedObject.transform.rotation = placePoint.rotation;
-                    spawnedObject.transform.parent = plate.transform;
-                    plateScript.hasChoppedFish = true;
-                }
-                else
-                {
-                    spawnedObject.transform.position = placePoint.position;
-                    spawnedObject.transform.rotation = placePoint.rotation;
-                    spawnedObject.transform.parent = plate.transform;
-                    plateScript.hasCookedSalami = true;
-                }
-
-                audioSource.PlayOneShot(grabSound);
-                ResetGrabState();
-
-                Debug.Log("CookedMainFood placed on the plate.");
-            }
-            else
-            {
-                Debug.LogWarning("placePoint not found on the plate or no item to place.");
-            }
+            PlaceItemOnPlate(placePoint, plateScript, "hasChoppedFish", "ChoppedFish placed on the plate.");
         }
-        else if ((spawnedObject.CompareTag("ChoppedPepper") || spawnedObject.CompareTag("ChoppedCucumber") || spawnedObject.CompareTag("ChoppedCarrot"))
-                 && !plateScript.hasChoppedPepper && !plateScript.hasChoppedCucumber && !plateScript.hasChoppedCarrot)
+        else if (spawnedObject.CompareTag("CookedSalami") && !plateScript.hasCookedSalami)
         {
-            placePoint = plate.transform.Find("PlatePlacePointVeg");
-            if (placePoint != null && spawnedObject != null)
+            // Place the cooked salami at a specific point
+            if (salamiPlacePoint != null)
             {
-                spawnedObject.transform.position = placePoint.position;
-                spawnedObject.transform.rotation = placePoint.rotation;
+                spawnedObject.transform.position = salamiPlacePoint.position;
+                spawnedObject.transform.rotation = Quaternion.Euler(0, 90, 0); // Set the desired rotation
                 spawnedObject.transform.parent = plate.transform;
 
-                // �� ��ä ������ ���� ���� ����
-                if (spawnedObject.CompareTag("ChoppedPepper")) plateScript.hasChoppedPepper = true;
-                else if (spawnedObject.CompareTag("ChoppedCucumber")) plateScript.hasChoppedCucumber = true;
-                else if (spawnedObject.CompareTag("ChoppedCarrot")) plateScript.hasChoppedCarrot = true;
-
+                plateScript.hasCookedSalami = true;
                 audioSource.PlayOneShot(grabSound);
-                ResetGrabState();
+                StartCoroutine(CooldownAfterPlacement()); // Start cooldown to prevent immediate grab
 
-                Debug.Log(spawnedObject.tag + " placed on the plate.");
+                Debug.Log("CookedSalami placed on the plate.");
             }
             else
             {
-                Debug.LogWarning("placePoint not found on the plate or no item to place.");
+                Debug.LogWarning("Salami place point not found.");
+            }
+        }
+        else if ((spawnedObject.CompareTag("ChoppedPepper") || spawnedObject.CompareTag("ChoppedCucumber") || spawnedObject.CompareTag("ChoppedCarrot")))
+        {
+            if (spawnedObject.CompareTag("ChoppedPepper") && !plateScript.hasChoppedPepper)
+            {
+                placePoint = plate.transform.Find("PlatePlacePointVeg");
+                PlaceItemOnPlate(placePoint, plateScript, "hasChoppedPepper", "ChoppedPepper placed on the plate.");
+            }
+            else if (spawnedObject.CompareTag("ChoppedCucumber") && !plateScript.hasChoppedCucumber)
+            {
+                placePoint = plate.transform.Find("PlatePlacePointVeg");
+                PlaceItemOnPlate(placePoint, plateScript, "hasChoppedCucumber", "ChoppedCucumber placed on the plate.");
+            }
+            else if (spawnedObject.CompareTag("ChoppedCarrot") && !plateScript.hasChoppedCarrot)
+            {
+                placePoint = plate.transform.Find("PlatePlacePointVeg");
+                PlaceItemOnPlate(placePoint, plateScript, "hasChoppedCarrot", "ChoppedCarrot placed on the plate.");
+            }
+            else
+            {
+                Debug.LogWarning("Vegetable is already on the plate, cannot place the same vegetable again.");
             }
         }
         else
         {
             Debug.LogWarning("Ingredient is already on the plate, cannot place again.");
         }
-
     }
+
+    // Method to place item on a plate with consistent logic
+    private void PlaceItemOnPlate(Transform placePoint, Plate plateScript, string plateProperty, string logMessage)
+    {
+        if (placePoint != null && spawnedObject != null)
+        {
+            spawnedObject.transform.position = placePoint.position;
+            spawnedObject.transform.rotation = placePoint.rotation;
+            spawnedObject.transform.parent = plateScript.transform;
+
+            // Use reflection to set the boolean value for the plate property
+            typeof(Plate).GetField(plateProperty).SetValue(plateScript, true);
+
+            audioSource.PlayOneShot(grabSound);
+            StartCoroutine(CooldownAfterPlacement()); // Start cooldown to prevent immediate grab
+
+            Debug.Log(logMessage);
+        }
+        else
+        {
+            Debug.LogWarning("placePoint not found on the plate or no item to place.");
+        }
+    }
+
+    // Cooldown to prevent immediate grabbing after placing an item
+    private IEnumerator CooldownAfterPlacement()
+    {
+        ResetGrabState();
+        yield return new WaitForSeconds(0.5f); // Add a delay of 0.5 seconds
+    }
+
     private void TryGrabItem(Collider other)
     {
         string prefabName = "";
@@ -534,7 +647,8 @@ public class playergrab : MonoBehaviour
         if((other.CompareTag("ChoppedPepper")||
             other.CompareTag("ChoppedCucumber") ||
             other.CompareTag("ChoppedFish") ||
-            other.CompareTag("ChoppedCarrot"))&&(other.CompareTag("Plate")))
+            other.CompareTag("ChoppedCarrot")||
+            other.CompareTag("CookedSalami")) &&(other.CompareTag("Plate")))
         {
             Debug.Log("No No NO grab chop plz");
             return;
