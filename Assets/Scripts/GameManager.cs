@@ -136,12 +136,12 @@ public class GameManager : MonoBehaviour
         if (dish.CompareTag(expectedTag))
         {
             Debug.Log("Order Completed: " + currentOrder);
-            currentmoney += 1000; // Reward for correct dish
+            currentmoney += 4000; // Reward for correct dish
         }
         else
         {
             Debug.Log("Incorrect Order Submitted.");
-            currentmoney -= 500; // Penalty for incorrect dish
+            currentmoney -= 1000; // Penalty for incorrect dish
         }
 
         // Clear the current dish (if applicable)
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
     public void MissOrder()
     {
         Debug.Log("Order Missed: " + currentOrder);
-        currentmoney -= 500;
+        currentmoney -= 1000;
         GenerateNewOrder();
     }
 

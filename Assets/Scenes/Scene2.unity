@@ -9727,6 +9727,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4748096270584258025, guid: ecf8a671390e34db982e259378420145,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748096270584258025, guid: ecf8a671390e34db982e259378420145,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748096270584258025, guid: ecf8a671390e34db982e259378420145,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748096270584258025, guid: ecf8a671390e34db982e259378420145,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748096270584258025, guid: ecf8a671390e34db982e259378420145,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748096270584258025, guid: ecf8a671390e34db982e259378420145,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 7072035552230339822, guid: ecf8a671390e34db982e259378420145,
         type: 3}
       propertyPath: hasKimbap
