@@ -545,7 +545,7 @@ public class playergrab : MonoBehaviour
             if (salamiPlacePoint != null)
             {
                 spawnedObject.transform.position = salamiPlacePoint.position;
-                spawnedObject.transform.rotation = Quaternion.Euler(0, 90, 0); // Set the desired rotation
+                spawnedObject.transform.Rotate(90, 0, 0); // Set the desired rotation
                 spawnedObject.transform.parent = plate.transform;
 
                 plateScript.hasCookedSalami = true;
