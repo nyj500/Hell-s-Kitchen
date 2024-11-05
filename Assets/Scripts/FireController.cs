@@ -396,8 +396,25 @@ public class FireController : MonoBehaviour
     private float currentTimer;
     private float originalCookingTime;
 
+    public AudioSource audioSource;
+    public AudioClip fryingClip;
+
     void Start()
     {
+        GameObject audioObject = GameObject.Find("AudioSourceObject");
+        if (audioObject != null)
+        {
+            audioSource = audioObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                Debug.LogError("AudioSource component not found on the object.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Object with the specified name not found.");
+        }
         float initialDelay = 20.0f;
         switch (GameManager.instance.currentPlayer)
         {
@@ -483,6 +500,8 @@ public class FireController : MonoBehaviour
         if (!isCooking && hasIngredient)
         {
             isCooking = true;
+            audioSource.clip = fryingClip;
+            audioSource.Play();
 
             if (GameManager.instance.iscookup)
             {
@@ -598,7 +617,7 @@ public class FireController : MonoBehaviour
         if (isCooking)
         {
             isCooking = false;
-
+            audioSource.Stop();
             if (cookingCoroutine != null)
             {
                 StopCoroutine(cookingCoroutine);

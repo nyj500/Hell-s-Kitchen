@@ -376,8 +376,25 @@ public class Chopping : MonoBehaviour
     public bool alreadyup = false;
     private float originalChoppingTime;
 
+    public AudioSource audioSource; 
+    public AudioClip choppingClip;
+    
     void Start()
     {
+        GameObject audioObject = GameObject.Find("AudioSourceObject");
+        if (audioObject != null)
+        {
+            audioSource = audioObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                Debug.LogError("AudioSource component not found on the object.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Object with the specified name not found.");
+        }
         player = GameObject.FindWithTag("Player");
         playerAnimator = player.GetComponent<Animator>();
         Transform[] allChildren = player.GetComponentsInChildren<Transform>();
@@ -425,7 +442,7 @@ public class Chopping : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !isChopping)
             {
-                StartChopping();
+                StartChopping();   
             }
             else if (Input.GetKeyUp(KeyCode.E) && isChopping)
             {
@@ -478,6 +495,8 @@ public class Chopping : MonoBehaviour
     void StartChopping()
     {
         isChopping = true;
+        audioSource.clip = choppingClip;
+        audioSource.Play();
 
         if (GameManager.instance.iscookup)
         {
@@ -536,6 +555,7 @@ public class Chopping : MonoBehaviour
     void StopChopping()
     {
         isChopping = false;
+        audioSource.Stop();
 
         if (knifeUnderTable != null)
         {

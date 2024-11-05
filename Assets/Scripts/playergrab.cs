@@ -316,7 +316,20 @@ public class playergrab : MonoBehaviour
         grabbed = false;
         choppingInstance = GameObject.FindObjectOfType<Chopping>();
         playerMovement = GetComponent<playermovement>();
-        audioSource = GetComponent<AudioSource>();
+        GameObject audioObject = GameObject.Find("AudioSourceObject");
+        if (audioObject != null)
+        {
+            audioSource = audioObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                Debug.LogError("AudioSource component not found on the object.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Object with the specified name not found.");
+        }
     }
 
     void Update()
