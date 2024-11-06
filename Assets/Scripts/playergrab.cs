@@ -544,8 +544,10 @@ public class playergrab : MonoBehaviour
             // Place the cooked salami at a specific point
             if (salamiPlacePoint != null)
             {
+                Collider coll = spawnedObject.GetComponent<Collider>();
+                coll.enabled = false; 
                 spawnedObject.transform.position = salamiPlacePoint.position;
-                spawnedObject.transform.rotation = Quaternion.Euler(0, 90, 0); // Set the desired rotation
+                spawnedObject.transform.rotation = salamiPlacePoint.rotation; // Set the desired rotation
                 spawnedObject.transform.parent = plate.transform;
 
                 plateScript.hasCookedSalami = true;
