@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int CurrentMoney { get { return currentmoney; } }
 
     // Game Timer
-    public float gameDuration = 60f; //for ppt
+    public float gameDuration = 90f; //for ppt
     private float remainingTime;
     public bool isspeedup = false;
     public bool iscookup = false;

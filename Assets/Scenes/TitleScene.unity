@@ -1189,12 +1189,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayer: 0
-  gameDuration: 60
+  gameDuration: 90
   isspeedup: 0
   iscookup: 0
   currentOrder: 0
-  correctSound: {fileID: 8300000, guid: 6c507c09ff7b742a3badf9839e6140fe, type: 3}
-  errorSound: {fileID: 8300000, guid: a469b012e9612469ea547bcb3360fdfe, type: 3}
+  correctSound: {fileID: 0}
+  errorSound: {fileID: 0}
   currentDish:
     ingredients: []
 --- !u!4 &1352779027

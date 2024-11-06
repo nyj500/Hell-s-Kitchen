@@ -33,6 +33,21 @@ public class playermovement : MonoBehaviour
         {
             return; // canMove가 false면 이동 로직을 실행하지 않음
         }
+        if(speed < 3)
+        {
+            if(GameManager.instance.currentPlayer == GameManager.PlayerType.player1)
+            {
+                speed = 3f;
+            }
+            else if (GameManager.instance.currentPlayer == GameManager.PlayerType.player2)
+            {
+                speed = 3.5f;
+            }
+            else if (GameManager.instance.currentPlayer == GameManager.PlayerType.player3)
+            {
+                speed = 4f;
+            }
+        }
         if (GameManager.instance.isspeedup && !alreadyup)
         {
             speed *= 1.5f;
