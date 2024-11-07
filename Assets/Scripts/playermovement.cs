@@ -48,6 +48,10 @@ public class playermovement : MonoBehaviour
                 speed = 4f;
             }
         }
+        else if(speed > 6)
+        {
+            speed = 6;
+        }
         if (GameManager.instance.isspeedup && !alreadyup)
         {
             speed *= 1.5f;
