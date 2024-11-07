@@ -594,6 +594,8 @@ public class playergrab : MonoBehaviour
     {
         if (placePoint != null && spawnedObject != null)
         {
+            Collider coll = spawnedObject.GetComponent<Collider>();
+            coll.enabled = false;
             spawnedObject.transform.position = placePoint.position;
             spawnedObject.transform.rotation = placePoint.rotation;
             spawnedObject.transform.parent = plateScript.transform;
