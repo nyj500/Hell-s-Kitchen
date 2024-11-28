@@ -709,6 +709,18 @@ MonoBehaviour:
   canMove: 1
   footstepClip: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
   sprintButton: {fileID: 964780553}
+--- !u!114 &89598085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2141585591711663855, guid: 53246a7153610244bacfa0f5884ca811,
+    type: 3}
+  m_PrefabInstance: {fileID: 89598082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89598083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0482fb4251f6b1242b63e80efa9f2ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &123235207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,6 +2920,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 479090938}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &479090940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5319091050541542144, guid: a3eb0671533e8cf4b8a5ca5edf290c96,
+    type: 3}
+  m_PrefabInstance: {fileID: 479090938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479090939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0482fb4251f6b1242b63e80efa9f2ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &487690968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 126635241840405771, guid: 3e27092f11ab2a94e8445e6028978e94,
@@ -4965,6 +4989,7 @@ GameObject:
   - component: {fileID: 744705542}
   - component: {fileID: 744705541}
   - component: {fileID: 744705540}
+  - component: {fileID: 744705543}
   m_Layer: 5
   m_Name: ButtonGrab
   m_TagString: Untagged
@@ -5073,6 +5098,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744705537}
   m_CullTransparentMesh: 1
+--- !u!114 &744705543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744705537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89598085}
+          m_TargetAssemblyTypeName: playergrab, Assembly-CSharp
+          m_MethodName: OnButtonGrabReleased
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1625833097}
+          m_TargetAssemblyTypeName: playergrab, Assembly-CSharp
+          m_MethodName: OnButtonGrabReleased
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 479090940}
+          m_TargetAssemblyTypeName: playergrab, Assembly-CSharp
+          m_MethodName: OnButtonGrabReleased
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89598085}
+          m_TargetAssemblyTypeName: playergrab, Assembly-CSharp
+          m_MethodName: OnButtonGrabPressed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1625833097}
+          m_TargetAssemblyTypeName: playergrab, Assembly-CSharp
+          m_MethodName: OnButtonGrabPressed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 479090940}
+          m_TargetAssemblyTypeName: playergrab, Assembly-CSharp
+          m_MethodName: OnButtonGrabPressed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &752126326
 GameObject:
   m_ObjectHideFlags: 0
@@ -8296,6 +8414,18 @@ MonoBehaviour:
   canMove: 1
   footstepClip: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
   sprintButton: {fileID: 964780553}
+--- !u!114 &1625833097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4108163690956844620, guid: 29f07a7aa774c9a4287bbb9827836953,
+    type: 3}
+  m_PrefabInstance: {fileID: 1625833094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625833095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0482fb4251f6b1242b63e80efa9f2ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1646213424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3685055727057391997, guid: a3eb0671533e8cf4b8a5ca5edf290c96,
