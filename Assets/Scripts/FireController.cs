@@ -437,6 +437,30 @@ public class FireController : MonoBehaviour
                 originalCookingTime = cookingTime;
                 break;
         }
+
+        switch (GameManager.instance.currentStage)
+        {
+            case 0:
+                
+                
+            case 1:
+                timeRange_1 = 80f;
+                timeRange_2 = 140f;
+                break;
+            case 2:
+                timeRange_1 = 60f;
+                timeRange_2 = 120f;
+                break;
+            case 3:
+                timeRange_1 = 40f;
+                timeRange_2 = 90f;
+                break;
+            default:
+                timeRange_1 = 60f;
+                timeRange_2 = 120f;
+                break;
+        }
+
         HideTimer(); // Hide the timer UI initially
         if (steamEffect != null)
         {

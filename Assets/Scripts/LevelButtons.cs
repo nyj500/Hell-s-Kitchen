@@ -13,12 +13,6 @@ public class LevelButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (levelButtons == null || levelButtons.Length == 0)
-        {
-            Debug.LogError("No buttons assigned to levelButtons array!");
-            return;
-        }
-
         for (int i = 0; i < levelButtons.Length; i++)
         {
             int index = i;
@@ -29,10 +23,10 @@ public class LevelButtons : MonoBehaviour
     public void OnLevelButtonClicked(int buttonIndex)
     {
         Debug.Log($"Button {buttonIndex} clicked!");
-
-        if (StageManager.instance != null)
+// 누르는 버튼에 따라 현재 스테이지 정보 넘겨주기
+        if (GameManager.instance != null)
         {
-            StageManager.instance.currentStage = buttonIndex;
+            GameManager.instance.currentStage = buttonIndex;
         }
 
         SceneManager.LoadScene("Scene2");
@@ -53,19 +47,15 @@ public class LevelButtons : MonoBehaviour
     }
     void UpdateButtonsUI()
     {
-        if (StageManager.instance == null)
-        {
-            Debug.LogWarning("StageManager instance is null!");
-            return;
-        }
-        int currentStage = StageManager.instance.currentStage;
-
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            if (levelButtons[i] != null)
+            if (GameManager.instance.stageClearStatus[i] == true)
             {
-                levelButtons[i].interactable = (i <= currentStage); // 현재 스테이지까지 활성화
-                //levelButtons[i].GetComponent<Image>().color = (i <= currentStage) ? buttonColors[i] : deactivatedColor;
+                levelButtons[i].interactable = true;
+            }
+            else 
+            {
+                levelButtons[i].interactable = false; 
             }
         }
     }
