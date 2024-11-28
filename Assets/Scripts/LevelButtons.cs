@@ -18,6 +18,7 @@ public class LevelButtons : MonoBehaviour
             int index = i;
             levelButtons[index].onClick.AddListener(() => OnLevelButtonClicked(index));
         }
+        UpdateButtonsUI();
     }
 
     public void OnLevelButtonClicked(int buttonIndex)
@@ -32,19 +33,6 @@ public class LevelButtons : MonoBehaviour
         SceneManager.LoadScene("Scene2");
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "StageScene") UpdateButtonsUI();
-    }
     void UpdateButtonsUI()
     {
         for (int i = 0; i < levelButtons.Length; i++)

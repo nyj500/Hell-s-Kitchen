@@ -10,7 +10,8 @@ public class LightController : MonoBehaviour
     public Light directionalLight; // 기본 조명 
     public Light spotLight; // 비상등 
     private Light playerSpotLight; // 플레이어 조명
-    
+    public float timeRange_1 = 20f;
+    public float timeRange_2 = 40f;
     private bool isBlackout = false;
 
     public AudioClip turnOnSound;
@@ -43,7 +44,26 @@ public class LightController : MonoBehaviour
         {
             audioSource = audioObject.GetComponent<AudioSource>();
         }
-        
+        switch(GameManager.instance.currentStage)
+        {
+            case 0:
+                timeRange_1 = 20f;
+                timeRange_2 = 40f;
+                break;
+            case 1:
+                timeRange_1 = 20f;
+                timeRange_2 = 40f;
+                break;
+            case 2:
+                timeRange_1 = 20f;
+                timeRange_2 = 40f;
+                break;
+            case 3:
+                timeRange_1 = 20f;
+                timeRange_2 = 40f;
+                break;
+
+        }
         SetSkyboxLighting();
         StartCoroutine(TriggerBlackout());
     }
