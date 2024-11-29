@@ -44,6 +44,7 @@ public class playergrab : MonoBehaviour
     private playermovement playerMovement;
 
     private bool isButtonGrabPressed = false;
+    private bool isButtonChopPressed = false;
 
     void Start()
     {
@@ -70,7 +71,7 @@ public class playergrab : MonoBehaviour
     void Update()
     {
         animator.SetBool("holdingItem", grabbed);
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E)||isButtonChopPressed)
         {
             if (playerMovement != null)
                 playerMovement.canMove = false;
@@ -90,6 +91,16 @@ public class playergrab : MonoBehaviour
     public void OnButtonGrabReleased()
     {
         isButtonGrabPressed = false;
+    }
+
+    public void OnButtonChopPressed()
+    {
+        isButtonChopPressed = true;
+    }
+
+    public void OnButtonChopbReleased()
+    {
+        isButtonChopPressed = false;
     }
 
     void OnTriggerStay(Collider other)
