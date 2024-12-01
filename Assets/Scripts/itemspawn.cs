@@ -86,7 +86,26 @@ public class RandomObjectSpawner : MonoBehaviour
             Debug.LogError("Spawn area or objects to spawn are not properly assigned or there are fewer than 3 objects.");
             return;
         }
+        switch (GameManager.instance.currentStage)
+        {
+            case 0:
+                minSpawnInterval = 5f;
+                maxSpawnInterval = 10f;
+                break;
+            case 1:
+                minSpawnInterval = 5f;
+                maxSpawnInterval = 10f;
+                break;
+            case 2:
+                minSpawnInterval = 5f;
+                maxSpawnInterval = 15f;
+                break;
+            case 3:
+                minSpawnInterval = 10f;
+                maxSpawnInterval = 20f;
+                break;
 
+        }
         StartCoroutine(SpawnObjectAtRandomInterval());
     }
 

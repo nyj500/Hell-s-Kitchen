@@ -62,7 +62,6 @@ public class LightController : MonoBehaviour
                 timeRange_1 = 20f;
                 timeRange_2 = 40f;
                 break;
-
         }
         SetSkyboxLighting();
         StartCoroutine(TriggerBlackout());

@@ -452,8 +452,8 @@ public class FireController : MonoBehaviour
                 timeRange_2 = 120f;
                 break;
             case 3:
-                timeRange_1 = 40f;
-                timeRange_2 = 90f;
+                timeRange_1 = 30f;
+                timeRange_2 = 70f;
                 break;
             default:
                 timeRange_1 = 60f;
