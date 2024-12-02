@@ -350,7 +350,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 93
+  m_fontSize: 108.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -968,6 +968,11 @@ MonoBehaviour:
   isspeedup: 0
   iscookup: 0
   currentOrder: 0
+  correctSound: {fileID: 0}
+  errorSound: {fileID: 0}
+  currentStage: 0
+  stageClearStatus: 00000000
+  isWin: 0
   currentDish:
     ingredients: []
 --- !u!4 &1352779027
@@ -1070,7 +1075,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 186.65
+  m_fontSize: 162.85
   m_fontSizeBase: 156
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1584,7 +1589,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 93.45
+  m_fontSize: 109.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

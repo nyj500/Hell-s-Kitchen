@@ -1,28 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // UI »ç¿ëÀ» À§ÇØ ÇÊ¿ä
-using UnityEngine.EventSystems; // ÅÍÄ¡ ÀÌº¥Æ®¸¦ Ã³¸®ÇÏ±â À§ÇØ ÇÊ¿ä
+using UnityEngine.UI; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
+using UnityEngine.EventSystems; // ï¿½ï¿½Ä¡ ï¿½Ìºï¿½Æ®ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
 
 public class MobilePlayermovement : MonoBehaviour
 {
+    private SprintDustController dustController;
+
     private Animator animator;
-    public float speed; // ÀÌµ¿ ¼Óµµ
+    public float speed; // ï¿½Ìµï¿½ ï¿½Óµï¿½
     private Rigidbody rb;
     public bool canMove = true;
     private bool alreadyup = false;
     private AudioSource audioSource;
     public AudioClip footstepClip;
 
-    private Vector3 movement = Vector3.zero; // ÀÌµ¿ ¹æÇâ
-    private Quaternion targetRotation; // ¸ñÇ¥ È¸Àü ¹æÇâ
+    private Vector3 movement = Vector3.zero; // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Quaternion targetRotation; // ï¿½ï¿½Ç¥ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private bool isMoving = false;
 
-    public Button sprintButton; // ´Þ¸®±â ¹öÆ° Ãß°¡
-    private bool isSprinting = false; // ´Þ¸®±â »óÅÂ¸¦ ÃßÀû
+    public Button sprintButton; // ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ß°ï¿½
+    private bool isSprinting = false; // ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     void Start()
     {
+        dustController = GetComponentInChildren<SprintDustController>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
@@ -37,18 +40,18 @@ public class MobilePlayermovement : MonoBehaviour
             Debug.LogError("Object with the specified name not found.");
         }
 
-        // ´Þ¸®±â ¹öÆ° ÀÌº¥Æ® ¸®½º³Ê ¼³Á¤
+        // ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (sprintButton != null)
         {
             EventTrigger trigger = sprintButton.gameObject.AddComponent<EventTrigger>();
 
-            // PointerDown ÀÌº¥Æ® Ãß°¡
+            // PointerDown ï¿½Ìºï¿½Æ® ï¿½ß°ï¿½
             EventTrigger.Entry pointerDownEntry = new EventTrigger.Entry();
             pointerDownEntry.eventID = EventTriggerType.PointerDown;
             pointerDownEntry.callback.AddListener((eventData) => StartSprint());
             trigger.triggers.Add(pointerDownEntry);
 
-            // PointerUp ÀÌº¥Æ® Ãß°¡
+            // PointerUp ï¿½Ìºï¿½Æ® ï¿½ß°ï¿½
             EventTrigger.Entry pointerUpEntry = new EventTrigger.Entry();
             pointerUpEntry.eventID = EventTriggerType.PointerUp;
             pointerUpEntry.callback.AddListener((eventData) => StopSprint());
@@ -63,7 +66,7 @@ public class MobilePlayermovement : MonoBehaviour
             return;
         }
 
-        // ¼Óµµ Ã³¸®
+        // ï¿½Óµï¿½ Ã³ï¿½ï¿½
         if (speed < 3)
         {
             if (GameManager.instance.currentPlayer == GameManager.PlayerType.player1)
@@ -89,14 +92,14 @@ public class MobilePlayermovement : MonoBehaviour
             alreadyup = false;
         }
 
-        // ÀÌµ¿ Ã³¸®
+        // ï¿½Ìµï¿½ Ã³ï¿½ï¿½
         if (movement != Vector3.zero)
         {
             isMoving = true;
             var velocity = movement * speed;
             targetRotation = Quaternion.LookRotation(movement);
 
-            // ÀÌµ¿ ¹× È¸Àü
+            // ï¿½Ìµï¿½ ï¿½ï¿½ È¸ï¿½ï¿½
             Vector3 newPosition = rb.position + velocity * Time.deltaTime;
             rb.MovePosition(newPosition);
             transform.rotation = targetRotation;
@@ -108,7 +111,7 @@ public class MobilePlayermovement : MonoBehaviour
             isMoving = false;
         }
 
-        // »ç¿îµå Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
         if (isMoving)
         {
             if (!audioSource.isPlaying)
@@ -125,37 +128,46 @@ public class MobilePlayermovement : MonoBehaviour
         }
     }
 
-    // ´Þ¸®±â ½ÃÀÛ
+    // ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void StartSprint()
     {
-        if (!isSprinting)
+        if (!isSprinting && isMoving) // Only start sprint if the player is moving
         {
             isSprinting = true;
-            speed *= 2; // ¼Óµµ Áõ°¡
-            audioSource.pitch = 1.8f; // ¹ß¼Ò¸® ¼Óµµ Áõ°¡
-            animator.SetBool("shift", true); // ´Þ¸®±â ¾Ö´Ï¸ÞÀÌ¼Ç È°¼ºÈ­
+            speed *= 2; // Double the speed for sprinting
+            audioSource.pitch = 1.8f; // Increase audio pitch for sprinting sound
+            animator.SetBool("shift", true); // Enable sprinting animation
+
+            // Play the dust effect only once
+            if (dustController != null)
+            {
+                dustController.PlayDustOnce();
+            }
         }
     }
 
-    // ´Þ¸®±â ÁßÁö
     public void StopSprint()
     {
         if (isSprinting)
         {
             isSprinting = false;
-            speed /= 2; // ¼Óµµ º¹¿ø
-            audioSource.pitch = 1.3f; // ¹ß¼Ò¸® ¼Óµµ º¹¿ø
-            animator.SetBool("shift", false); // ´Þ¸®±â ¾Ö´Ï¸ÞÀÌ¼Ç ºñÈ°¼ºÈ­
+            speed /= 2;
+            audioSource.pitch = 1.3f;
+            animator.SetBool("shift", false);
+            if (dustController != null)
+            {
+                dustController.StopDust();
+            }
         }
     }
 
-    // ÀÌµ¿ ¹æÇâ ¼³Á¤
+    // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void SetMovement(Vector3 direction)
     {
         movement = direction;
     }
 
-    // ¹öÆ°¿¡¼­ ¼ÕÀ» ¶ÃÀ» ¶§ Á¤Áö
+    // ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void StopMovement()
     {
         movement = Vector3.zero;
@@ -163,22 +175,22 @@ public class MobilePlayermovement : MonoBehaviour
 
     public void MoveUp()
     {
-        SetMovement(Vector3.back); // À§ÂÊ ¹æÇâÀ¸·Î ÀÌµ¿
+        SetMovement(Vector3.back); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 
     public void MoveDown()
     {
-        SetMovement(Vector3.forward); // ¾Æ·¡ÂÊ ¹æÇâÀ¸·Î ÀÌµ¿
+        SetMovement(Vector3.forward); // ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 
     public void MoveLeft()
     {
-        SetMovement(Vector3.right); // ¿ÞÂÊ ¹æÇâÀ¸·Î ÀÌµ¿
+        SetMovement(Vector3.right); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 
     public void MoveRight()
     {
-        SetMovement(Vector3.left); // ¿À¸¥ÂÊ ¹æÇâÀ¸·Î ÀÌµ¿
+        SetMovement(Vector3.left); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 }
 
