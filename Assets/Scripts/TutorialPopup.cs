@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Tutorial : MonoBehaviour
+public class TutorialPopup : MonoBehaviour
 {
     public GameObject tutorialPopup1;
     public GameObject tutorialPopup2;
