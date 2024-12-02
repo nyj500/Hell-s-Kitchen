@@ -106,11 +106,13 @@ public class RandomObjectSpawner : MonoBehaviour
                 break;
 
         }
+        
         StartCoroutine(SpawnObjectAtRandomInterval());
     }
 
     IEnumerator SpawnObjectAtRandomInterval()
     {
+        Debug.Log($"Stage: {GameManager.instance.currentStage}, ItemSpawn: {minSpawnInterval} ~ {maxSpawnInterval}");
         while (true)
         {
             float randomInterval = Random.Range(minSpawnInterval, maxSpawnInterval);

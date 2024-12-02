@@ -444,23 +444,23 @@ public class FireController : MonoBehaviour
                 
                 
             case 1:
-                timeRange_1 = 80f;
-                timeRange_2 = 140f;
+                timeRange_1 = 45f;
+                timeRange_2 = 90f;
                 break;
             case 2:
-                timeRange_1 = 60f;
-                timeRange_2 = 120f;
+                timeRange_1 = 45f;
+                timeRange_2 = 90f;
                 break;
             case 3:
                 timeRange_1 = 30f;
-                timeRange_2 = 70f;
+                timeRange_2 = 45f;
                 break;
             default:
-                timeRange_1 = 60f;
+                timeRange_1 = 90f;
                 timeRange_2 = 120f;
                 break;
         }
-
+       
         HideTimer(); // Hide the timer UI initially
         if (steamEffect != null)
         {
@@ -477,6 +477,7 @@ public class FireController : MonoBehaviour
 
     IEnumerator TriggerFire()
     {
+        Debug.Log($"Stage: {GameManager.instance.currentStage}, FireControl: {timeRange_1} ~ {timeRange_2}");
         while (true)
         {
             randomTime = Random.Range(timeRange_1, timeRange_2);

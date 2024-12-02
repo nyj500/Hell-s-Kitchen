@@ -47,31 +47,33 @@ public class LightController : MonoBehaviour
         switch(GameManager.instance.currentStage)
         {
             case 0:
-                timeRange_1 = 20f;
-                timeRange_2 = 40f;
+                timeRange_1 = 90f;
+                timeRange_2 = 100f;
                 break;
             case 1:
-                timeRange_1 = 20f;
-                timeRange_2 = 40f;
+                timeRange_1 = 90f;
+                timeRange_2 = 100f;
                 break;
             case 2:
-                timeRange_1 = 20f;
-                timeRange_2 = 40f;
+                timeRange_1 = 30f;
+                timeRange_2 = 45f;
                 break;
             case 3:
                 timeRange_1 = 20f;
-                timeRange_2 = 40f;
+                timeRange_2 = 30f;
                 break;
         }
+        
         SetSkyboxLighting();
         StartCoroutine(TriggerBlackout());
     }
 
     IEnumerator TriggerBlackout()
     {
+        Debug.Log($"Stage: {GameManager.instance.currentStage}, LightControl: {timeRange_1} ~ {timeRange_2}");
         while (true)
         {
-            float randomTime = Random.Range(20f, 40f); // for ppt
+            float randomTime = Random.Range(timeRange_1, timeRange_2); 
 
             // 설정된 시간만큼 대기
             yield return new WaitForSeconds(randomTime);

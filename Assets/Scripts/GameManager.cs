@@ -113,23 +113,34 @@ public class GameManager : MonoBehaviour
         switch (currentStage)
         {
             case 0: // Tutorial
-                if (currentmoney >= 0) isWin = true;
-                stageClearStatus[1] = true;
-                Debug.Log("level 0 clear");
+                if (currentmoney >= 0) 
+                {isWin = true;
+                    stageClearStatus[1] = true;
+                    Debug.Log("level 0 clear");
+                }
                 break;
             case 1: // Easy
-                if (currentmoney >= 5000) isWin = true;
-                stageClearStatus[2] = true;
-                Debug.Log("level 1 clear");
+                if (currentmoney >= 5000) 
+                {
+                    isWin = true;
+                    stageClearStatus[2] = true;
+                    Debug.Log("level 1 clear");
+                }
                 break;
             case 2: // Normal까지는 Clear하면 다음 단계 해금
-                if (currentmoney >= 5000) isWin = true;
-                stageClearStatus[3] = true;
-                Debug.Log("level 2 clear");
+                if (currentmoney >= 5000) 
+                {
+                    isWin = true;
+                    stageClearStatus[3] = true;
+                    Debug.Log("level 2 clear");
+                }
                 break;
             case 3:
-                if (currentmoney >= 5000) isWin = true;
-                Debug.Log("level 3 clear");
+                if (currentmoney >= 5000) 
+                {
+                    isWin = true;
+                    Debug.Log("level 3 clear");
+                }
                 break;
         }
         SceneManager.LoadScene("EndScene");
