@@ -5343,13 +5343,14 @@ GameObject:
   m_Component:
   - component: {fileID: 732957030}
   - component: {fileID: 732957031}
+  - component: {fileID: 732957032}
   m_Layer: 0
   m_Name: TutorialChat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &732957030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5379,6 +5380,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732957029}
   m_CullTransparentMesh: 1
+--- !u!114 &732957032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732957029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66823dd07d441454b824e2210a82f29d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialChat: {fileID: 732957029}
+  contents: {fileID: 1168331469}
+  image: {fileID: 190255437}
+  displayTime: 5
+  typingSpeed: 0.05
 --- !u!1 &735788011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1102883312471889268, guid: fcef3b755ab99dc4d9b92c1607ff65ee,

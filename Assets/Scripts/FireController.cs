@@ -413,10 +413,7 @@ public class FireController : MonoBehaviour
                 Debug.LogError("AudioSource component not found on the object.");
             }
         }
-        else
-        {
-            Debug.LogError("Object with the specified name not found.");
-        }
+        
         float initialDelay = 20.0f;
         switch (GameManager.instance.currentPlayer)
         {

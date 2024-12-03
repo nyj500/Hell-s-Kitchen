@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         remainingTime = gameDuration; // Reset timer
         GenerateNewOrder(); // Generate first order
-        StartCoroutine(GameTimer()); // Start timer coroutine
+        if (currentStage != 0) StartCoroutine(GameTimer()); // Start timer coroutine
         currentmoney = 0;
         isWin = false;
         beforefood = FoodType.Kimbap6;
@@ -187,6 +187,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Order Completed: " + currentOrder);
             currentmoney += 4000; // Reward for correct dish
             audioSource.PlayOneShot(correctSound);
+            if (currentStage == 0) EndGame();
         }
         else
         {
