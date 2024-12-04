@@ -30,7 +30,7 @@ public class Tutorial : MonoBehaviour
             EnqueueMessage("Press the   <voffset=0.3em><sprite name=\"grab\"></voffset> to <color=#FF0000>grab the ingredients</color> that correspond to your order.", false, 10f);
             EnqueueMessage("If you grab it wrong, you can press the   <voffset=0.3em><sprite name=\"grab\"></voffset> to throw it in the <color=#FF0000>trash can</color>.", false, 10f);
             EnqueueMessage("And press the   <voffset=0.3em><sprite name=\"grab\"></voffset> to place  <color=#FF0000>the vegetables and fish on the cutting board</color>.", false, 20f);
-            EnqueueMessage("Or, place the sausages in a frying pan and take them out when the time is up.", false, 8f);
+            EnqueueMessage("Or, place <color=#FF0000>the sausages in a frying pan</color> and take them out when the time is up.", false, 8f);
             EnqueueMessage("Press the   <voffset=0.3em><sprite name=\"sword\"></voffset>to chop ingredients", false, 10f);
             EnqueueMessage("<color=#FF0000>Plate the cooked ingredients, seaweed and rice.</color> The order of the plates of the ingredients does not matter.", false, 10f);
             EnqueueMessage("Kimbap is made when 4 ingredients, including seaweed and rice, are placed together.", false, 6f);

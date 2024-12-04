@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         stageClearStatus[0] = true;
+        stageClearStatus[1] = true;
         StartGame();
     }
 
@@ -114,7 +115,8 @@ public class GameManager : MonoBehaviour
         {
             case 0: // Tutorial
                 if (currentmoney >= 0) 
-                {isWin = true;
+                {
+                    isWin = true;
                     stageClearStatus[1] = true;
                     Debug.Log("level 0 clear");
                 }
