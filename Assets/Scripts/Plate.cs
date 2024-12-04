@@ -13,6 +13,9 @@ public class Plate : MonoBehaviour
     public bool hasChoppedPepper = false;
     public bool hasChoppedCucumber = false;
     public bool hasChoppedCarrot = false;
+    // Sparkle Effect
+    public GameObject sparklePrefab; 
+    public float sparkleDuration = 1f;
 
     // ������ ��� ������
     public GameObject kimbapPrefab;
@@ -85,7 +88,8 @@ public class Plate : MonoBehaviour
         kimbap.transform.parent = transform;
         hasKimbap = true;
 
-        
+        TriggerSparkleEffect();
+
     }
 
     // ��� �±� ���� �Լ�
@@ -124,5 +128,21 @@ public class Plate : MonoBehaviour
         }
         else
             return "Kimbap1"; // �⺻��
+    }
+
+    private void TriggerSparkleEffect()
+    {
+        if (sparklePrefab != null)
+        {
+            // Instantiate the sparkle effect at the plate position
+            GameObject sparkle = Instantiate(sparklePrefab, placePointNori.position, Quaternion.identity);
+
+            // Destroy the sparkle effect after a certain duration
+            Destroy(sparkle, sparkleDuration);
+        }
+        else
+        {
+            Debug.LogWarning("No sparkle prefab assigned!");
+        }
     }
 }
