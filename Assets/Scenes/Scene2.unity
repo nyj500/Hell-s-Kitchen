@@ -12590,6 +12590,12 @@ PrefabInstance:
       propertyPath: hasKimbap
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7072035552230339822, guid: ecf8a671390e34db982e259378420145,
+        type: 3}
+      propertyPath: sparklePrefab
+      value: 
+      objectReference: {fileID: 7733509422108427164, guid: 14df4c92e298544409fe3fa2f962d37f,
+        type: 3}
     - target: {fileID: 8339286573942319423, guid: ecf8a671390e34db982e259378420145,
         type: 3}
       propertyPath: m_Size.x
