@@ -438,12 +438,14 @@ public class FireController : MonoBehaviour
         switch (GameManager.instance.currentStage)
         {
             case 0:
-                
-                
+                initialDelay = 0f;
+                timeRange_1 = 88.0f;
+                timeRange_2 = 88.0f;
+                break;
             case 1:
                 initialDelay = 20.0f;
                 timeRange_1 = 25f;
-                timeRange_2 = 100f;
+                timeRange_2 = 90f;
                 break;
             case 2:
                 initialDelay = 10.0f;
