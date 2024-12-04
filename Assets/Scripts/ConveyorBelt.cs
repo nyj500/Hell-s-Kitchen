@@ -214,7 +214,7 @@ public class ConveyorBelt : MonoBehaviour
         direction = direction.normalized; // Ensure direction is normalized
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Move objects on the conveyor belt
         for (int i = 0; i < onBelt.Count; i++)
@@ -247,9 +247,8 @@ public class ConveyorBelt : MonoBehaviour
                 rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
             }
 
-            // Apply constant velocity using AddForce
-            rb.velocity = Vector3.zero; // Reset velocity to avoid conflicts
-            rb.AddForce(speed * direction, ForceMode.VelocityChange);
+            // Move the item manually
+            item.transform.position += direction * speed * Time.fixedDeltaTime;
         }
 
         // Move the conveyor texture in the specified direction
@@ -293,3 +292,6 @@ public class ConveyorBelt : MonoBehaviour
         }
     }
 }
+
+
+
