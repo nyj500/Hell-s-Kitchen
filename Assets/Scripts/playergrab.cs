@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class playergrab : MonoBehaviour
 {
+
+    public GameObject cuttingBoardArrow1; 
+    public GameObject cuttingBoardArrow2;
+    public GameObject fryingPanArrow1;
+    public GameObject fryingPanArrow2;
+
     private Animator animator;
     private bool grabbed;
     private int isgrab = 0;
@@ -66,6 +72,8 @@ public class playergrab : MonoBehaviour
         {
             Debug.LogError("Object with the specified name not found.");
         }
+        HideAllArrows();
+
     }
 
     void Update()
@@ -81,8 +89,53 @@ public class playergrab : MonoBehaviour
             if (playerMovement != null)
                 playerMovement.canMove = true;
         }
+
+        if (isgrab == 1)
+        {
+            UpdateArrowVisibility();
+        }
+        else
+        {
+            HideAllArrows();
+        }
     }
 
+    private void UpdateArrowVisibility()
+    {
+        if (isFish == 1 || isCarrot == 1 || isPepper == 1 || isCucumber == 1)
+        {
+            // Show arrows above the cutting boards
+            if (cuttingBoardArrow1 != null) cuttingBoardArrow1.SetActive(true);
+            if (cuttingBoardArrow2 != null) cuttingBoardArrow2.SetActive(true);
+
+            // Hide the frying pan arrow
+            if (fryingPanArrow1 != null) fryingPanArrow1.SetActive(false);
+            if (fryingPanArrow2 != null) fryingPanArrow2.SetActive(false);
+        }
+        else if (isSalami == 1)
+        {
+            // Show the frying pan arrow
+            if (fryingPanArrow1 != null) fryingPanArrow1.SetActive(true);
+            if (fryingPanArrow2 != null) fryingPanArrow2.SetActive(true);
+
+            // Hide cutting board arrows
+            if (cuttingBoardArrow1 != null) cuttingBoardArrow1.SetActive(false);
+            if (cuttingBoardArrow2 != null) cuttingBoardArrow2.SetActive(false);
+        }
+        else
+        {
+            // Hide all arrows if no relevant ingredient is held
+            HideAllArrows();
+        }
+    }
+
+    private void HideAllArrows()
+    {
+        if (cuttingBoardArrow1 != null) cuttingBoardArrow1.SetActive(false);
+        if (cuttingBoardArrow2 != null) cuttingBoardArrow2.SetActive(false);
+        if (fryingPanArrow1 != null) fryingPanArrow1.SetActive(false);
+        if (fryingPanArrow2 != null) fryingPanArrow2.SetActive(false);
+    }
     public void OnButtonGrabPressed()
     {
         isButtonGrabPressed = true;
@@ -536,6 +589,8 @@ public class playergrab : MonoBehaviour
         isKimbap = 0;
         isChopped = false;
         spawnedObject = null; // Clear the reference to the held object
+        HideAllArrows();
+
     }
 
 }

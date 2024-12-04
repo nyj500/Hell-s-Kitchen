@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 guid: 992d57164098d6e49b3fb15d023a2720
+AssetOrigin:
+  serializedVersion: 1
+  productId: 282424
+  packageName: Skymon Icon Pack Free
+  packageVersion: 1.1
+  assetPath: Assets/SkymonIconPackFree/skymon-icons-white/grab.png
+  uploadId: 666532
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -138,10 +145,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 282424
-  packageName: Skymon Icon Pack Free
-  packageVersion: 1.1
-  assetPath: Assets/SkymonIconPackFree/skymon-icons-white/grab.png
-  uploadId: 666532

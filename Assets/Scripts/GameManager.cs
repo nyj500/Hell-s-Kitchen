@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         EndGame(); // End game when time runs out
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         Debug.Log("Game Over");
         switch (currentStage)
@@ -187,7 +187,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Order Completed: " + currentOrder);
             currentmoney += 4000; // Reward for correct dish
             audioSource.PlayOneShot(correctSound);
-            if (currentStage == 0) EndGame();
         }
         else
         {
