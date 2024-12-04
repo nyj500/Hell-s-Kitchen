@@ -613,6 +613,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5687198149367582844, guid: 53246a7153610244bacfa0f5884ca811,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2141585591711663855, guid: 53246a7153610244bacfa0f5884ca811,
         type: 3}
       propertyPath: gameManager
@@ -2138,7 +2143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 957, y: -117}
+  m_AnchoredPosition: {x: 924.99994, y: -117}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315374672
@@ -3460,6 +3465,11 @@ PrefabInstance:
       propertyPath: cuttingBoardArrow2
       value: 
       objectReference: {fileID: 1256327848971555071}
+    - target: {fileID: 291802885286833232, guid: a3eb0671533e8cf4b8a5ca5edf290c96,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3202916210537734385, guid: a3eb0671533e8cf4b8a5ca5edf290c96,
         type: 3}
       propertyPath: m_Layer
@@ -5922,7 +5932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 956, y: 116}
+  m_AnchoredPosition: {x: 924, y: 116}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744705540
@@ -7472,7 +7482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 959, y: -340}
+  m_AnchoredPosition: {x: 926.99994, y: -340}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &964780552
@@ -9541,6 +9551,11 @@ PrefabInstance:
       propertyPath: cuttingBoardArrow2
       value: 
       objectReference: {fileID: 1256327848971555071}
+    - target: {fileID: 5582665878976016889, guid: 29f07a7aa774c9a4287bbb9827836953,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8796891531023437695, guid: 29f07a7aa774c9a4287bbb9827836953,
         type: 3}
       propertyPath: m_LocalPosition.x
