@@ -375,5 +375,5 @@ public class NewMonoBehaviour : MonoBehaviour
         SetMovement(Vector3.right); // Move right (positive X-axis)
     }
 }
-
+}
 
