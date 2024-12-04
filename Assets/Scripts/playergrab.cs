@@ -158,7 +158,7 @@ public class playergrab : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (isgrab == 0 && (Input.GetKey(KeyCode.Space) || isButtonGrabPressed) && (choppingInstance == null || !choppingInstance.isChopping))
+        if(isgrab == 0 && (Input.GetKey(KeyCode.Space) || isButtonGrabPressed) && (choppingInstance == null || !choppingInstance.isChopping))
         {
             TryGrabItem(other);
         }
