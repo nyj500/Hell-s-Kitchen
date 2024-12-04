@@ -388,7 +388,8 @@ public class FireController : MonoBehaviour
     public bool isOnFire = false;
     public float timeRange_1 = 60f;
     public float timeRange_2 = 120f;
-    public float randomTime;
+    public float initialDelay = 20.0f;
+    private float randomTime;
 
     private bool isCooking = false; // Flag to track if cooking has started
     private Coroutine cookingCoroutine; // To handle cooking time
@@ -414,7 +415,6 @@ public class FireController : MonoBehaviour
             }
         }
         
-        float initialDelay = 20.0f;
         switch (GameManager.instance.currentPlayer)
         {
             case GameManager.PlayerType.player1:
@@ -441,16 +441,19 @@ public class FireController : MonoBehaviour
                 
                 
             case 1:
-                timeRange_1 = 45f;
-                timeRange_2 = 90f;
+                initialDelay = 20.0f;
+                timeRange_1 = 25f;
+                timeRange_2 = 100f;
                 break;
             case 2:
-                timeRange_1 = 45f;
-                timeRange_2 = 90f;
+                initialDelay = 10.0f;
+                timeRange_1 = 20f;
+                timeRange_2 = 60f;
                 break;
             case 3:
-                timeRange_1 = 30f;
-                timeRange_2 = 45f;
+                initialDelay = 0.0f;
+                timeRange_1 = 10f;
+                timeRange_2 = 40f;
                 break;
             default:
                 timeRange_1 = 90f;
@@ -474,7 +477,6 @@ public class FireController : MonoBehaviour
 
     IEnumerator TriggerFire()
     {
-        Debug.Log($"Stage: {GameManager.instance.currentStage}, FireControl: {timeRange_1} ~ {timeRange_2}");
         while (true)
         {
             randomTime = Random.Range(timeRange_1, timeRange_2);

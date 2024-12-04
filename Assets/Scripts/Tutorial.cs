@@ -25,7 +25,7 @@ public class Tutorial : MonoBehaviour
         if (GameManager.instance.currentStage == 0)
         {
             EnqueueMessage("Check the order in the upper left corner.", false, 5f);
-            EnqueueMessage("Place the vegetables and fish on the cutting board and press the \"E\" key to chop..", false, 10f);
+            EnqueueMessage("Place the vegetables and fish on the cutting board and chop them.", false, 10f);
             EnqueueMessage("Or, place the sausages in a frying pan and take them out when the time is up.", false, 8f);
             EnqueueMessage("Plate the seaweed and rice. The order of the plates of the ingredients does not matter.", false, 6f);
             EnqueueMessage("Kimbap is made when 4 ingredients, including seaweed and rice, are placed together.", false, 6f);
