@@ -439,8 +439,8 @@ public class FireController : MonoBehaviour
         {
             case 0:
                 initialDelay = 0f;
-                timeRange_1 = 88.0f;
-                timeRange_2 = 88.0f;
+                timeRange_1 = 97.0f;
+                timeRange_2 = 97.0f;
                 break;
             case 1:
                 initialDelay = 20.0f;

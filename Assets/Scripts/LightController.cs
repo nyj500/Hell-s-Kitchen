@@ -47,8 +47,8 @@ public class LightController : MonoBehaviour
         switch(GameManager.instance.currentStage)
         {
             case 0:
-                timeRange_1 = 105f;
-                timeRange_2 = 105f;
+                timeRange_1 = 117f;
+                timeRange_2 = 117f;
                 break;
             case 1:
                 timeRange_1 = 90f;
