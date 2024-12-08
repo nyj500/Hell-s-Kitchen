@@ -22,6 +22,12 @@ public class MobilePlayermovement : MonoBehaviour
 
     public Button sprintButton; // �޸��� ��ư �߰�
     private bool isSprinting = false; // �޸��� ���¸� ����
+    private string activeButton = "";
+
+    public RectTransform upButton;    // Up 버튼 영역
+    public RectTransform downButton;  // Down 버튼 영역
+    public RectTransform leftButton;  // Left 버튼 영역
+    public RectTransform rightButton; // Right 버튼 영역
 
     void Start()
     {
@@ -126,6 +132,8 @@ public class MobilePlayermovement : MonoBehaviour
                 audioSource.Stop();
             }
         }
+
+        CheckTouchOutsideButtons();
     }
 
     // �޸��� ����
@@ -162,35 +170,80 @@ public class MobilePlayermovement : MonoBehaviour
     }
 
     // �̵� ���� ����
-    public void SetMovement(Vector3 direction)
+    public void SetMovement(Vector3 direction, string buttonName)
     {
+        if (activeButton != "" && activeButton != buttonName)
+        {
+            StopMovement();
+        }
+
+        activeButton = buttonName; // 현재 활성화된 버튼 업데이트
         movement = direction;
     }
 
     // ��ư���� ���� ���� �� ����
     public void StopMovement()
     {
-        movement = Vector3.zero;
+        movement = Vector3.zero; // 이동 멈춤
+        activeButton = ""; // 활성화된 버튼 초기화
     }
 
-    public void MoveUp()
+    // 버튼 이벤트 함수
+    public void MoveUp(BaseEventData data)
     {
-        SetMovement(Vector3.back); // ���� �������� �̵�
+        SetMovement(Vector3.back, "Up");
     }
 
-    public void MoveDown()
+    public void MoveDown(BaseEventData data)
     {
-        SetMovement(Vector3.forward); // �Ʒ��� �������� �̵�
+        SetMovement(Vector3.forward, "Down");
     }
 
-    public void MoveLeft()
+    public void MoveLeft(BaseEventData data)
     {
-        SetMovement(Vector3.right); // ���� �������� �̵�
+        SetMovement(Vector3.right, "Left");
     }
 
-    public void MoveRight()
+    public void MoveRight(BaseEventData data)
     {
-        SetMovement(Vector3.left); // ������ �������� �̵�
+        SetMovement(Vector3.left, "Right");
+    }
+
+    public void Stop(BaseEventData data)
+    {
+        StopMovement();
+    }
+
+    private void CheckTouchOutsideButtons()
+    {
+        if (Input.touchCount > 0) // 터치가 하나 이상 있을 때만 확인
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+            {
+                // 현재 터치가 버튼 영역 안에 있는지 확인
+                if (!IsTouchInsideRect(touch.position, upButton) &&
+                    !IsTouchInsideRect(touch.position, downButton) &&
+                    !IsTouchInsideRect(touch.position, leftButton) &&
+                    !IsTouchInsideRect(touch.position, rightButton))
+                {
+                    StopMovement(); // 버튼 영역 밖이면 이동 중지
+                }
+            }
+        }
+    }
+
+    // 터치가 RectTransform 내부에 있는지 확인
+    private bool IsTouchInsideRect(Vector2 touchPosition, RectTransform rectTransform)
+    {
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform,
+            touchPosition,
+            null,
+            out localPoint
+        );
+        return rectTransform.rect.Contains(localPoint);
     }
 }
 

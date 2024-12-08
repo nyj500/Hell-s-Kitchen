@@ -874,6 +874,10 @@ MonoBehaviour:
   canMove: 1
   footstepClip: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
   sprintButton: {fileID: 964780553}
+  upButton: {fileID: 1104457408}
+  downButton: {fileID: 123235212}
+  leftButton: {fileID: 686975879}
+  rightButton: {fileID: 226558157}
 --- !u!114 &89598085 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2141585591711663855, guid: 53246a7153610244bacfa0f5884ca811,
@@ -1006,7 +1010,7 @@ MonoBehaviour:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveDown
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1018,7 +1022,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveDown
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1030,7 +1034,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveDown
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1045,8 +1049,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1057,8 +1061,8 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1069,8 +1073,48 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89598084}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveDown
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1625833096}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveDown
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1646213425}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveDown
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1354,7 +1398,7 @@ MonoBehaviour:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveRight
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1366,7 +1410,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveRight
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1378,7 +1422,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveRight
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1393,8 +1437,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1405,8 +1449,8 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1417,8 +1461,48 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89598084}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveRight
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1625833096}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveRight
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1646213425}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveRight
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5421,7 +5505,7 @@ MonoBehaviour:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveLeft
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5433,7 +5517,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveLeft
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5445,7 +5529,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveLeft
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5460,8 +5544,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5472,8 +5556,8 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5484,8 +5568,48 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89598084}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveLeft
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1625833096}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveLeft
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1646213425}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveLeft
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8259,7 +8383,7 @@ MonoBehaviour:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveUp
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8271,7 +8395,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveUp
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8283,7 +8407,7 @@ MonoBehaviour:
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
           m_MethodName: MoveUp
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8298,8 +8422,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 89598084}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8310,8 +8434,8 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1625833096}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8322,8 +8446,48 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1646213425}
           m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
-          m_MethodName: StopMovement
-          m_Mode: 1
+          m_MethodName: Stop
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89598084}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveUp
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1625833096}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveUp
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1646213425}
+          m_TargetAssemblyTypeName: MobilePlayermovement, Assembly-CSharp
+          m_MethodName: MoveUp
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9781,6 +9945,10 @@ MonoBehaviour:
   canMove: 1
   footstepClip: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
   sprintButton: {fileID: 964780553}
+  upButton: {fileID: 1104457408}
+  downButton: {fileID: 123235212}
+  leftButton: {fileID: 686975879}
+  rightButton: {fileID: 226558157}
 --- !u!114 &1625833097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4108163690956844620, guid: 29f07a7aa774c9a4287bbb9827836953,
@@ -9815,6 +9983,10 @@ MonoBehaviour:
   canMove: 1
   footstepClip: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
   sprintButton: {fileID: 964780553}
+  upButton: {fileID: 1104457408}
+  downButton: {fileID: 123235212}
+  leftButton: {fileID: 686975879}
+  rightButton: {fileID: 226558157}
 --- !u!1 &1656541428
 GameObject:
   m_ObjectHideFlags: 0
