@@ -114,7 +114,7 @@ public class Chopping : MonoBehaviour
     {
         if (isPlayerNear)
         {
-            // ¹öÆ° ÀÔ·Â¿¡ ´ëÇÑ Ã³¸®
+            // ï¿½ï¿½Æ° ï¿½Ô·Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
             if (isButtonChopPressed && !isChopping)
             {
                 StartChopping();
