@@ -353,14 +353,14 @@ public class MobilePlayermovement : MonoBehaviour
         {
             speed = GameManager.instance.currentPlayer switch
             {
-                GameManager.PlayerType.player1 => 3f,
-                GameManager.PlayerType.player2 => 3.5f,
-                GameManager.PlayerType.player3 => 4f,
-                _ => 3f,
+                GameManager.PlayerType.player1 => 3.9f,
+                GameManager.PlayerType.player2 => 4.55f,
+                GameManager.PlayerType.player3 => 5.2f,
+                _ => 3.9f,
             };
         }
 
-        if (speed > 6) speed = 6;
+        if (speed > 7.8f) speed = 7.8f;
 
         if (GameManager.instance.isspeedup && !alreadyup)
         {

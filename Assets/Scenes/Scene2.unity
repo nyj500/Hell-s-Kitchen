@@ -615,6 +615,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5687198149367582844, guid: 53246a7153610244bacfa0f5884ca811,
         type: 3}
+      propertyPath: speed
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -5687198149367582844, guid: 53246a7153610244bacfa0f5884ca811,
+        type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -9941,7 +9946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f81ecee783cd14a99b1c28415b8ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 4.55
   canMove: 1
   footstepClip: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
   sprintButton: {fileID: 964780553}
@@ -9979,7 +9984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f81ecee783cd14a99b1c28415b8ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5.2
   canMove: 1
   footstepClip: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
   sprintButton: {fileID: 964780553}
